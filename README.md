@@ -1,5 +1,5 @@
 帮助文档地址：https://www.yuque.com/miyang.meyoung/luban
-
+git地址：https://github.com/MeYoung/Luban_API_Test
 ## 优点
 
 1. case分级（blocker，critical，normal，minor，trivial）
