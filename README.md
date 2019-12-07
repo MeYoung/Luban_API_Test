@@ -1,5 +1,4 @@
-帮助文档地址：https://www.yuque.com/miyang.meyoung/vkhc9e
-
+帮助文档地址：https://www.yuque.com/miyang.meyoung/luban
 
 ## 优点
 
