@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<!--配置Case集合名 并发方式tests 和并发数-->
+<suite name="All Test" parallel="tests" thread-count="1">
+
+    <!-- name 必须Parameters注解接收名一致，value就是为参数的值-->
+    <parameter name="env" value="${env}"/>
+    <parameter name="userName" value="${userName}"/>
+    <parameter name="password" value="${password}"/>
+
+
+    <test name="XXX 模块" annotations="JDK">
+        <packages>
+            <!-- 配置要运行的Case模块包路径-->
+            <package name="com.luban.api.*"></package>
+        </packages>
+    </test>
+
+    <listeners>
+        <!--重跑机制-->
+        <listener class-name="com.luban.common.testng.RetryListener"/>
+    </listeners>
+</suite>
