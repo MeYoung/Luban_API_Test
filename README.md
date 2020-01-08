@@ -14,7 +14,7 @@ git地址：https://github.com/MeYoung/Luban_API_Test
 10. 自由不受限，易扩展
 11. 支持Dubbo RPC测试
 12. 支持报告自动记录测试步骤
-11. 等等
+13. 等等
 
 ## 缺点
 
