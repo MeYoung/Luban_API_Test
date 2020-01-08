@@ -37,7 +37,7 @@ public class BaseData {
     /**
      * cookies
      */
-    private Map<String,String> cookies;
+    private Map<String, String> cookies;
     /**
      * 平台
      */
@@ -52,6 +52,23 @@ public class BaseData {
      * 设备号
      */
     private String deviceId;
+
+    /**
+     * 项目名
+     */
+    private String appName;
+    /**
+     * zookeeper 地址
+     */
+    private String zkAddress;
+    /**
+     * RPC 版本
+     */
+    private String version;
+    /**
+     * RPC 组
+     */
+    private String group;
 
     /**
      * operation 库的SqlSession
