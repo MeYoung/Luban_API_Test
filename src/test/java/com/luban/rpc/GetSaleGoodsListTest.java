@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * @author shijin.huang
  * @date 2020/1/4
- * @content 获取商品列表
+ * @content
  */
 @Slf4j
 public class GetSaleGoodsListTest extends RpcClient {

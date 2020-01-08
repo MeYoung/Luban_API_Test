@@ -20,5 +20,7 @@
     <listeners>
         <!--重跑机制-->
         <listener class-name="com.luban.common.testng.RetryListener"/>
+        <!--监听器-->
+        <listener class-name="com.luban.common.testng.TestResultListener"/>
     </listeners>
 </suite>

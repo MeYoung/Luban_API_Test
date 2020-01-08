@@ -1,6 +1,7 @@
 package com.luban.client;
 
 import com.alibaba.fastjson.JSON;
+import com.luban.common.report.TestStep;
 import com.luban.common.utils.BaseDataUtils;
 import com.luban.common.utils.EnvReaderUtils;
 import com.luban.common.utils.RequestUtils;
@@ -117,7 +118,10 @@ public class AdminClient {
         Map<String, String> cookies = baseData.getCookies();
         String url = baseURL + apiPath;
         Response response = RequestUtils.get(url, null, cookies, null, mapParams);
-        return response.getBody().asString();
+        String body = response.getBody().asString();
+        String jsonString = JSON.toJSONString(mapParams);
+        TestStep.step(baseURL,jsonString,body);
+        return body;
     }
 
     /**
@@ -135,7 +139,9 @@ public class AdminClient {
         String url = baseURL + apiPath;
         String params = JSON.toJSONString(object);
         Response response = RequestUtils.post(url, null, cookies, null, params);
-        return response.getBody().asString();
+        String body = response.getBody().asString();
+        TestStep.step(baseURL,params,body);
+        return body;
     }
 
 
