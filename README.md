@@ -24,7 +24,7 @@ git地址：https://github.com/MeYoung/Luban_API_Test
 
 ## 技术架构
 
-- API调用框架：RestAssured
+- API调用框架：RestAssured、Dubbo
 - Case管理：TestNG
 - Json解析：fastjson、JsonPath
 - Log打印：slf4j logback
