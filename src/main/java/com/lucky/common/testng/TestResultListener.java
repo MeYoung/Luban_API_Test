@@ -31,11 +31,13 @@ public class TestResultListener extends TestListenerAdapter {
 
     @Override
     public void onTestSkipped(ITestResult tr) {
-        super.onTestSkipped(tr);
         ITestNGMethod t = tr.getMethod();
         String[] groups = t.getGroups();
-        log.error(Arrays.toString(groups));
         tr.setParameters(groups);
+        tr.setAttribute("用例ID：",groups);
+        tr.setParameters(groups);
+
+        super.onTestSkipped(tr);
         // 写入报告
         TestStep.failStep(tr.getTestClass().getName(), tr.getName());
         log.error(tr.getName() + " skip");
@@ -44,11 +46,11 @@ public class TestResultListener extends TestListenerAdapter {
 
     @Override
     public void onTestSuccess(ITestResult tr) {
-        super.onTestSuccess(tr);
         ITestNGMethod t = tr.getMethod();
         String[] groups = t.getGroups();
-        log.error(Arrays.toString(groups));
         tr.setAttribute("用例ID：",groups);
+        tr.setParameters(groups);
+        super.onTestSuccess(tr);
 
         // 写入报告
         TestStep.successStep(tr.getTestClass().getName(), tr.getName());
