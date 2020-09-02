@@ -4,11 +4,14 @@
 <!--配置Case集合名 并发方式tests 和并发数-->
 <suite name="All Test" parallel="tests" thread-count="1">
 
+            <parameter name="env" value="${Env}"/>
+            <parameter name="caseIds" value="${CaseIds}"/>
+<!--    <parameter name="env" value="test"/>-->
+<!--    <parameter name="caseIds" value="6864436153801113601,c50mnyfqsm80"/>-->
+
     <test name="OTP触发自动化测试" annotations="JDK">
-        <parameter name="env" value="${Env}"/>
-        <parameter name="caseIds" value="${CaseIds}"/>
         <classes>
-            <class name="otp.demo.runner.LuckyRunner"></class>
+            <class name="otp.runner.LuckyRunner"></class>
         </classes>
     </test>
 

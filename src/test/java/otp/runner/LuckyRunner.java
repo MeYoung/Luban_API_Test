@@ -1,4 +1,4 @@
-package otp.demo.runner;
+package otp.runner;
 
 import com.lucky.common.testng.RetryListener;
 import com.lucky.common.testng.TestResultListener;
@@ -19,7 +19,7 @@ import java.util.*;
 public class LuckyRunner {
     @Test
     @Parameters({"env","caseIds"})
-    public void demo(String env, String caseIds) {
+    public void runner(String env, String caseIds) {
 
 //        新增<suite>标签，并设置并发方式和并发数
         XmlSuite xmlSuite = new XmlSuite();
@@ -29,22 +29,23 @@ public class LuckyRunner {
         xmlSuite.setThreadCount(1);
 
 //        设置suite parameter
-        Map<String, String> map = new HashMap<>();
-        map.put("env", env);
-        xmlSuite.setParameters(map);
+        Map<String, String> mapParameters = new HashMap<>();
+        mapParameters.put("env", env);
+        xmlSuite.setParameters(mapParameters);
 
 //        新增<Test>标签并设置
         XmlTest xmlTest = new XmlTest(xmlSuite);
-        xmlTest.setName("自动化测试");
+        xmlTest.setName("OTP自动化测试");
 
         String[] caseArrIDs = caseIds.split(",");
+        System.out.println(caseIds);
         List<String> groups = Arrays.asList(caseArrIDs);
 
 //        设置class or packages
         List<XmlPackage> packages = new ArrayList<>();
-        packages.add(new XmlPackage("otp.demo.*"));
+//        packages.add(new XmlPackage("otp.demo.*"));
         packages.add(new XmlPackage("otp.*"));
-        xmlTest.setParameters(map);
+//        xmlTest.setParameters(mapParameters);
         xmlTest.setPackages(packages);
 //        设置要执行的Groups 关键点
         xmlTest.setIncludedGroups(groups);
