@@ -1,15 +1,23 @@
 package otp.demo;
 
+import com.lucky.common.utils.BaseDataUtils;
+import com.lucky.params.BaseData;
+import org.omg.CORBA.BAD_CONTEXT;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class OtpDemoTest {
 
 
     @BeforeTest(alwaysRun = true)
-    public void beforeTest() {
+    @Parameters({"env"})
+    public void beforeTest(String env) {
+        BaseData baseData = BaseDataUtils.getBaseData();
+        baseData.setEnv(env);
         System.err.println("before test......");
+        System.err.println("evn:"+env);
     }
 
 
@@ -35,7 +43,7 @@ public class OtpDemoTest {
 
 
     @AfterClass
-    public void afterTest(){
+    public void afterTest() {
         System.err.println("after test .......f");
     }
 
