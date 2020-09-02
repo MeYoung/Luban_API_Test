@@ -23,7 +23,7 @@ public class LuckyRunner {
 
 //        新增<suite>标签，并设置并发方式和并发数
         XmlSuite xmlSuite = new XmlSuite();
-        xmlSuite.setName("员工API");
+        xmlSuite.setName("OTP_DEMO");
         xmlSuite.setVerbose(3);
         xmlSuite.setParallel(XmlSuite.ParallelMode.TESTS);
         xmlSuite.setThreadCount(1);
@@ -42,7 +42,7 @@ public class LuckyRunner {
 
 //        设置class or packages
         List<XmlPackage> packages = new ArrayList<>();
-        packages.add(new XmlPackage("com.lucky.papi.*"));
+        packages.add(new XmlPackage("otp.demo.*"));
         xmlTest.setParameters(map);
         xmlTest.setPackages(packages);
 //        设置要执行的Groups 关键点
