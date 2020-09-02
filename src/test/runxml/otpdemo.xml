@@ -6,8 +6,9 @@
 
     <test name="OTP触发自动化测试" annotations="JDK">
         <parameter name="env" value="${env}"/>
+        <parameter name="caseIds" value="${caseIds}"/>
         <classes>
-            <class name="com."></class>
+            <class name="otp.demo.runner.LuckyRunner"></class>
         </classes>
     </test>
 

@@ -18,7 +18,7 @@ import java.util.*;
  */
 public class LuckyRunner {
     @Test
-    @Parameters({"env"})
+    @Parameters({"env","caseIds"})
     public void demo(String env, String caseIds) {
 
 //        新增<suite>标签，并设置并发方式和并发数
