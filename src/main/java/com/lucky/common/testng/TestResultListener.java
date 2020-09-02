@@ -19,6 +19,10 @@ public class TestResultListener extends TestListenerAdapter {
     @Override
     public void onTestFailure(ITestResult tr) {
         super.onTestFailure(tr);
+        ITestNGMethod t = tr.getMethod();
+        String[] groups = t.getGroups();
+        log.error(Arrays.toString(groups));
+        tr.setParameters(groups);
         // 写入报告
         TestStep.failStep(tr.getTestClass().getName(), tr.getName());
         log.error(tr.getName() + " fail");
@@ -28,9 +32,13 @@ public class TestResultListener extends TestListenerAdapter {
     @Override
     public void onTestSkipped(ITestResult tr) {
         super.onTestSkipped(tr);
+        ITestNGMethod t = tr.getMethod();
+        String[] groups = t.getGroups();
+        log.error(Arrays.toString(groups));
+        tr.setParameters(groups);
         // 写入报告
         TestStep.failStep(tr.getTestClass().getName(), tr.getName());
-        log.error(tr.getName() + " skipped");
+        log.error(tr.getName() + " skip");
 
     }
 
@@ -58,7 +66,7 @@ public class TestResultListener extends TestListenerAdapter {
         super.onConfigurationFailure(tr);
         // 写入报告
         TestStep.failStep(tr.getTestClass().getName(), tr.getName());
-        log.error(tr.getName() + " skipped");
+        log.error(tr.getName() + " fail");
     }
 
     @Override
@@ -66,7 +74,7 @@ public class TestResultListener extends TestListenerAdapter {
         super.onConfigurationSkip(tr);
         // 写入报告
         TestStep.failStep(tr.getTestClass().getName(), tr.getName());
-        log.error(tr.getName() + " skipped");
+        log.error(tr.getName() + " skip");
     }
 
 
