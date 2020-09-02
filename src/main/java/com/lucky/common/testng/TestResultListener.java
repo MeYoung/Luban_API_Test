@@ -56,7 +56,7 @@ public class TestResultListener extends TestListenerAdapter {
         //        默认第一个作为用例ID
         TestStep.setCaseID(groups[0]);
         tr.setParameters(groups);
-        t.setId(groups[0]);
+        t.setDescription(groups[0]);
         String classPath = tr.getTestClass().getName() + "." + tr.getName();
         log.info("开始执行：" + classPath);
         super.onTestStart(tr);
