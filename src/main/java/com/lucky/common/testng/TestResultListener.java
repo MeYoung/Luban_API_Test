@@ -1,6 +1,7 @@
 package com.lucky.common.testng;
 
 import com.lucky.common.report.TestStep;
+import io.qameta.allure.Step;
 import lombok.extern.slf4j.Slf4j;
 import org.testng.ITestNGMethod;
 import org.testng.ITestResult;
@@ -22,7 +23,7 @@ public class TestResultListener extends TestListenerAdapter {
         ITestNGMethod t = tr.getMethod();
         String[] groups = t.getGroups();
         tr.setParameters(groups);
-        tr.setAttribute("用例ID：",groups);
+        tr.setAttribute("用例ID：", groups);
 
         // 写入报告
         TestStep.failStep(tr.getTestClass().getName(), tr.getName());
@@ -35,7 +36,7 @@ public class TestResultListener extends TestListenerAdapter {
         ITestNGMethod t = tr.getMethod();
         String[] groups = t.getGroups();
         tr.setParameters(groups);
-        tr.setAttribute("用例ID：",groups);
+        tr.setAttribute("用例ID：", groups);
 
         super.onTestSkipped(tr);
         // 写入报告
@@ -48,8 +49,9 @@ public class TestResultListener extends TestListenerAdapter {
     public void onTestSuccess(ITestResult tr) {
         ITestNGMethod t = tr.getMethod();
         String[] groups = t.getGroups();
-        tr.setAttribute("用例ID：",groups);
+        tr.setAttribute("用例ID：", groups);
         tr.setParameters(groups);
+        setCaseID(groups);
         super.onTestSuccess(tr);
 
         // 写入报告
@@ -61,7 +63,7 @@ public class TestResultListener extends TestListenerAdapter {
     public void onTestStart(ITestResult tr) {
         ITestNGMethod t = tr.getMethod();
         String[] groups = t.getGroups();
-        tr.setAttribute("用例ID：",groups);
+        tr.setAttribute("用例ID：", groups);
         tr.setParameters(groups);
         super.onTestStart(tr);
         String classPath = tr.getTestClass().getName() + "." + tr.getName();
@@ -82,6 +84,11 @@ public class TestResultListener extends TestListenerAdapter {
         // 写入报告
         TestStep.failStep(tr.getTestClass().getName(), tr.getName());
         log.error(tr.getName() + " skip");
+    }
+
+    @Step("caseID:")
+    public String[] setCaseID(String[] caseIDs) {
+        return caseIDs;
     }
 
 
