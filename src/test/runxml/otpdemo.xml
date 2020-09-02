@@ -5,8 +5,8 @@
 <suite name="All Test" parallel="tests" thread-count="1">
 
     <test name="OTP触发自动化测试" annotations="JDK">
-        <parameter name="env" value="${env}"/>
-        <parameter name="caseIds" value="${caseIds}"/>
+        <parameter name="env" value="${Env}"/>
+        <parameter name="caseIds" value="${CaseIds}"/>
         <classes>
             <class name="otp.demo.runner.LuckyRunner"></class>
         </classes>

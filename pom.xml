@@ -177,7 +177,7 @@
                 <configuration>
 
                     <suiteXmlFiles>
-                        <suiteXmlFile>./src/test/runner/${CaseFile}/</suiteXmlFile>
+                        <suiteXmlFile>./src/test/runxml/${CaseFile}/</suiteXmlFile>
                     </suiteXmlFiles>
 
                     <argLine>
