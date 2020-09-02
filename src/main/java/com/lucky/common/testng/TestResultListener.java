@@ -48,7 +48,8 @@ public class TestResultListener extends TestListenerAdapter {
         ITestNGMethod t = tr.getMethod();
         String[] groups = t.getGroups();
         log.error(Arrays.toString(groups));
-        tr.setParameters(groups);
+        tr.setAttribute("用例ID：",groups);
+
         // 写入报告
         TestStep.successStep(tr.getTestClass().getName(), tr.getName());
         log.info(tr.getName() + "success");
