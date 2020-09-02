@@ -49,7 +49,7 @@ public class TestResultListener extends TestListenerAdapter {
         String[] groups = trMethod.getGroups();
         //  默认第一个作为用例ID
 //        TestStep.setCaseID(groups[0]);
-        tr.setParameters(groups);
+        tr.setAttribute("caseID:",groups[0]);
         trMethod.setDescription(trMethod.getDescription()+"_"+groups[0]);
         String classPath = tr.getTestClass().getName() + "." + tr.getName();
         log.info("开始执行：" + classPath);
