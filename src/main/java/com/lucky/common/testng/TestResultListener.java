@@ -22,7 +22,8 @@ public class TestResultListener extends TestListenerAdapter {
         super.onTestFailure(tr);
         ITestNGMethod t = tr.getMethod();
         String[] groups = t.getGroups();
-        TestStep.setCaseID(groups);
+        //        默认第一个作为用例ID
+        TestStep.setCaseID(groups[0]);
 
         // 写入报告
         TestStep.failStep(tr.getTestClass().getName(), tr.getName());
@@ -35,7 +36,8 @@ public class TestResultListener extends TestListenerAdapter {
         super.onTestSkipped(tr);
         ITestNGMethod t = tr.getMethod();
         String[] groups = t.getGroups();
-        TestStep.setCaseID(groups);
+        //        默认第一个作为用例ID
+        TestStep.setCaseID(groups[0]);
         // 写入报告
         TestStep.failStep(tr.getTestClass().getName(), tr.getName());
         log.error(tr.getName() + " skip");
@@ -47,7 +49,8 @@ public class TestResultListener extends TestListenerAdapter {
         super.onTestSuccess(tr);
         ITestNGMethod t = tr.getMethod();
         String[] groups = t.getGroups();
-        TestStep.setCaseID(groups);
+        //        默认第一个作为用例ID
+        TestStep.setCaseID(groups[0]);
         // 写入报告
         TestStep.successStep(tr.getTestClass().getName(), tr.getName());
         log.info(tr.getName() + "success");
@@ -58,7 +61,8 @@ public class TestResultListener extends TestListenerAdapter {
         super.onTestStart(tr);
         ITestNGMethod t = tr.getMethod();
         String[] groups = t.getGroups();
-        TestStep.setCaseID(groups);
+        //        默认第一个作为用例ID
+        TestStep.setCaseID(groups[0]);
         String classPath = tr.getTestClass().getName() + "." + tr.getName();
         log.info("开始执行：" + classPath);
     }

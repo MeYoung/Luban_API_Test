@@ -112,9 +112,8 @@ public class TestStep {
     }
 
     @Step("OTP用例ID:")
-    public static String setCaseID(String[] groups) {
-//        默认第一个作为用例ID
-        return groups[0];
+    public static String setCaseID(String caseId) {
+        return caseId;
     }
 
 }
