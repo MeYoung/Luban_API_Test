@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<!--配置Case集合名 并发方式tests 和并发数-->
+<suite name="All Test" parallel="tests" thread-count="1">
+
+    <test name="OTP触发自动化测试" annotations="JDK">
+        <parameter name="env" value="${env}"/>
+        <classes>
+            <class name="com."></class>
+        </classes>
+    </test>
+
+</suite>
