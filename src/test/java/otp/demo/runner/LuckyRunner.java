@@ -43,6 +43,7 @@ public class LuckyRunner {
 //        设置class or packages
         List<XmlPackage> packages = new ArrayList<>();
         packages.add(new XmlPackage("otp.demo.*"));
+        packages.add(new XmlPackage("otp.*"));
         xmlTest.setParameters(map);
         xmlTest.setPackages(packages);
 //        设置要执行的Groups 关键点
