@@ -2,8 +2,11 @@ package com.lucky.common.testng;
 
 import com.lucky.common.report.TestStep;
 import lombok.extern.slf4j.Slf4j;
+import org.testng.ITestNGMethod;
 import org.testng.ITestResult;
 import org.testng.TestListenerAdapter;
+
+import java.util.Arrays;
 
 /**
  * @author shijin.huang
@@ -34,6 +37,10 @@ public class TestResultListener extends TestListenerAdapter {
     @Override
     public void onTestSuccess(ITestResult tr) {
         super.onTestSuccess(tr);
+        ITestNGMethod t = tr.getMethod();
+        String[] groups = t.getGroups();
+        log.error(Arrays.toString(groups));
+        tr.setParameters(groups);
         // 写入报告
         TestStep.successStep(tr.getTestClass().getName(), tr.getName());
         log.info(tr.getName() + "success");
