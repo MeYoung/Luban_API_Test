@@ -45,13 +45,13 @@ public class TestResultListener extends TestListenerAdapter {
 
     @Override
     public void onTestStart(ITestResult tr) {
-        super.onTestStart(tr);
         ITestNGMethod t = tr.getMethod();
         String[] groups = t.getGroups();
         //        默认第一个作为用例ID
         TestStep.setCaseID(groups[0]);
         String classPath = tr.getTestClass().getName() + "." + tr.getName();
         log.info("开始执行：" + classPath);
+        super.onTestStart(tr);
     }
 
     @Override

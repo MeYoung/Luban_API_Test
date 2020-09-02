@@ -111,7 +111,7 @@ public class TestStep {
         return baseData.toString();
     }
 
-    @Step("OTP用例ID:")
+    @Step("OTP平台用例ID:")
     public static String setCaseID(String caseId) {
         return caseId;
     }
