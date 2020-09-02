@@ -22,8 +22,7 @@ public class TestResultListener extends TestListenerAdapter {
         super.onTestFailure(tr);
         ITestNGMethod t = tr.getMethod();
         String[] groups = t.getGroups();
-        tr.setParameters(groups);
-        tr.setAttribute("用例ID：", groups);
+        TestStep.setCaseID(groups);
 
         // 写入报告
         TestStep.failStep(tr.getTestClass().getName(), tr.getName());
@@ -33,12 +32,10 @@ public class TestResultListener extends TestListenerAdapter {
 
     @Override
     public void onTestSkipped(ITestResult tr) {
+        super.onTestSkipped(tr);
         ITestNGMethod t = tr.getMethod();
         String[] groups = t.getGroups();
-        tr.setParameters(groups);
-        tr.setAttribute("用例ID：", groups);
-
-        super.onTestSkipped(tr);
+        TestStep.setCaseID(groups);
         // 写入报告
         TestStep.failStep(tr.getTestClass().getName(), tr.getName());
         log.error(tr.getName() + " skip");
@@ -47,13 +44,10 @@ public class TestResultListener extends TestListenerAdapter {
 
     @Override
     public void onTestSuccess(ITestResult tr) {
+        super.onTestSuccess(tr);
         ITestNGMethod t = tr.getMethod();
         String[] groups = t.getGroups();
-        tr.setAttribute("用例ID：", groups);
-        tr.setParameters(groups);
-        setCaseID(groups);
-        super.onTestSuccess(tr);
-
+        TestStep.setCaseID(groups);
         // 写入报告
         TestStep.successStep(tr.getTestClass().getName(), tr.getName());
         log.info(tr.getName() + "success");
@@ -61,11 +55,10 @@ public class TestResultListener extends TestListenerAdapter {
 
     @Override
     public void onTestStart(ITestResult tr) {
+        super.onTestStart(tr);
         ITestNGMethod t = tr.getMethod();
         String[] groups = t.getGroups();
-        tr.setAttribute("用例ID：", groups);
-        tr.setParameters(groups);
-        super.onTestStart(tr);
+        TestStep.setCaseID(groups);
         String classPath = tr.getTestClass().getName() + "." + tr.getName();
         log.info("开始执行：" + classPath);
     }
@@ -85,11 +78,5 @@ public class TestResultListener extends TestListenerAdapter {
         TestStep.failStep(tr.getTestClass().getName(), tr.getName());
         log.error(tr.getName() + " skip");
     }
-
-    @Step("caseID:")
-    public String[] setCaseID(String[] caseIDs) {
-        return caseIDs;
-    }
-
 
 }

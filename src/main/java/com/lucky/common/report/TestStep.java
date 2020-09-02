@@ -5,6 +5,7 @@ import com.lucky.common.utils.BaseDataUtils;
 import com.lucky.params.BaseData;
 import com.lucky.params.FinalText;
 import io.qameta.allure.Attachment;
+import io.qameta.allure.Step;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -110,5 +111,10 @@ public class TestStep {
         return baseData.toString();
     }
 
+    @Step("OTP用例ID:")
+    public static String setCaseID(String[] groups) {
+//        默认第一个作为用例ID
+        return groups[0];
+    }
 
 }
