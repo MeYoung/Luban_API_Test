@@ -21,8 +21,9 @@ public class TestResultListener extends TestListenerAdapter {
         super.onTestFailure(tr);
         ITestNGMethod t = tr.getMethod();
         String[] groups = t.getGroups();
-        log.error(Arrays.toString(groups));
         tr.setParameters(groups);
+        tr.setAttribute("用例ID：",groups);
+
         // 写入报告
         TestStep.failStep(tr.getTestClass().getName(), tr.getName());
         log.error(tr.getName() + " fail");
@@ -35,7 +36,6 @@ public class TestResultListener extends TestListenerAdapter {
         String[] groups = t.getGroups();
         tr.setParameters(groups);
         tr.setAttribute("用例ID：",groups);
-        tr.setParameters(groups);
 
         super.onTestSkipped(tr);
         // 写入报告
@@ -59,6 +59,10 @@ public class TestResultListener extends TestListenerAdapter {
 
     @Override
     public void onTestStart(ITestResult tr) {
+        ITestNGMethod t = tr.getMethod();
+        String[] groups = t.getGroups();
+        tr.setAttribute("用例ID：",groups);
+        tr.setParameters(groups);
         super.onTestStart(tr);
         String classPath = tr.getTestClass().getName() + "." + tr.getName();
         log.info("开始执行：" + classPath);
