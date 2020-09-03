@@ -1,5 +1,6 @@
 package otp.demo;
 
+import com.lucky.common.utils.AssertUtils;
 import com.lucky.common.utils.BaseDataUtils;
 import com.lucky.params.BaseData;
 import org.testng.annotations.*;
@@ -25,6 +26,7 @@ public class OtpDemoTest {
 
     @Test(description = "脑图的测试用例2", groups = "6860725877653635073")
     public void test2() {
+        AssertUtils.assertEquals(1,2);
         System.out.println("test2.....表格的测试用例2");
     }
 
