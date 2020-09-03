@@ -1,6 +1,7 @@
 package com.lucky.common.testng;
 
 import com.lucky.common.report.TestStep;
+import io.qameta.allure.Allure;
 import io.qameta.allure.Step;
 import lombok.extern.slf4j.Slf4j;
 import org.testng.ITestNGMethod;
@@ -52,6 +53,7 @@ public class TestResultListener extends TestListenerAdapter {
         trMethod.setDescription(trMethod.getDescription()+" - "+groups[0]);
         String classPath = tr.getTestClass().getName() + "." + tr.getName();
         log.info("开始执行：" + classPath);
+        Allure.addAttachment("OTP_CaseID",groups[0]);
         super.onTestStart(tr);
     }
 
