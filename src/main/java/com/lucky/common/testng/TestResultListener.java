@@ -21,6 +21,9 @@ public class TestResultListener extends TestListenerAdapter {
     @Override
     public void onTestFailure(ITestResult tr) {
         super.onTestFailure(tr);
+        ITestNGMethod trMethod = tr.getMethod();
+        String[] groups = trMethod.getGroups();
+        Allure.parameter("OTP_CaseID",groups[0]);
         // 写入报告
         TestStep.failStep(tr.getTestClass().getName(), tr.getName());
         log.error(tr.getName() + " fail");
@@ -30,6 +33,9 @@ public class TestResultListener extends TestListenerAdapter {
     @Override
     public void onTestSkipped(ITestResult tr) {
         super.onTestSkipped(tr);
+        ITestNGMethod trMethod = tr.getMethod();
+        String[] groups = trMethod.getGroups();
+        Allure.parameter("OTP_CaseID",groups[0]);
         // 写入报告
         TestStep.failStep(tr.getTestClass().getName(), tr.getName());
         log.error(tr.getName() + " skip");
