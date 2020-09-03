@@ -39,6 +39,9 @@ public class TestResultListener extends TestListenerAdapter {
     @Override
     public void onTestSuccess(ITestResult tr) {
         super.onTestSuccess(tr);
+        ITestNGMethod trMethod = tr.getMethod();
+        String[] groups = trMethod.getGroups();
+        Allure.parameter("OTP_CaseID",groups[0]);
         // 写入报告
         TestStep.successStep(tr.getTestClass().getName(), tr.getName());
         log.info(tr.getName() + "success");
