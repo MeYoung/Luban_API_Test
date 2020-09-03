@@ -49,7 +49,6 @@ public class TestResultListener extends TestListenerAdapter {
         ITestNGMethod trMethod = tr.getMethod();
         String[] groups = trMethod.getGroups();
         Allure.parameter("OTP_CaseID",groups[0]);
-        Allure.label("OTP_CaseID",groups[0]);
 
         //  默认第一个作为用例ID
 //        TestStep.setCaseID(groups[0]);
