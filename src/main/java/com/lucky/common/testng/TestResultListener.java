@@ -50,6 +50,8 @@ public class TestResultListener extends TestListenerAdapter {
         String[] groups = trMethod.getGroups();
         //  默认第一个作为用例ID
 //        TestStep.setCaseID(groups[0]);
+//        设置case名字，添加caseId
+//        trMethod.setDescription(trMethod.getDescription()+" - "+groups[0]);
         String classPath = tr.getTestClass().getName() + "." + tr.getName();
         log.info("开始执行：" + classPath);
         Allure.parameter("OTP_CaseID",groups[0]);
