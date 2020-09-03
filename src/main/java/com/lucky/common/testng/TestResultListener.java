@@ -54,6 +54,8 @@ public class TestResultListener extends TestListenerAdapter {
         String classPath = tr.getTestClass().getName() + "." + tr.getName();
         log.info("开始执行：" + classPath);
         Allure.addAttachment("OTP_CaseID",groups[0]);
+        Allure.parameter("OTP_CaseID",groups[0]);
+        Allure.link("http://www.baidu.com");
         super.onTestStart(tr);
     }
 
