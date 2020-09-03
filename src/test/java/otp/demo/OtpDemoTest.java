@@ -18,22 +18,22 @@ public class OtpDemoTest {
     }
 
 
-    @Test(description = "表格的测试用例1", groups = "6864436153801113601")
+    @Test(description = "表格的测试用例1", groups = "6860725937783177217")
     public void test1() {
         System.out.println("test1.....表格的测试用例1");
     }
 
-    @Test(description = "脑图的测试用例2", groups = "c50monwc2ds0")
+    @Test(description = "脑图的测试用例2", groups = "6860725877653635073")
     public void test2() {
         System.out.println("test2.....表格的测试用例2");
     }
 
-    @Test(description = "脑图的测试用例3", groups = "c50mnyfqsm80")
+    @Test(description = "脑图的测试用例3", groups = "c5dirwx5do80")
     public void test3() {
-        System.out.println("test3.....表格的测试用例3");
+        System.out.println("test3.....脑图的测试用例3");
     }
 
-    @Test(description = "脑图的测试用例4", groups = "c50mnyfqkoo0")
+    @Test(description = "脑图的测试用例4", groups = "c5dirwx5b4w0")
     public void test4() {
         System.out.println("test4.....脑图的测试用例4");
     }
