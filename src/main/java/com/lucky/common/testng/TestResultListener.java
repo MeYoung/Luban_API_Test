@@ -50,12 +50,9 @@ public class TestResultListener extends TestListenerAdapter {
         String[] groups = trMethod.getGroups();
         //  默认第一个作为用例ID
 //        TestStep.setCaseID(groups[0]);
-        trMethod.setDescription(trMethod.getDescription()+" - "+groups[0]);
         String classPath = tr.getTestClass().getName() + "." + tr.getName();
         log.info("开始执行：" + classPath);
-        Allure.addAttachment("OTP_CaseID",groups[0]);
         Allure.parameter("OTP_CaseID",groups[0]);
-        Allure.link("http://www.baidu.com");
         super.onTestStart(tr);
     }
 
