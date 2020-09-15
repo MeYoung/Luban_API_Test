@@ -13,7 +13,7 @@ public class OtpDemo2Test {
 
     @BeforeSuite(alwaysRun = true)
     @Parameters({"env"})
-    public void beforeTest(String env) {
+    public void beforeTest2(String env) {
         System.err.println("evn:" + env);
         BaseData baseData = new BaseData();
         baseData.setEnv(env);
@@ -45,7 +45,7 @@ public class OtpDemo2Test {
 
 
     @AfterSuite(alwaysRun = true)
-    public void afterTest() {
+    public void afterTest2() {
         System.err.println("after test .......");
     }
 
