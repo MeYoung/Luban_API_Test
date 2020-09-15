@@ -24,7 +24,7 @@ public class TestResultListener extends TestListenerAdapter {
         ITestNGMethod trMethod = tr.getMethod();
         String[] groups = trMethod.getGroups();
         Allure.parameter("OTP_CaseID",groups[0]);
-        Allure.link("OTP_CaseId","https://www.baidu.com");
+        Allure.link("OTP_CaseID","https://www.baidu.com");
         TestStep.failStep(tr.getTestClass().getName(), tr.getName());
         log.error(tr.getName() + " fail");
 
@@ -36,7 +36,7 @@ public class TestResultListener extends TestListenerAdapter {
         ITestNGMethod trMethod = tr.getMethod();
         String[] groups = trMethod.getGroups();
         Allure.parameter("OTP_CaseID",groups[0]);
-        Allure.link("OTP_CaseId","https://www.baidu.com");
+        Allure.link("OTP_CaseID","https://www.baidu.com");
         TestStep.failStep(tr.getTestClass().getName(), tr.getName());
         log.error(tr.getName() + " skip");
 
@@ -48,7 +48,7 @@ public class TestResultListener extends TestListenerAdapter {
         ITestNGMethod trMethod = tr.getMethod();
         String[] groups = trMethod.getGroups();
         Allure.parameter("OTP_CaseID",groups[0]);
-        Allure.link("OTP_CaseId","https://www.baidu.com");
+        Allure.link("OTP_CaseID","https://www.baidu.com");
         TestStep.successStep(tr.getTestClass().getName(), tr.getName());
         log.info(tr.getName() + "success");
     }
@@ -58,7 +58,7 @@ public class TestResultListener extends TestListenerAdapter {
         ITestNGMethod trMethod = tr.getMethod();
         String[] groups = trMethod.getGroups();
         Allure.parameter("OTP_CaseID",groups[0]);
-        Allure.link("OTP_CaseId","https://www.baidu.com");
+        Allure.link("OTP_CaseID","https://www.baidu.com");
         //  默认第一个作为用例ID
 //        TestStep.setCaseID(groups[0]);
 //        设置case名字，添加caseId
