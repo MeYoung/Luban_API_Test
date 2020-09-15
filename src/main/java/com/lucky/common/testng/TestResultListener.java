@@ -50,6 +50,7 @@ public class TestResultListener extends TestListenerAdapter {
         ITestNGMethod trMethod = tr.getMethod();
         String[] groups = trMethod.getGroups();
         Allure.parameter("OTP_CaseID",groups[0]);
+        Allure.link("OTP_CaseId","CaseId","https://www.baidu.com");
         // 写入报告
         TestStep.successStep(tr.getTestClass().getName(), tr.getName());
         log.info(tr.getName() + "success");
