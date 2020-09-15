@@ -22,23 +22,23 @@ public class OtpDemo2Test {
     }
 
 
-    @Test(description = "表格的测试用例1", groups = "c4vmkbn4wyo0")
+    @Test(description = "表格的测试用例1", groups = "1_769_c5ipdqgskbk0")
     public void test1() {
         System.out.println("test1.....表格的测试用例1");
     }
 
-    @Test(description = "脑图的测试用例2", groups = "c5ipdqgskbk0")
+    @Test(description = "脑图的测试用例2", groups = "1_769_c4vmkbn4wyo0")
     public void test2() {
         AssertUtils.assertEquals(1,2);
         System.out.println("test2.....表格的测试用例2");
     }
 
-    @Test(description = "脑图的测试用例3", groups = "6860729584200384544")
+    @Test(description = "脑图的测试用例3", groups = "2_29_6860729584200384544")
     public void test3() {
         System.out.println("test3.....脑图的测试用例3");
     }
 
-    @Test(description = "脑图的测试用例4", groups = "6860729584200384543")
+    @Test(description = "脑图的测试用例4", groups = "2_29_6860729584200384543")
     public void test4() {
         System.out.println("test4.....脑图的测试用例4");
     }
