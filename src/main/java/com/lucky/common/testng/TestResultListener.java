@@ -23,6 +23,7 @@ public class TestResultListener extends TestListenerAdapter {
         super.onTestFailure(tr);
         ITestNGMethod trMethod = tr.getMethod();
         String[] groups = trMethod.getGroups();
+        Allure.link("OTP_CaseId","https://www.google.com");
         Allure.parameter("OTP_CaseID",groups[0]);
         // 写入报告
         TestStep.failStep(tr.getTestClass().getName(), tr.getName());
@@ -36,6 +37,7 @@ public class TestResultListener extends TestListenerAdapter {
         ITestNGMethod trMethod = tr.getMethod();
         String[] groups = trMethod.getGroups();
         Allure.parameter("OTP_CaseID",groups[0]);
+        Allure.link("OTP_CaseId","CaseId","https://www.baidu.com");
         // 写入报告
         TestStep.failStep(tr.getTestClass().getName(), tr.getName());
         log.error(tr.getName() + " skip");
