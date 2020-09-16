@@ -23,23 +23,28 @@ public class OtpDemo2Test {
 
 
     @Test(description = "表格的测试用例1", groups = "2_83_29_6860729584200384543")
-    public void test1() {
+    public void test1() throws InterruptedException {
+        Thread.sleep(1000);
         System.out.println("test1.....表格的测试用例1");
     }
 
     @Test(description = "脑图的测试用例2", groups = "2_83_29_6860729584200384544")
-    public void test2() {
-        AssertUtils.assertEquals(1,2);
+    public void test2() throws InterruptedException {
+        Thread.sleep(2000);
+        AssertUtils.assertEquals(1, 2);
         System.out.println("test2.....表格的测试用例2");
     }
 
     @Test(description = "脑图的测试用例3", groups = "1_83_769_c4vmkbn4wyo0")
-    public void test3() {
+    public void test3() throws InterruptedException {
+        Thread.sleep(3000);
+
         System.out.println("test3.....脑图的测试用例3");
     }
 
     @Test(description = "脑图的测试用例4", groups = "1_83_769_c5ipdqgskbk0")
-    public void test4() {
+    public void test4() throws InterruptedException {
+        Thread.sleep(4000);
         System.out.println("test4.....脑图的测试用例4");
     }
 
