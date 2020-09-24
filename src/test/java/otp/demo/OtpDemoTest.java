@@ -19,7 +19,7 @@ public class OtpDemoTest {
     }
 
 
-    @Test(description = "表格的测试用例1", groups = {"1_205_766_c4674mxvp6g0","1_205_766_c4674ncx5gw0"})
+    @Test(description = "表格的测试用例1", groups = {"tttttt","1_205_766_c4674mxvp6g0","1_205_766_c4674ncx5gw0","123","456"})
     public void test1() {
         System.out.println("test1.....表格的测试用例1");
     }
@@ -30,7 +30,7 @@ public class OtpDemoTest {
         System.out.println("test2.....表格的测试用例2");
     }
 
-    @Test(description = "脑图的测试用例3", groups = {"1_205_804_c5to0mlnqbs0","1_205_804_c5to0mywwy00","1_205_804_c5to0ncdj140"})
+    @Test(description = "脑图的测试用例3", groups = {"1_205_804_c5to0mlnqbs0","ttt11123123ttt","1_205_804_c5to0mywwy00","1_205_804_c5to0ncdj140"})
     public void test3() {
         System.out.println("test3.....脑图的测试用例3");
     }

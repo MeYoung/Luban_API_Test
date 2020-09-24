@@ -82,21 +82,34 @@ public class TestResultListener extends TestListenerAdapter {
         log.error(tr.getName() + " skip");
     }
 
-    private void setCaseIDsInReport(String [] groups) {
-        String caseIds = "";
+    private void setCaseIDsInReport(String[] groups) {
         for (int i = 0; i < groups.length; i++) {
             String str = groups[i];
             String pattern = "[1|2]_[0-9]\\d+_[0-9]\\d+_[a-zA-Z0-9]+";
             Pattern r = Pattern.compile(pattern);
             Matcher m = r.matcher(str);
             if (m.matches()) {
-                Allure.link("OTP_CaseID"+i, "https://www.baidu.com");
-            }else {
+                setCasesLinkInReport(groups[i]);
+            } else {
                 ArrayUtils.remove(groups, i);
             }
         }
-        StringUtils.join(groups,",");
-        Allure.parameter("OTP_CaseIDs`", caseIds);
+        Allure.parameter("OTP_CaseIDs`", StringUtils.join(groups, ","));
+    }
+
+    private void setCasesLinkInReport(String caseID) {
+        final String otpBaseUrl = "http://otp.luckincoffee.com/default/CaseAdmin?";
+        String[] casesArr = caseID.split("_");
+//       file 表示脑图， excel表示表格
+        String type = "file";
+        if (casesArr[0].equals("2")) {
+            type = "excel";
+        }
+        String projectId = casesArr[1];
+        String caseId = casesArr[2];
+        String nodeId = casesArr[3];
+        String caseUrl = otpBaseUrl + "?" + "projectId=" + projectId + "&caseId=" + caseId + "&type=" + type + "&nodeId=" + nodeId;
+        Allure.link("OTP_CaseID:" + caseID, caseUrl);
     }
 
 }
