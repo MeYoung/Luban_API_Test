@@ -86,31 +86,19 @@ public class TestResultListener extends TestListenerAdapter {
     }
 
     private void setCaseIDsInReport(String[] groups) {
-        List<String> resultList = new ArrayList<>(Arrays.asList(groups));
-        for (String caseId : resultList) {
+        List<String> caseIDs = new ArrayList<>(groups.length);
+        caseIDs.addAll(Arrays.asList(groups));
+        for (int i = 0; i < caseIDs.size(); i++) {
             String pattern = "[1|2]_[0-9]\\d+_[0-9]\\d+_[a-zA-Z0-9]+";
             Pattern r = Pattern.compile(pattern);
-            Matcher m = r.matcher(caseId);
+            Matcher m = r.matcher(caseIDs.get(i));
             if (m.matches()) {
-                setCasesLinkInReport(caseId);
+                setCasesLinkInReport(caseIDs.get(i));
             } else {
-                resultList.remove(caseId);
+                caseIDs.remove(i);
             }
         }
-        Allure.parameter("OTP_CaseIDs`", String.join(",", resultList));
-
-/*        for (int i = 0; i < groups.length; i++) {
-            String str = groups[i];
-            String pattern = "[1|2]_[0-9]\\d+_[0-9]\\d+_[a-zA-Z0-9]+";
-            Pattern r = Pattern.compile(pattern);
-            Matcher m = r.matcher(str);
-            if (m.matches()) {
-                setCasesLinkInReport(groups[i]);
-            } else {
-                ArrayUtils.remove(groups, i);
-            }
-        }
-        Allure.parameter("OTP_CaseIDs`", StringUtils.join(groups, ","));*/
+        Allure.parameter("OTP_CaseIDs`", String.join(",", caseIDs));
     }
 
     private void setCasesLinkInReport(String caseID) {
