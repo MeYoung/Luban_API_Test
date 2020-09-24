@@ -9,6 +9,9 @@ import org.testng.ITestNGMethod;
 import org.testng.ITestResult;
 import org.testng.TestListenerAdapter;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -83,7 +86,20 @@ public class TestResultListener extends TestListenerAdapter {
     }
 
     private void setCaseIDsInReport(String[] groups) {
-        for (int i = 0; i < groups.length; i++) {
+        List<String> resultList = new ArrayList<>(Arrays.asList(groups));
+        for (String caseId : resultList) {
+            String pattern = "[1|2]_[0-9]\\d+_[0-9]\\d+_[a-zA-Z0-9]+";
+            Pattern r = Pattern.compile(pattern);
+            Matcher m = r.matcher(caseId);
+            if (m.matches()) {
+                setCasesLinkInReport(caseId);
+            } else {
+                resultList.remove(caseId);
+            }
+        }
+        Allure.parameter("OTP_CaseIDs`", String.join(",", resultList));
+
+/*        for (int i = 0; i < groups.length; i++) {
             String str = groups[i];
             String pattern = "[1|2]_[0-9]\\d+_[0-9]\\d+_[a-zA-Z0-9]+";
             Pattern r = Pattern.compile(pattern);
@@ -94,7 +110,7 @@ public class TestResultListener extends TestListenerAdapter {
                 ArrayUtils.remove(groups, i);
             }
         }
-        Allure.parameter("OTP_CaseIDs`", StringUtils.join(groups, ","));
+        Allure.parameter("OTP_CaseIDs`", StringUtils.join(groups, ","));*/
     }
 
     private void setCasesLinkInReport(String caseID) {
