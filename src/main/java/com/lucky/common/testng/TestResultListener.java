@@ -87,15 +87,14 @@ public class TestResultListener extends TestListenerAdapter {
 
     private void setCaseIDsInReport(String[] groups) {
         List<String> caseIDs = new ArrayList<>(groups.length);
-        caseIDs.addAll(Arrays.asList(groups));
-        for (int i = 0; i < caseIDs.size(); i++) {
+        for (String caseID : groups) {
             String pattern = "[1|2]_[0-9]\\d+_[0-9]\\d+_[a-zA-Z0-9]+";
             Pattern r = Pattern.compile(pattern);
-            Matcher m = r.matcher(caseIDs.get(i));
+            System.out.println(caseID);
+            Matcher m = r.matcher(caseID);
             if (m.matches()) {
-                setCasesLinkInReport(caseIDs.get(i));
-            } else {
-                caseIDs.remove(i);
+                caseIDs.add(caseID);
+                setCasesLinkInReport(caseID);
             }
         }
         Allure.parameter("OTP_CaseIDs`", String.join(",", caseIDs));
