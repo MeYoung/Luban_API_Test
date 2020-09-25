@@ -97,11 +97,11 @@ public class TestResultListener extends TestListenerAdapter {
                 setCasesLinkInReport(caseID);
             }
         }
-        Allure.parameter("OTP_CaseIDs`", String.join(",", caseIDs));
+        Allure.parameter("OTP_CaseIDs", String.join(",", caseIDs));
     }
 
     private void setCasesLinkInReport(String caseID) {
-        final String otpBaseUrl = "http://otp.luckincoffee.com/default/CaseAdmin?";
+        final String otpBaseUrl = "http://otptest.luckincoffee.com/default/CaseAdmin?";
         String[] casesArr = caseID.split("_");
 //       file 表示脑图， excel表示表格
         String type = "file";
