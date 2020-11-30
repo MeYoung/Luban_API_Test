@@ -1,5 +1,6 @@
 package otp.runner;
 
+import com.alibaba.fastjson.JSON;
 import com.lucky.common.testng.RetryListener;
 import com.lucky.common.testng.TestResultListener;
 import org.testng.ITestNGListener;
@@ -18,35 +19,59 @@ import java.util.*;
  */
 public class LuckyRunner {
     @Test
-    @Parameters({"env","caseIds"})
-    public void runner(String env, String caseIds) {
+    @Parameters({"testPlanName", "env", "caseIds", "threadCount", "parallel", "packages", "OTPParameters"})
+    public void runner(String testPlanName, String env, String caseIds,
+                       String threadCount, String parallel, String packages,
+                       String OTPParameters) {
 
 //        新增<suite>标签，并设置并发方式和并发数
         XmlSuite xmlSuite = new XmlSuite();
-        xmlSuite.setName("OTP_DEMO");
+        xmlSuite.setName("OTP_Automation_Runner");
         xmlSuite.setVerbose(3);
-        xmlSuite.setParallel(XmlSuite.ParallelMode.TESTS);
-        xmlSuite.setThreadCount(1);
+
+//        设置并发方式
+        if ("methods".equals(parallel)) {
+            xmlSuite.setParallel(XmlSuite.ParallelMode.METHODS);
+        } else {
+            xmlSuite.setParallel(XmlSuite.ParallelMode.CLASSES);
+        }
+//        设置并发数
+        xmlSuite.setThreadCount(Integer.parseInt(threadCount));
 
 //        设置suite parameter
         Map<String, String> mapParameters = new HashMap<>();
         mapParameters.put("env", env);
+//        动态解析 Parameters
+        if (OTPParameters.length()>0){
+            HashMap map =  JSON.parseObject(OTPParameters, HashMap.class);
+            mapParameters.putAll(map);
+        }
         xmlSuite.setParameters(mapParameters);
+
+        System.out.println(mapParameters.toString());
 
 //        新增<Test>标签并设置
         XmlTest xmlTest = new XmlTest(xmlSuite);
-        xmlTest.setName("OTP自动化测试");
+        xmlTest.setName(testPlanName);
 
         String[] caseArrIDs = caseIds.split(",");
         System.out.println(caseIds);
         List<String> groups = Arrays.asList(caseArrIDs);
 
 //        设置class or packages
-        List<XmlPackage> packages = new ArrayList<>();
+        List<XmlPackage> packagesList = new ArrayList<>();
 //        packages.add(new XmlPackage("otp.demo.*"));
-        packages.add(new XmlPackage("otp.*"));
+//        packagesList.add(new XmlPackage("otp.*"));
+
+        String[] packagesArr  = packages.split(",");
+        for (int i = 0; i < packagesArr.length; i++) {
+            packagesList.add(new XmlPackage(packagesArr[i]));
+        }
 //        xmlTest.setParameters(mapParameters);
-        xmlTest.setPackages(packages);
+        xmlTest.setPackages(packagesList);
+
+        System.out.println(packagesList.toString());
+
 //        设置要执行的Groups 关键点
         xmlTest.setIncludedGroups(groups);
 

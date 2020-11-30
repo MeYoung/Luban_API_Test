@@ -3,14 +3,11 @@ package com.lucky.common.testng;
 import com.lucky.common.report.TestStep;
 import io.qameta.allure.Allure;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.ArrayUtils;
-import org.apache.dubbo.common.utils.StringUtils;
 import org.testng.ITestNGMethod;
 import org.testng.ITestResult;
 import org.testng.TestListenerAdapter;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -101,7 +98,7 @@ public class TestResultListener extends TestListenerAdapter {
     }
 
     private void setCasesLinkInReport(String caseID) {
-        final String otpBaseUrl = "http://otptest.luckincoffee.com/default/CaseAdmin?";
+        final String OTP_BASE_URL = "http://otp.luckincoffee.com/default/CaseAdmin?";
         String[] casesArr = caseID.split("_");
 //       file 表示脑图， excel表示表格
         String type = "file";
@@ -111,7 +108,7 @@ public class TestResultListener extends TestListenerAdapter {
         String projectId = casesArr[1];
         String caseId = casesArr[2];
         String nodeId = casesArr[3];
-        String caseUrl = otpBaseUrl + "?" + "projectId=" + projectId + "&caseId=" + caseId + "&type=" + type + "&nodeId=" + nodeId;
+        String caseUrl = OTP_BASE_URL + "?" + "projectId=" + projectId + "&caseId=" + caseId + "&type=" + type + "&nodeId=" + nodeId;
         Allure.link("OTP_CaseID:" + caseID, caseUrl);
     }
 
