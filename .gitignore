@@ -3,3 +3,4 @@
 log/
 target/
 /allure-results/
+*.iml
