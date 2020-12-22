@@ -55,7 +55,7 @@ public class OtpDemoTest {
         };
     }
 
-    @Test(dataProvider = "loginData", dependsOnGroups = "脑图的测试用例5-TEST", groups = {"1_205_932_c7z38ra89i80"})
+    @Test(dataProvider = "loginData", description = "脑图的测试用例5-TEST", groups = {"1_205_932_c7z38ra89i80"})
     public void tlogin(String userName, String pwd) {
         System.out.println("userName:" + userName + ",PassWord:" + pwd);
     }
