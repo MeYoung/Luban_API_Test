@@ -21,20 +21,20 @@ public class OtpDemoTest {
     }
 
 
-    @Test(description = "表格的测试用例1", groups = "1_441_21672_c7t89zf3xxk0")
+    @Test(description = "表格的测试用例1", groups = "1_205_766_c6bj1xjkhc00")
     public void test1() throws InterruptedException {
         Thread.sleep(1000);
         log.info("test1.....表格的测试用例1-1_441_21672_c7t89zf3xxk0");
     }
 
-    @Test(description = "脑图的测试用例2", groups = {"2_83_29_6860729584200384544", "fadsfasf"})
+    @Test(description = "脑图的测试用例2", groups = {"2_83_29_6860729584200384544", "1_205_766_c6bj1xjkhq00"})
     public void test2() throws InterruptedException {
         Thread.sleep(2000);
         AssertUtils.assertEquals(1, 2);
         log.info("脑图的测试用例2-2_83_29_6860729584200384544");
     }
 
-    @Test(description = "脑图的测试用例3-TEST", groups = {"1_205_932_c7z38ufv5140"})
+    @Test(description = "脑图的测试用例3-TEST", groups = {"1_205_766_c6bj1xjkg3c0"})
     public void test3() throws InterruptedException {
         Thread.sleep(3000);
 
