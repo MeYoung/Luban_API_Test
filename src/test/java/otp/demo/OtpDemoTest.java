@@ -11,9 +11,13 @@ public class OtpDemoTest {
 
 
     @BeforeSuite(alwaysRun = true)
-    @Parameters({"env"})
-    public void beforeTest2(String env) {
+    @Parameters({"env", "capiUserName", "capiPWD"})
+    public void beforeTest2(String env, String capiUserName, String capiPWD) {
         log.info(env);
+        log.info("=======================");
+        log.info(capiUserName);
+        log.info(capiPWD);
+        log.info("=======================");
         BaseData baseData = new BaseData();
         baseData.setEnv(env);
         BaseDataUtils.setBaseData(baseData);
