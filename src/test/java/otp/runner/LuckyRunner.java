@@ -18,20 +18,22 @@ import java.util.*;
  * @author shijin.huang
  * @date 2020/9/2
  */
+@Slf4j
 public class LuckyRunner {
     @Test
-    @Parameters({"testPlanName", "env", "caseIds", "threadCount", "parallel", "packages", "OTPParameters"})
+    @Parameters({"testPlanName", "env", "caseIds", "threadCount", "parallel", "packages", "otpParameters"})
     public void runner(String testPlanName, String env, String caseIds,
                        String threadCount, String parallel, String packages,
-                       String OTPParameters) {
+                       String otpParameters) {
 
 //        新增<suite>标签，并设置并发方式和并发数
         XmlSuite xmlSuite = new XmlSuite();
         xmlSuite.setName("OTP_Automation_Runner");
         xmlSuite.setVerbose(3);
 
+        final String method = "method";
 //        设置并发方式
-        if ("methods".equals(parallel)) {
+        if (method.equals(parallel)) {
             xmlSuite.setParallel(XmlSuite.ParallelMode.METHODS);
         } else {
             xmlSuite.setParallel(XmlSuite.ParallelMode.CLASSES);
@@ -39,39 +41,36 @@ public class LuckyRunner {
 //        设置并发数
         xmlSuite.setThreadCount(Integer.parseInt(threadCount));
 
+        int length = otpParameters.length();
 //        设置suite parameter
-        Map<String, String> mapParameters = new HashMap<>();
+        Map<String, String> mapParameters = new HashMap<>(length + 1);
         mapParameters.put("env", env);
 //        动态解析 Parameters
-        if (OTPParameters.length() > 0) {
-            HashMap map = JSON.parseObject(OTPParameters, HashMap.class);
+        if (otpParameters.length() > 0) {
+            HashMap map = JSON.parseObject(otpParameters, HashMap.class);
             mapParameters.putAll(map);
         }
         xmlSuite.setParameters(mapParameters);
 
-        System.out.println("OTPParameters:" + mapParameters.toString());
+        log.info("otpParameters:" + mapParameters.toString());
 
 //        新增<Test>标签并设置
         XmlTest xmlTest = new XmlTest(xmlSuite);
         xmlTest.setName(testPlanName);
 
         String[] caseArrIDs = caseIds.split(",");
-        System.out.println("caseIDs:" + caseIds);
+        log.info("caseIDs:" + caseIds);
         List<String> groups = Arrays.asList(caseArrIDs);
 
 //        设置class or packages
         List<XmlPackage> packagesList = new ArrayList<>();
-//        packages.add(new XmlPackage("otp.demo.*"));
-//        packagesList.add(new XmlPackage("otp.*"));
 
         String[] packagesArr = packages.split(",");
         for (int i = 0; i < packagesArr.length; i++) {
             packagesList.add(new XmlPackage(packagesArr[i]));
         }
-//        xmlTest.setParameters(mapParameters);
         xmlTest.setPackages(packagesList);
-
-        System.out.println("packagesList:" + packagesList.toString());
+        log.info("packagesList:" + packagesList.toString());
 
 //        设置要执行的Groups 关键点
         xmlTest.setIncludedGroups(groups);
