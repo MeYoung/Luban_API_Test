@@ -3,6 +3,7 @@ package otp.runner;
 import com.alibaba.fastjson.JSON;
 import com.lucky.common.testng.RetryListener;
 import com.lucky.common.testng.TestResultListener;
+import lombok.extern.slf4j.Slf4j;
 import org.testng.ITestNGListener;
 import org.testng.TestNG;
 import org.testng.annotations.Parameters;
@@ -42,20 +43,20 @@ public class LuckyRunner {
         Map<String, String> mapParameters = new HashMap<>();
         mapParameters.put("env", env);
 //        动态解析 Parameters
-        if (OTPParameters.length()>0){
-            HashMap map =  JSON.parseObject(OTPParameters, HashMap.class);
+        if (OTPParameters.length() > 0) {
+            HashMap map = JSON.parseObject(OTPParameters, HashMap.class);
             mapParameters.putAll(map);
         }
         xmlSuite.setParameters(mapParameters);
 
-        System.out.println(mapParameters.toString());
+        System.out.println("OTPParameters:" + mapParameters.toString());
 
 //        新增<Test>标签并设置
         XmlTest xmlTest = new XmlTest(xmlSuite);
         xmlTest.setName(testPlanName);
 
         String[] caseArrIDs = caseIds.split(",");
-        System.out.println(caseIds);
+        System.out.println("caseIDs:" + caseIds);
         List<String> groups = Arrays.asList(caseArrIDs);
 
 //        设置class or packages
@@ -63,14 +64,14 @@ public class LuckyRunner {
 //        packages.add(new XmlPackage("otp.demo.*"));
 //        packagesList.add(new XmlPackage("otp.*"));
 
-        String[] packagesArr  = packages.split(",");
+        String[] packagesArr = packages.split(",");
         for (int i = 0; i < packagesArr.length; i++) {
             packagesList.add(new XmlPackage(packagesArr[i]));
         }
 //        xmlTest.setParameters(mapParameters);
         xmlTest.setPackages(packagesList);
 
-        System.out.println(packagesList.toString());
+        System.out.println("packagesList:" + packagesList.toString());
 
 //        设置要执行的Groups 关键点
         xmlTest.setIncludedGroups(groups);
