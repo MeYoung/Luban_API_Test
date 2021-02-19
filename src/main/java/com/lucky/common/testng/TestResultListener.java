@@ -36,7 +36,6 @@ public class TestResultListener extends TestListenerAdapter {
         ITestNGMethod trMethod = tr.getMethod();
         String[] groups = trMethod.getGroups();
         setCaseIDsInReport(groups);
-//        TestStep.failStep(tr.getTestClass().getName(), tr.getName());
         log.error(tr.getName() + " skip");
 
     }
@@ -47,7 +46,6 @@ public class TestResultListener extends TestListenerAdapter {
         ITestNGMethod trMethod = tr.getMethod();
         String[] groups = trMethod.getGroups();
         setCaseIDsInReport(groups);
-//        TestStep.successStep(tr.getTestClass().getName(), tr.getName());
         log.info(tr.getName() + "success");
     }
 
@@ -56,10 +54,6 @@ public class TestResultListener extends TestListenerAdapter {
         ITestNGMethod trMethod = tr.getMethod();
         String[] groups = trMethod.getGroups();
         setCaseIDsInReport(groups);
-        //  默认第一个作为用例ID
-//        TestStep.setCaseID(groups[0]);
-//        设置case名字，添加caseId
-//        trMethod.setDescription(trMethod.getDescription()+" - "+groups[0]);
         String classPath = tr.getTestClass().getName() + "." + tr.getName();
         log.info("开始执行：" + classPath);
         super.onTestStart(tr);
@@ -86,7 +80,7 @@ public class TestResultListener extends TestListenerAdapter {
         for (String caseID : groups) {
             String pattern = "[1|2]_[0-9]\\d+_[0-9]\\d+_[a-zA-Z0-9]+";
             Pattern r = Pattern.compile(pattern);
-            log.info("caseID:"+caseID);
+            log.info("caseID:" + caseID);
             Matcher m = r.matcher(caseID);
             if (m.matches()) {
                 caseIDs.add(caseID);
@@ -97,17 +91,18 @@ public class TestResultListener extends TestListenerAdapter {
     }
 
     private void setCasesLinkInReport(String caseID) {
-        final String OTP_BASE_URL = "http://otp.luckincoffee.com/default/CaseAdmin?";
+        final String OTBRrl = "http://otp.luckincoffee.com/default/CaseAdmin?";
         String[] casesArr = caseID.split("_");
 //       file 表示脑图， excel表示表格
         String type = "file";
-        if (casesArr[0].equals("2")) {
+        final String t = "2";
+        if (t.equals(casesArr[0])) {
             type = "excel";
         }
         String projectId = casesArr[1];
         String caseId = casesArr[2];
         String nodeId = casesArr[3];
-        String caseUrl = OTP_BASE_URL + "?" + "projectId=" + projectId + "&caseId=" + caseId + "&type=" + type + "&nodeId=" + nodeId;
+        String caseUrl = OTBRrl + "?" + "projectId=" + projectId + "&caseId=" + caseId + "&type=" + type + "&nodeId=" + nodeId;
         Allure.link("OTP_CaseID:" + caseID, caseUrl);
     }
 
