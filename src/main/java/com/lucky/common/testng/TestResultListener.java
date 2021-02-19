@@ -25,7 +25,6 @@ public class TestResultListener extends TestListenerAdapter {
         ITestNGMethod trMethod = tr.getMethod();
         String[] groups = trMethod.getGroups();
         setCaseIDsInReport(groups);
-//        TestStep.failStep(tr.getTestClass().getName(), tr.getName());
         log.error(tr.getName() + " fail");
 
     }
@@ -62,16 +61,12 @@ public class TestResultListener extends TestListenerAdapter {
     @Override
     public void onConfigurationFailure(ITestResult tr) {
         super.onConfigurationFailure(tr);
-        // 写入报告
-//        TestStep.failStep(tr.getTestClass().getName(), tr.getName());
         log.error(tr.getName() + " fail");
     }
 
     @Override
     public void onConfigurationSkip(ITestResult tr) {
         super.onConfigurationSkip(tr);
-        // 写入报告
-//        TestStep.failStep(tr.getTestClass().getName(), tr.getName());
         log.error(tr.getName() + " skip");
     }
 
@@ -91,7 +86,7 @@ public class TestResultListener extends TestListenerAdapter {
     }
 
     private void setCasesLinkInReport(String caseID) {
-        final String OTBRrl = "http://otp.luckincoffee.com/default/CaseAdmin?";
+        final String otpUrl = "http://otp.luckincoffee.com/default/CaseAdmin?";
         String[] casesArr = caseID.split("_");
 //       file 表示脑图， excel表示表格
         String type = "file";
@@ -102,7 +97,7 @@ public class TestResultListener extends TestListenerAdapter {
         String projectId = casesArr[1];
         String caseId = casesArr[2];
         String nodeId = casesArr[3];
-        String caseUrl = OTBRrl + "?" + "projectId=" + projectId + "&caseId=" + caseId + "&type=" + type + "&nodeId=" + nodeId;
+        String caseUrl = otpUrl + "?" + "projectId=" + projectId + "&caseId=" + caseId + "&type=" + type + "&nodeId=" + nodeId;
         Allure.link("OTP_CaseID:" + caseID, caseUrl);
     }
 
