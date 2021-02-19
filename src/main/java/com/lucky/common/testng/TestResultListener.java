@@ -1,6 +1,5 @@
 package com.lucky.common.testng;
 
-import com.lucky.common.report.TestStep;
 import io.qameta.allure.Allure;
 import lombok.extern.slf4j.Slf4j;
 import org.testng.ITestNGMethod;
@@ -87,7 +86,7 @@ public class TestResultListener extends TestListenerAdapter {
         for (String caseID : groups) {
             String pattern = "[1|2]_[0-9]\\d+_[0-9]\\d+_[a-zA-Z0-9]+";
             Pattern r = Pattern.compile(pattern);
-            System.out.println(caseID);
+            log.info("caseID:"+caseID);
             Matcher m = r.matcher(caseID);
             if (m.matches()) {
                 caseIDs.add(caseID);
