@@ -29,6 +29,7 @@ public class LuckyRunner {
 //        新增<suite>标签，并设置并发方式和并发数
         XmlSuite xmlSuite = new XmlSuite();
         xmlSuite.setName("OTP_Automation_Runner");
+//        日志级别 0-10
         xmlSuite.setVerbose(3);
 
         final String method = "method";

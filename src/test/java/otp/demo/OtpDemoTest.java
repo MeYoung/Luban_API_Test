@@ -24,21 +24,26 @@ public class OtpDemoTest {
         log.info("before test......");
     }
 
+    @Test(groups = {"1_205_809_c842e7zaf3k0","1_205_766_c6bj0saijhc0"})
+    public void teeee(){
+        System.out.println();
+    }
 
-    @Test(description = "表格的测试用例1", groups = "1_205_766_c6bj1xjkhc00")
+
+    @Test(description = "表格的测试用例1", groups = "1_205_766_c6ck9hsftfk0")
     public void test1() throws InterruptedException {
         Thread.sleep(1000);
         log.info("test1.....表格的测试用例1-1_441_21672_c7t89zf3xxk0");
     }
 
-    @Test(description = "脑图的测试用例2", groups = {"2_83_29_6860729584200384544", "1_205_766_c6bj1xjkhq00"})
+    @Test(description = "脑图的测试用例2", groups = {"2_83_29_6860729584200384544", "1_205_932_c7z38t4luao0"})
     public void test2() throws InterruptedException {
         Thread.sleep(2000);
         AssertUtils.assertEquals(1, 2);
         log.info("脑图的测试用例2-2_83_29_6860729584200384544");
     }
 
-    @Test(description = "脑图的测试用例3-TEST", groups = {"1_205_766_c6bj1xjkg3c0"})
+    @Test(description = "脑图的测试用例3-TEST", groups = {"1_205_932_c7z38t4luao0"})
     public void test3() throws InterruptedException {
         Thread.sleep(3000);
 
@@ -50,7 +55,6 @@ public class OtpDemoTest {
         Thread.sleep(4000);
         log.info("test4.....脑图的测试用例4-1_205_932_c7z38t4luao0");
     }
-
 
     @DataProvider(name = "loginData")
     public Object[][] loginData() {

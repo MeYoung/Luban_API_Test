@@ -4,12 +4,19 @@
 <!--配置Case集合名 并发方式tests 和并发数-->
 <suite name="All Test" parallel="tests" thread-count="1">
 
+<!--    自动化名称，默认是计划名称-->
     <parameter name="testPlanName" value="${TestPlanName}"/>
+<!--   运行环境 -->
     <parameter name="env" value="${ENV}"/>
+<!--    运行的用例-->
     <parameter name="caseIds" value="${CaseIDs}"/>
+<!--    并发数-->
     <parameter name="threadCount" value="${ThreadCount}"/>
+<!--    并发方式-->
     <parameter name="parallel" value="${Parallel}"/>
+<!--    case所在包，通常可以用 * -->
     <parameter name="packages" value="${Packages}"/>
+<!--    特定参数-->
     <parameter name="otpParameters" value="${OTPParameters}"/>
 
     <!--    <parameter name="env" value="test"/>-->
@@ -19,7 +26,6 @@
         <classes>
             <class name="otp.runner.LuckyRunner">
             </class>
-
         </classes>
     </test>
 
