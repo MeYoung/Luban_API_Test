@@ -24,12 +24,6 @@ public class OtpDemoTest {
         log.info("before test......");
     }
 
-    @Test(groups = {"1_205_809_c842e7zaf3k0","1_205_766_c6bj0saijhc0"})
-    public void teeee(){
-        System.out.println();
-    }
-
-
     @Test(description = "表格的测试用例1", groups = "1_205_766_c6ck9hsftfk0")
     public void test1() throws InterruptedException {
         Thread.sleep(1000);
