@@ -1,5 +1,6 @@
 package com.lucky.common.report;
 
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.lucky.common.utils.BaseDataUtils;
 import com.lucky.params.BaseData;
@@ -77,9 +78,8 @@ public class TestStep {
         String str = body;
         try {
             //格式化json串
-            boolean prettyFormat = true;
             JSONObject jsonObject = JSONObject.parseObject(body);
-            str = JSONObject.toJSONString(jsonObject, prettyFormat);
+            str = JSONObject.toJSONString(jsonObject, true);
 
         } catch (Exception e) {
             log.error("请求报文非json格式，解析错误");
@@ -90,15 +90,34 @@ public class TestStep {
         return url + "\n" + str;
     }
 
+    /**
+     * RPC 请求报文
+     * @param url
+     * @param body
+     * @return
+     */
+    @Attachment("请求报文")
+    public static String rpcRequestStep(String url, String body) {
+        String str = body;
+        try {
+            //格式化json串
+            JSONArray jsonObject = JSONArray.parseArray(str);
+            str = JSONObject.toJSONString(jsonObject, true);
+        } catch (Exception e) {
+            log.error("请求报文非json格式，解析错误");
+        }
+        //报告展现请求报文
+        return url + "\n" + str;
+    }
+
 
     @Attachment("响应报文")
     public static String respondStep(String respond) {
         String str = respond;
         try {
             //格式化json串
-            boolean prettyFormat = true;
             JSONObject jsonObject = JSONObject.parseObject(respond);
-            str = JSONObject.toJSONString(jsonObject, prettyFormat);
+            str = JSONObject.toJSONString(jsonObject, true);
         } catch (Exception e) {
             log.error("响应报文非json格式，解析错误");
         }
