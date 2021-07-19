@@ -74,6 +74,7 @@ public class CodeGenerator {
 
         // 配置自定义代码模板
         TemplateConfig templateConfig = new TemplateConfig();
+        templateConfig.setController("");
         templateConfig.setXml(XML_MAPPER_TEMPLATE_PATH);
         templateConfig.setMapper(MAPPER_TEMPLATE_PATH);
         templateConfig.setEntity(ENTITY_TEMPLATE_PATH);
