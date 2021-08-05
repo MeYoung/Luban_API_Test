@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.generator.AutoGenerator;
 import com.baomidou.mybatisplus.generator.config.*;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.Scanner;
@@ -17,56 +18,57 @@ import java.util.Scanner;
  * <p>
  * 直接run mian函数，输入表名，便可生成
  */
+@Slf4j
 public class CodeGenerator {
 
     /**
-        数据库 URL
-    */
+     * 数据库 URL
+     */
     private static final String URL = "jdbc:mysql://10.104.249.47:3306/lucky_partner?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
 
     /**
-        数据库驱动
-    */
+     * 数据库驱动
+     */
     private static final String DRIVER_NAME = "com.mysql.cj.jdbc.Driver";
     /**
-        数据库用户名
-    */
+     * 数据库用户名
+     */
     private static final String USERNAME = "dev_test1";
     /**
-        数据库密码
-    */
+     * 数据库密码
+     */
     private static final String PASSWORD = "dev_test1";
     /**
-        @author 值
-    */
+     * @author 值
+     */
     private static final String AUTHOR = "liping.li";
     /**
-        包的基础路径
-    */
+     * 包的基础路径
+     */
     private static final String BASE_PACKAGE_URL = "com.lucky";
     /**
-        xml文件路径
-    */
+     * xml文件路径
+     */
     private static final String XML_PACKAGE_URL = "/src/main/resources/dao/";
     /**
-        xml 文件模板
-    */
+     * xml 文件模板
+     */
     private static final String XML_MAPPER_TEMPLATE_PATH = "generator/templates/mapper.xml";
     /**
-        dao 文件模板
-    */
+     * dao 文件模板
+     */
     private static final String MAPPER_TEMPLATE_PATH = "generator/templates/mapper.java";
     /**
-        entity 文件模板
-    */
+     * entity 文件模板
+     */
     private static final String ENTITY_TEMPLATE_PATH = "generator/templates/entity.java";
     /**
-        service 文件模板
-    */
+     * service 文件模板
+     */
     private static final String SERVICE_TEMPLATE_PATH = "generator/templates/service.java";
     /**
-        serviceImpl 文件模板
-    */
+     * serviceImpl 文件模板
+     */
     private static final String SERVICE_IMPL_TEMPLATE_PATH = "generator/templates/serviceImpl.java";
 
 
@@ -123,7 +125,7 @@ public class CodeGenerator {
 
     private static String scanner(String tip) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println(("请输入" + tip + "："));
+        log.info("请输入：{}", tip);
         if (scanner.hasNext()) {
             String ipt = scanner.next();
             if (StringUtils.isNotBlank(ipt)) {
