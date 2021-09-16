@@ -136,8 +136,6 @@
             <version>2.10.0</version>
             <scope>compile</scope>
         </dependency>
-
-
         <!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-plugin-api -->
 <!--        <dependency>
             <groupId>io.qameta.allure</groupId>

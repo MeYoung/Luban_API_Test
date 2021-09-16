@@ -1,10 +1,7 @@
 package otp.runner;
 
 import com.alibaba.fastjson.JSON;
-import com.lucky.common.testng.RetryListener;
-import com.lucky.common.testng.TestResultListener;
 import lombok.extern.slf4j.Slf4j;
-import org.testng.ITestNGListener;
 import org.testng.TestNG;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -82,10 +79,10 @@ public class LuckyRunner {
         suites.add(xmlSuite);
         testNG.setXmlSuites(suites);
 //        添加监听器
-        List<Class<? extends ITestNGListener>> listenerClasses = new ArrayList<>();
+        /*List<Class<? extends ITestNGListener>> listenerClasses = new ArrayList<>();
         listenerClasses.add(RetryListener.class);
         listenerClasses.add(TestResultListener.class);
-        testNG.setListenerClasses(listenerClasses);
+        testNG.setListenerClasses(listenerClasses);*/
 //        run
         testNG.run();
     }
