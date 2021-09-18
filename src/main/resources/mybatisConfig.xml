@@ -46,7 +46,7 @@
             <!-- 配置数据库连接信息 -->
             <dataSource type="POOLED">
                 <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://10.104.249.47:3306/lucky_operation?serverTimezone=GMT%2b8"/>
+                <property name="url" value="jdbc:mysql://10.218.2.12:3306/lucky_operation?serverTimezone=GMT%2b8"/>
                 <property name="username" value="dev_test1"/>
                 <property name="password" value="dev_test1"/>
             </dataSource>

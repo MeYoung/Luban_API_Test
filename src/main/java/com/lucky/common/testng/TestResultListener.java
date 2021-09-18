@@ -25,7 +25,7 @@ public class TestResultListener extends TestListenerAdapter {
         ITestNGMethod trMethod = tr.getMethod();
         String[] groups = trMethod.getGroups();
         setCaseIDsInReport(groups);
-        log.error(tr.getName() + " fail");
+        log.error("fail -- {}",tr.getName());
 
     }
 
@@ -35,7 +35,7 @@ public class TestResultListener extends TestListenerAdapter {
         ITestNGMethod trMethod = tr.getMethod();
         String[] groups = trMethod.getGroups();
         setCaseIDsInReport(groups);
-        log.error(tr.getName() + " skip");
+        log.info("{} -- skip", tr.getName());
 
     }
 
@@ -45,7 +45,7 @@ public class TestResultListener extends TestListenerAdapter {
         ITestNGMethod trMethod = tr.getMethod();
         String[] groups = trMethod.getGroups();
         setCaseIDsInReport(groups);
-        log.info(tr.getName() + "success");
+        log.info("{} -- success", tr.getName());
     }
 
     @Override
@@ -54,20 +54,20 @@ public class TestResultListener extends TestListenerAdapter {
         String[] groups = trMethod.getGroups();
         setCaseIDsInReport(groups);
         String classPath = tr.getTestClass().getName() + "." + tr.getName();
-        log.info("开始执行：" + classPath);
+        log.info("开始执行：--{}", classPath);
         super.onTestStart(tr);
     }
 
     @Override
     public void onConfigurationFailure(ITestResult tr) {
         super.onConfigurationFailure(tr);
-        log.error(tr.getName() + " fail");
+        log.error("fail -- {}", tr.getName());
     }
 
     @Override
     public void onConfigurationSkip(ITestResult tr) {
         super.onConfigurationSkip(tr);
-        log.error(tr.getName() + " skip");
+        log.error("skip -- {}",tr.getName());
     }
 
     private void setCaseIDsInReport(String[] groups) {
@@ -82,7 +82,12 @@ public class TestResultListener extends TestListenerAdapter {
                 setCasesLinkInReport(caseID);
             }
         }
-        Allure.parameter("OTP_CaseIDs", String.join(",", caseIDs));
+        if (caseIDs.size() > 0) {
+            Allure.parameter("OTP_CaseIDs", String.join(",", caseIDs));
+        } else {
+            log.warn("当前自动化脚本用例未与OTP用例关联，建议做关联！！！");
+        }
+
     }
 
     private void setCasesLinkInReport(String caseID) {

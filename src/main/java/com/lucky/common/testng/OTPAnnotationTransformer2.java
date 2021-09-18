@@ -3,17 +3,19 @@ package com.lucky.common.testng;
 import com.alibaba.fastjson.JSONObject;
 import com.lucky.common.annotion.OTPDataProvider;
 import com.lucky.common.testng.dataprovider.JsonDataProvicer;
+import com.lucky.common.testng.dataprovider.SqlDataProvider;
+import com.lucky.common.testng.dataprovider.TxtDataProvider;
 import lombok.extern.slf4j.Slf4j;
 import org.testng.IAnnotationTransformer2;
 import org.testng.IRetryAnalyzer;
-import org.testng.ITestContext;
-import org.testng.ITestNGMethod;
-import org.testng.annotations.*;
+import org.testng.annotations.IConfigurationAnnotation;
+import org.testng.annotations.IDataProviderAnnotation;
+import org.testng.annotations.IFactoryAnnotation;
+import org.testng.annotations.ITestAnnotation;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
@@ -76,7 +78,7 @@ public class OTPAnnotationTransformer2 implements IAnnotationTransformer2 {
             boolean annotationDataProvider = method.isAnnotationPresent(OTPDataProvider.class);
             if (annotationDataProvider && method.getName().equals(name)) {
                 annotation.setDataProvider(OTPDataProvider.NAME);
-                annotation.setDataProviderClass(OTPAnnotationTransformer2.class);
+                chooseData(annotation, method);
             }
         }
 //        重跑
@@ -87,24 +89,25 @@ public class OTPAnnotationTransformer2 implements IAnnotationTransformer2 {
     }
 
 
-    @DataProvider(name = OTPDataProvider.NAME)
-    public Iterator<Object[]> data(Class testClass, ITestNGMethod method, ITestContext c) {
-        String name = method.getMethodName();
-        //        获取测试class的所有方法
-        Method[] declaredMethods = testClass.getDeclaredMethods();
-        String dataFile = "";
-        for (Method method2 : declaredMethods) {
-            boolean annotationDataProvider = method2.isAnnotationPresent(OTPDataProvider.class);
-            if (annotationDataProvider && method2.getName().equals(name)) {
-                log.info("测试方法名:{}", method2.getName());
-//                获取OTPDataProvider 注解
-                OTPDataProvider otpDataProvider = method2.getAnnotation(OTPDataProvider.class);
-                // 根据对象获取注解 dataFile 值
-                dataFile = otpDataProvider.dataFile();
-            }
+    /**
+     * 选择不同的 数据驱动源
+     * @param annotation
+     * @param method
+     */
+    public void chooseData(ITestAnnotation annotation, Method method) {
+        OTPDataProvider otpDataProvider = method.getAnnotation(OTPDataProvider.class);
+        String file =  otpDataProvider.dataFile().toLowerCase();
+        if (file.endsWith(".json")) {
+            annotation.setDataProviderClass(JsonDataProvicer.class);
+        } else if (!otpDataProvider.sqlQuery().equals("") ) {
+            annotation.setDataProviderClass(SqlDataProvider.class);
+        }else if (file.endsWith(".txt")){
+            annotation.setDataProviderClass(TxtDataProvider.class);
+        }else if(file.endsWith(".xlsx")||file.endsWith("xls")){
+//            excel
+
         }
-        JsonDataProvicer jsonDataProvicer = new JsonDataProvicer();
-        return jsonDataProvicer.getData(dataFile);
+
     }
 
 

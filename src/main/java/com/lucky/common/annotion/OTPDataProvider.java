@@ -1,5 +1,9 @@
 package com.lucky.common.annotion;
 
+import com.lucky.common.utils.SQLExecuteUtils;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
@@ -25,9 +29,11 @@ public @interface OTPDataProvider {
 
     String sheetName() default "";
 
-    boolean hasHeaderRow() default false;
+    boolean hasHeaderRow() default true;
 
     String sqlQuery() default "";
+
+    String sqlConfigID() default "";
 
     String key() default "";
 
