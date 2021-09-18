@@ -1,6 +1,5 @@
 package com.lucky.common.testng;
 
-import com.alibaba.fastjson.JSONObject;
 import com.lucky.common.annotion.OTPDataProvider;
 import com.lucky.common.testng.dataprovider.JsonDataProvicer;
 import com.lucky.common.testng.dataprovider.SqlDataProvider;
@@ -15,10 +14,6 @@ import org.testng.annotations.ITestAnnotation;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
-import java.util.HashMap;
-import java.util.Map;
-
-import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
 /**
  * IAnnotationTransformer2 继承了 IAnnotationTransformer
@@ -89,6 +84,11 @@ public class OTPAnnotationTransformer2 implements IAnnotationTransformer2 {
     }
 
 
+    final String  JSON_TYPE = ".json";
+    final String  TEXT_TYPE = ".txt";
+    final String  EXCEL_TYPE = ".xls";
+    final String  SUPER_EXCEL_TYPE = ".xlsx";
+
     /**
      * 选择不同的 数据驱动源
      * @param annotation
@@ -97,53 +97,16 @@ public class OTPAnnotationTransformer2 implements IAnnotationTransformer2 {
     public void chooseData(ITestAnnotation annotation, Method method) {
         OTPDataProvider otpDataProvider = method.getAnnotation(OTPDataProvider.class);
         String file =  otpDataProvider.dataFile().toLowerCase();
-        if (file.endsWith(".json")) {
+        if (file.endsWith(JSON_TYPE)) {
             annotation.setDataProviderClass(JsonDataProvicer.class);
         } else if (!otpDataProvider.sqlQuery().equals("") ) {
             annotation.setDataProviderClass(SqlDataProvider.class);
-        }else if (file.endsWith(".txt")){
+        }else if (file.endsWith(TEXT_TYPE)){
             annotation.setDataProviderClass(TxtDataProvider.class);
-        }else if(file.endsWith(".xlsx")||file.endsWith("xls")){
+        }else if(file.endsWith(SUPER_EXCEL_TYPE)||file.endsWith(EXCEL_TYPE)){
 //            excel
 
         }
 
     }
-
-
-    /**
-     * 设置@Test 的 dataprovider
-     *
-     * @param testAnnotation
-     * @param method
-     */
-    public static void setOTPDataProvider(ITestAnnotation testAnnotation, Method method) {
-        if ((null != method) && null != method.getParameterTypes() && (method.getParameterTypes().length > 0)) {
-            String dataProvider = testAnnotation.getDataProvider();
-            boolean hasDataProvider = isNotBlank(dataProvider);
-
-            // 判断是否设定了dataprovider
-            if (hasDataProvider && !dataProvider.startsWith(OTPDataProvider.NAME)) {
-                //
-                Map<String, String> desc = new HashMap<String, String>();
-                desc.put("description", testAnnotation.getDescription());
-                desc.put("dataProvider", testAnnotation.getDataProvider());
-                Class<?> dpClass = testAnnotation.getDataProviderClass();
-                if (null != dpClass) {
-                    desc.put("dataProviderClass", dpClass.getName());
-                }
-                testAnnotation.setDescription(new JSONObject().get(desc).toString());
-            }
-
-          /*  boolean globalParallelSetting = getBundle().getBoolean("global.datadriven.parallel", false);
-            boolean parallel = getBundle().getBoolean(method.getName() + ".parallel", globalParallelSetting);*/
-//            dataProvider = parallel ? OTPDataProvider.NAME_PARALLEL : OTPDataProvider.NAME;
-//            testAnnotation.setDataProvider(dataProvider);
-
-            testAnnotation.setDataProvider(OTPDataProvider.NAME);
-            testAnnotation.setDataProviderClass(OTPAnnotationTransformer2.class);
-        }
-    }
-
-
 }

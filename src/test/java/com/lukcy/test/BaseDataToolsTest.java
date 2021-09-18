@@ -1,12 +1,10 @@
 package com.lukcy.test;
 
-import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.lucky.common.annotion.OTPDataProvider;
 import com.lucky.common.utils.BaseDataTools;
 import com.lucky.common.utils.BaseDataUtils;
 import com.lucky.params.BaseData;
-import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.testng.Assert;
 import org.testng.annotations.BeforeSuite;
@@ -38,10 +36,10 @@ public class BaseDataToolsTest {
     public void dataTest2(JSONObject jsonObject) throws InterruptedException {
         Thread.sleep(3000);
         String password = jsonObject.getString("password");
-        String Username = jsonObject.getString("Username");
+        String username = jsonObject.getString("Username");
         String isvalid = jsonObject.getString("isvalid");
 
-        log.info("密码{},{},{}", password, Username, isvalid);
+        log.info("密码{},{},{}", password, username, isvalid);
     }
 
 
@@ -50,10 +48,10 @@ public class BaseDataToolsTest {
     public void dataTest3333(JSONObject jsonObject) throws InterruptedException {
         Thread.sleep(2000);
         String password = jsonObject.getString("password");
-        String Username = jsonObject.getString("Username");
+        String username = jsonObject.getString("Username");
         String isvalid = jsonObject.getString("isvalid");
 
-        log.info("密码{},{},{}", password, Username, isvalid);
+        log.info("密码{},{},{}", password, username, isvalid);
     }
 
     @Test(dataProvider = "data")
@@ -63,12 +61,10 @@ public class BaseDataToolsTest {
 
 
     @Test(threadPoolSize = 2, invocationCount = 5)
-//    @Test
     public void test1() throws InterruptedException {
         BaseData baseData = new BaseData();
         baseData.setUid("123uid");
         baseData.setBaseURL(String.valueOf(Math.random()));
-//        log.info("输出{}{}",i,j);
         BaseDataTools baseDataTools = BaseDataTools.getInstance();
         BaseDataTools baseDataTools2 = BaseDataTools.getInstance();
         Assert.assertTrue(baseDataTools == baseDataTools2);
@@ -78,12 +74,6 @@ public class BaseDataToolsTest {
         BaseData baseData1 = BaseDataTools.getInstance().getBaseData();
         log.info(baseData1.getUid());
         log.info(baseData1.getBaseURL());
-
-//        BaseData baseData2 = new BaseData();
-//        baseData2.setUid("");
-
-//        log.info(baseData1.getUid());
-//        log.info(baseData2.getUid());
     }
 
     final String sql = "select * from t_adjust_time limit 10";
