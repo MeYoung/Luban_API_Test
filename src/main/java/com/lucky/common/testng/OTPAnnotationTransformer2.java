@@ -99,7 +99,7 @@ public class OTPAnnotationTransformer2 implements IAnnotationTransformer2 {
         String file =  otpDataProvider.dataFile().toLowerCase();
         if (file.endsWith(JSON_TYPE)) {
             annotation.setDataProviderClass(JsonDataProvicer.class);
-        } else if (!otpDataProvider.sqlQuery().equals("") ) {
+        } else if (!"".equals(otpDataProvider.sqlQuery()) ) {
             annotation.setDataProviderClass(SqlDataProvider.class);
         }else if (file.endsWith(TEXT_TYPE)){
             annotation.setDataProviderClass(TxtDataProvider.class);

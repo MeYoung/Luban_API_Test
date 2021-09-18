@@ -9,6 +9,11 @@ import java.util.Map;
 
 @Mapper
 public interface SqlMap {
+    /**
+     * 通用map
+     * @param sqlStr
+     * @return
+     */
     @Select("${sqlStr}")
     List<Map<String, Object>> getPublicItems(@Param(value = "sqlStr") String sqlStr);
 }

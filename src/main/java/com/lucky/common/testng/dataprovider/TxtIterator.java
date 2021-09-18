@@ -9,7 +9,6 @@ import java.util.function.Consumer;
 @Slf4j
 public class TxtIterator implements Iterator<Object[]> {
 
-    //数据文件
     File txtFile;
     BufferedReader bs;
     String currentLine;
