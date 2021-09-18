@@ -34,7 +34,6 @@ public class DBHelper {
             pst = conn.prepareStatement(sql);
         } catch (Exception e) {
             log.error("DBHelper 创建数据库链接失败",e);
-            e.printStackTrace();
         }
     }*/
 

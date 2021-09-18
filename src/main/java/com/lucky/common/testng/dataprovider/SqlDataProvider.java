@@ -40,8 +40,7 @@ public class SqlDataProvider {
             dbConfigID = envReaderUtils.getValue(sqlConfigName);
 
         } catch (Exception e) {
-            log.error("BaseData 中的 env 是空值！！！");
-            e.printStackTrace();
+            log.error("BaseData 中的 env 是空值！！！",e);
         }
         SqlSession sqlSession = SQLExecuteUtils.run(dbConfigID);
         //        注册SqlMap 等同在MyBatisConfig.mxl 设定了 mappers

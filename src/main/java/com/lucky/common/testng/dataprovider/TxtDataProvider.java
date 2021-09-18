@@ -28,8 +28,7 @@ public class TxtDataProvider implements DataProviderImpl {
         try {
             return new TxtIterator(new File(path));
         } catch (IOException e) {
-            log.error("获取txt数据失败");
-            e.printStackTrace();
+            log.error("获取txt数据失败",e);
             return null;
         }
     }

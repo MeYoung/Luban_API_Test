@@ -19,8 +19,7 @@ public class TxtIterator implements Iterator<Object[]> {
         try {
             bs = new BufferedReader(new FileReader(txtFile));
         } catch (FileNotFoundException e) {
-            log.error("未能找到文件！！！");
-            e.printStackTrace();
+            log.error("未能找到文件！！！",e);
         }
         currentLine = bs.readLine();
     }
@@ -40,7 +39,7 @@ public class TxtIterator implements Iterator<Object[]> {
         try {
             currentLine = bs.readLine();
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error("读取错误",e);
         }
         return returnLine.split(",");
     }
