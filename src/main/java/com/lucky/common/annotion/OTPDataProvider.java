@@ -1,9 +1,5 @@
 package com.lucky.common.annotion;
 
-import com.lucky.common.utils.SQLExecuteUtils;
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
-
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;

@@ -111,6 +111,5 @@ public class OTPAnnotationTransformer2 implements IAnnotationTransformer2 {
         }else {
             log.error("OTPDataProvider 属性值有误 请认真检查！");
         }
-
     }
 }
