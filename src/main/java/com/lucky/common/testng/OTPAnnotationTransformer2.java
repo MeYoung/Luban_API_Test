@@ -1,6 +1,7 @@
 package com.lucky.common.testng;
 
 import com.lucky.common.annotion.OTPDataProvider;
+import com.lucky.common.testng.dataprovider.ExcelDataProvider;
 import com.lucky.common.testng.dataprovider.JsonDataProvicer;
 import com.lucky.common.testng.dataprovider.SqlDataProvider;
 import com.lucky.common.testng.dataprovider.TxtDataProvider;
@@ -84,28 +85,31 @@ public class OTPAnnotationTransformer2 implements IAnnotationTransformer2 {
     }
 
 
-    final String  JSON_TYPE = ".json";
-    final String  TEXT_TYPE = ".txt";
-    final String  EXCEL_TYPE = ".xls";
-    final String  SUPER_EXCEL_TYPE = ".xlsx";
+    final String JSON_TYPE = ".json";
+    final String TEXT_TYPE = ".txt";
+    final String EXCEL_TYPE = ".xls";
+    final String SUPER_EXCEL_TYPE = ".xlsx";
 
     /**
      * 选择不同的 数据驱动源
+     *
      * @param annotation
      * @param method
      */
     public void chooseData(ITestAnnotation annotation, Method method) {
         OTPDataProvider otpDataProvider = method.getAnnotation(OTPDataProvider.class);
-        String file =  otpDataProvider.dataFile().toLowerCase();
+        String file = otpDataProvider.dataFile().toLowerCase();
         if (file.endsWith(JSON_TYPE)) {
             annotation.setDataProviderClass(JsonDataProvicer.class);
-        } else if (!"".equals(otpDataProvider.sqlQuery()) ) {
+        } else if (!"".equals(otpDataProvider.sqlQuery())) {
             annotation.setDataProviderClass(SqlDataProvider.class);
-        }else if (file.endsWith(TEXT_TYPE)){
+        } else if (file.endsWith(TEXT_TYPE)) {
             annotation.setDataProviderClass(TxtDataProvider.class);
-        }else if(file.endsWith(SUPER_EXCEL_TYPE)||file.endsWith(EXCEL_TYPE)){
+        } else if (file.endsWith(SUPER_EXCEL_TYPE) || file.endsWith(EXCEL_TYPE)) {
 //            excel
-
+            annotation.setDataProviderClass(ExcelDataProvider.class);
+        }else {
+            log.error("OTPDataProvider 属性值有误 请认真检查！");
         }
 
     }

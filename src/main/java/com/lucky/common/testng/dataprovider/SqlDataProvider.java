@@ -13,7 +13,6 @@ import org.testng.ITestContext;
 import org.testng.ITestNGMethod;
 import org.testng.annotations.DataProvider;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -40,20 +39,13 @@ public class SqlDataProvider {
             dbConfigID = envReaderUtils.getValue(sqlConfigName);
 
         } catch (Exception e) {
-            log.error("BaseData 中的 env 是空值！！！",e);
+            log.error("BaseData 中的 env 是空值！！！", e);
         }
         SqlSession sqlSession = SQLExecuteUtils.run(dbConfigID);
         //        注册SqlMap 等同在MyBatisConfig.mxl 设定了 mappers
         sqlSession.getConfiguration().addMapper(SqlMap.class);
         List<Map<String, Object>> list = sqlSession.getMapper(SqlMap.class).getPublicItems(sqlQuery);
-        List<Object[]> arrayList = new ArrayList<>();
-        for (int i = 0; i < list.size(); i++) {
-            Map<String, Object> map = list.get(i);
-            Object object = JSONObject.toJSON(map);
-            Object[] objects = new Object[1];
-            objects[0] = object;
-            arrayList.add(objects);
-        }
+        List<Object[]> arrayList = DataProviderUtil.map2Obj(list);
         sqlSession.close();
         return arrayList.iterator();
     }

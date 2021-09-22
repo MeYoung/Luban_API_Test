@@ -101,6 +101,17 @@ public class BaseDataToolsTest {
         log.info("a:{},b：{},c：{},d：{},e：{}」", a, b, c, d, e);
     }
 
+    @OTPDataProvider(dataFile = "src/test/resources/excel/demo1.xlsx",sheetName = "sheet1")
+    @Test
+    public void excelData(JSONObject jsonObject) {
+        log.info(jsonObject.toJSONString());
+    }
+    @OTPDataProvider(dataFile = "src/test/resources/excel/demo1.xlsx")
+    @Test
+    public void excelData2(JSONObject jsonObject) {
+        log.info(jsonObject.toJSONString());
+    }
+
     @BeforeSuite
     public void ttt() {
         log.info("before suite");
@@ -108,4 +119,7 @@ public class BaseDataToolsTest {
         baseData.setEnv("test");
         BaseDataUtils.setBaseData(baseData);
     }
+
 }
+
+

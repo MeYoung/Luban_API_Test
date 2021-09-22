@@ -47,7 +47,7 @@ public class JsonDataProvicer implements DataProviderImpl {
         // 获取json
         try {
             JSONArray jsonArray = JSONObject.parseArray(readJson);
-            list = Arrays.asList(json2Map(jsonArray));
+            list = Arrays.asList(DataProviderUtil.json2Map(jsonArray));
         } catch (JSONException e) {
             log.error(e.getMessage());
         }
@@ -68,13 +68,6 @@ public class JsonDataProvicer implements DataProviderImpl {
 
     }
 
-    public static Object[][] json2Map(JSONArray jsonArray) {
-        Object[][] objects = new Object[jsonArray.size()][1];
-        for (int i = 0; i < jsonArray.size(); i++) {
-            JSONObject jsonObject = jsonArray.getJSONObject(i);
-            objects[i][0] = jsonObject;
-        }
-        return objects;
-    }
+
 }
 
