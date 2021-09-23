@@ -18,8 +18,7 @@ import java.util.Iterator;
 import java.util.List;
 
 @Slf4j
-public class JsonDataProvicer implements DataProviderImpl {
-    @Override
+public class JsonDataProvicer {
     public Iterator<Object[]> getData(String path) {
         BufferedReader reader = null;
         String readJson = "";
@@ -61,11 +60,6 @@ public class JsonDataProvicer implements DataProviderImpl {
         String dataFile = otpDataProvider.dataFile();
         JsonDataProvicer jsonDataProvicer = new JsonDataProvicer();
         return jsonDataProvicer.getData(dataFile);
-    }
-
-    @Override
-    public void setData() {
-
     }
 
 

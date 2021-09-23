@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.util.Iterator;
 
 @Slf4j
-public class TxtDataProvider implements DataProviderImpl {
+public class TxtDataProvider {
 
 
     @DataProvider(name = OTPDataProvider.NAME)
@@ -22,8 +22,6 @@ public class TxtDataProvider implements DataProviderImpl {
         return getData(filePaht);
     }
 
-
-    @Override
     public Iterator<Object[]> getData(String path) {
         try {
             return new TxtIterator(new File(path));
@@ -31,11 +29,6 @@ public class TxtDataProvider implements DataProviderImpl {
             log.error("获取txt数据失败",e);
             return null;
         }
-    }
-
-    @Override
-    public void setData() {
-
     }
 
     public static void main(String[] args) {
