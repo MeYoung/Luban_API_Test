@@ -1,23 +1,28 @@
 package com.lucky.common.testng.dataprovider;
 
-import cn.hutool.core.io.FileUtil;
 import cn.hutool.poi.excel.ExcelReader;
 import cn.hutool.poi.excel.ExcelUtil;
 import com.lucky.common.annotion.OTPDataProvider;
+import lombok.extern.slf4j.Slf4j;
 import org.testng.ITestContext;
-import org.testng.ITestNGMethod;
 import org.testng.annotations.DataProvider;
 
 import java.io.File;
+import java.lang.reflect.Method;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * @Author shijin.huang
+ * @Date 2021/09/26
+ */
+@Slf4j
 public class ExcelDataProvider {
 
     @DataProvider(name = OTPDataProvider.NAME)
-    public Iterator<Object[]> dataJson(Class testClass, ITestNGMethod method, ITestContext c) {
-        OTPDataProvider otpDataProvider = DataProviderUtil.getDataProvderAn(testClass, method);
+    public Iterator<Object[]> dataJson(Class testClass, ITestContext c, Method testMethod) {
+        OTPDataProvider otpDataProvider =testMethod.getAnnotation(OTPDataProvider.class);
         String dataFile = otpDataProvider.dataFile();
         String sheetName = otpDataProvider.sheetName();
         return ExcelDataProvider.getData(dataFile, sheetName);

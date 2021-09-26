@@ -3,36 +3,43 @@ package com.lucky.common.testng.dataprovider;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.lucky.common.annotion.OTPDataProvider;
-import org.testng.ITestNGMethod;
+import lombok.extern.slf4j.Slf4j;
+import org.testng.annotations.ITestAnnotation;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+@Slf4j
 public class DataProviderUtil {
 
+
+    final static String JSON_TYPE = ".json";
+    final static String TEXT_TYPE = ".txt";
+    final static String EXCEL_TYPE = ".xls";
+    final static String SUPER_EXCEL_TYPE = ".xlsx";
+
     /**
-     * 获取 OTPDataprovider 注解
+     * 选择不同的 数据驱动源
      *
-     * @param testClass
+     * @param annotation
      * @param method
-     * @return
      */
-    public static OTPDataProvider getDataProvderAn(Class testClass, ITestNGMethod method) {
-        String name = method.getMethodName();
-        //        获取测试class的所有方法
-        Method[] declaredMethods = testClass.getDeclaredMethods();
-        OTPDataProvider otpDataProvider = null;
-        for (Method method2 : declaredMethods) {
-            boolean annotationDataProvider = method2.isAnnotationPresent(OTPDataProvider.class);
-            if (annotationDataProvider && method2.getName().equals(name)) {
-//                获取OTPDataProvider 注解
-                otpDataProvider = method2.getAnnotation(OTPDataProvider.class);
-                break;
-            }
+    public static void chooseData(ITestAnnotation annotation, Method method) {
+        OTPDataProvider otpDataProvider = method.getAnnotation(OTPDataProvider.class);
+        String file = otpDataProvider.dataFile().toLowerCase();
+        if (file.endsWith(JSON_TYPE)) {
+            annotation.setDataProviderClass(JsonDataProvicer.class);
+        } else if (!"".equals(otpDataProvider.sqlQuery())) {
+            annotation.setDataProviderClass(SqlDataProvider.class);
+        } else if (file.endsWith(TEXT_TYPE)) {
+            annotation.setDataProviderClass(TxtDataProvider.class);
+        } else if (file.endsWith(SUPER_EXCEL_TYPE) || file.endsWith(EXCEL_TYPE)) {
+            annotation.setDataProviderClass(ExcelDataProvider.class);
+        } else {
+            log.error("OTPDataProvider 属性值有误 请认真检查！");
         }
-        return otpDataProvider;
     }
 
     /**

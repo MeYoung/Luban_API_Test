@@ -6,6 +6,10 @@ import java.io.*;
 import java.util.Iterator;
 import java.util.function.Consumer;
 
+/**
+ * @Author shijin.huang
+ * @Date 2021/09/26
+ */
 @Slf4j
 public class TxtIterator implements Iterator<Object[]> {
 

@@ -1,10 +1,7 @@
 package com.lucky.common.testng;
 
 import com.lucky.common.annotion.OTPDataProvider;
-import com.lucky.common.testng.dataprovider.ExcelDataProvider;
-import com.lucky.common.testng.dataprovider.JsonDataProvicer;
-import com.lucky.common.testng.dataprovider.SqlDataProvider;
-import com.lucky.common.testng.dataprovider.TxtDataProvider;
+import com.lucky.common.testng.dataprovider.*;
 import lombok.extern.slf4j.Slf4j;
 import org.testng.IAnnotationTransformer2;
 import org.testng.IRetryAnalyzer;
@@ -17,6 +14,8 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 
 /**
+ * @Author shijin.huang
+ * @Date 2021/09/26
  * IAnnotationTransformer2 继承了 IAnnotationTransformer
  */
 @Slf4j
@@ -67,16 +66,12 @@ public class OTPAnnotationTransformer2 implements IAnnotationTransformer2 {
      */
     @Override
     public void transform(ITestAnnotation annotation, Class testClass, Constructor testConstructor, Method testMethod) {
-        String name = testMethod.getName();
-        Class<?> tCaseClass = testMethod.getDeclaringClass();
-        Method[] declaredMethods = tCaseClass.getDeclaredMethods();
-        for (Method method : declaredMethods) {
-            boolean annotationDataProvider = method.isAnnotationPresent(OTPDataProvider.class);
-            if (annotationDataProvider && method.getName().equals(name)) {
-                annotation.setDataProvider(OTPDataProvider.NAME);
-                chooseData(annotation, method);
-            }
+        boolean annotationDataProvider = testMethod.isAnnotationPresent(OTPDataProvider.class);
+        if (annotationDataProvider) {
+            annotation.setDataProvider(OTPDataProvider.NAME);
+            DataProviderUtil.chooseData(annotation, testMethod);
         }
+
 //        重跑
         IRetryAnalyzer retry = annotation.getRetryAnalyzer();
         if (retry == null) {
@@ -85,31 +80,5 @@ public class OTPAnnotationTransformer2 implements IAnnotationTransformer2 {
     }
 
 
-    final String JSON_TYPE = ".json";
-    final String TEXT_TYPE = ".txt";
-    final String EXCEL_TYPE = ".xls";
-    final String SUPER_EXCEL_TYPE = ".xlsx";
 
-    /**
-     * 选择不同的 数据驱动源
-     *
-     * @param annotation
-     * @param method
-     */
-    public void chooseData(ITestAnnotation annotation, Method method) {
-        OTPDataProvider otpDataProvider = method.getAnnotation(OTPDataProvider.class);
-        String file = otpDataProvider.dataFile().toLowerCase();
-        if (file.endsWith(JSON_TYPE)) {
-            annotation.setDataProviderClass(JsonDataProvicer.class);
-        } else if (!"".equals(otpDataProvider.sqlQuery())) {
-            annotation.setDataProviderClass(SqlDataProvider.class);
-        } else if (file.endsWith(TEXT_TYPE)) {
-            annotation.setDataProviderClass(TxtDataProvider.class);
-        } else if (file.endsWith(SUPER_EXCEL_TYPE) || file.endsWith(EXCEL_TYPE)) {
-//            excel
-            annotation.setDataProviderClass(ExcelDataProvider.class);
-        }else {
-            log.error("OTPDataProvider 属性值有误 请认真检查！");
-        }
-    }
 }

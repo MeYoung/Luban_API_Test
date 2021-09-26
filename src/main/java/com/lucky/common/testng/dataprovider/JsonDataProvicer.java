@@ -5,18 +5,21 @@ import com.alibaba.fastjson.JSONException;
 import com.alibaba.fastjson.JSONObject;
 import com.lucky.common.annotion.OTPDataProvider;
 import lombok.extern.slf4j.Slf4j;
-import org.testng.ITestContext;
-import org.testng.ITestNGMethod;
 import org.testng.annotations.DataProvider;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
+/**
+ * @Author shijin.huang
+ * @Date 2021/09/26
+ */
 @Slf4j
 public class JsonDataProvicer {
     public Iterator<Object[]> getData(String path) {
@@ -55,8 +58,8 @@ public class JsonDataProvicer {
     }
 
     @DataProvider(name = OTPDataProvider.NAME)
-    public Iterator<Object[]> dataJson(Class testClass, ITestNGMethod method, ITestContext c) {
-        OTPDataProvider otpDataProvider =  DataProviderUtil.getDataProvderAn(testClass,method);
+    public Iterator<Object[]> dataJson(Class testClass, Method testMethod) {
+        OTPDataProvider otpDataProvider =testMethod.getAnnotation(OTPDataProvider.class);
         String dataFile = otpDataProvider.dataFile();
         JsonDataProvicer jsonDataProvicer = new JsonDataProvicer();
         return jsonDataProvicer.getData(dataFile);

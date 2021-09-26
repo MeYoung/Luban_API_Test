@@ -10,21 +10,24 @@ import com.lucky.params.BaseData;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.session.SqlSession;
 import org.testng.ITestContext;
-import org.testng.ITestNGMethod;
 import org.testng.annotations.DataProvider;
 
+import java.lang.reflect.Method;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-
+/**
+ * @Author shijin.huang
+ * @Date 2021/09/26
+ */
 @Slf4j
 public class SqlDataProvider {
 
 
     @DataProvider(name = OTPDataProvider.NAME)
-    public Iterator<Object[]> dataSql(Class testClass, ITestNGMethod method, ITestContext c) {
-        OTPDataProvider otpDataProvider = DataProviderUtil.getDataProvderAn(testClass, method);
+    public Iterator<Object[]> dataSql(Class testClass, Method testMethod, ITestContext c) {
+        OTPDataProvider otpDataProvider =testMethod.getAnnotation(OTPDataProvider.class);
         String sqlQuery = otpDataProvider.sqlQuery();
         String sqlConfigID = otpDataProvider.sqlConfigID();
         return getData(sqlQuery, sqlConfigID);

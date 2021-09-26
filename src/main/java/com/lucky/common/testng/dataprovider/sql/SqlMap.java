@@ -7,6 +7,10 @@ import org.apache.ibatis.annotations.Select;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * @Author shijin.huang
+ * @Date 2021/09/26
+ */
 @Mapper
 public interface SqlMap {
     /**

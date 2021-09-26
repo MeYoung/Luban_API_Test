@@ -9,15 +9,20 @@ import org.testng.annotations.DataProvider;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Method;
 import java.util.Iterator;
 
+/**
+ * @Author shijin.huang
+ * @Date 2021/09/26
+ */
 @Slf4j
 public class TxtDataProvider {
 
 
     @DataProvider(name = OTPDataProvider.NAME)
-    public Iterator<Object[]> dataText(Class testClass, ITestNGMethod method, ITestContext c) {
-        OTPDataProvider otpDataProvider = DataProviderUtil.getDataProvderAn(testClass, method);
+    public Iterator<Object[]> dataText(Class testClass, Method testMethod, ITestContext c) {
+        OTPDataProvider otpDataProvider =testMethod.getAnnotation(OTPDataProvider.class);
         String filePaht = otpDataProvider.dataFile();
         return getData(filePaht);
     }

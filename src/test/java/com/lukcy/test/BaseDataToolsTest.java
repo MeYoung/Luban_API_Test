@@ -94,7 +94,6 @@ public class BaseDataToolsTest {
         log.info(jsonObject.toJSONString());
     }
 
-
     @OTPDataProvider(dataFile = "src/test/resources/txt/text.txt")
     @Test
     public void textTest(String a, String b, String c, String d, String e) {
@@ -120,6 +119,11 @@ public class BaseDataToolsTest {
         BaseDataUtils.setBaseData(baseData);
     }
 
+
+    @Test
+    public void  tt(){
+        log.info("=======ttttt====");
+    }
 }
 
 
