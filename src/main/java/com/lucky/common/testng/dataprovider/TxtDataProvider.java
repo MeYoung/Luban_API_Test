@@ -4,7 +4,6 @@ import com.alibaba.fastjson.JSONObject;
 import com.lucky.common.annotion.OTPDataProvider;
 import lombok.extern.slf4j.Slf4j;
 import org.testng.ITestContext;
-import org.testng.ITestNGMethod;
 import org.testng.annotations.DataProvider;
 
 import java.io.File;
