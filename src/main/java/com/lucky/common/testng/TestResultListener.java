@@ -57,14 +57,8 @@ public class TestResultListener extends TestListenerAdapter {
         String[] groups = trMethod.getGroups();
         setCaseIDsInReport(groups);
         String classPath = tr.getTestClass().getName() + "." + tr.getName();
+        setSeverity(trMethod);
         log.info("开始执行：--{}", classPath);
-
-        //            设定Allure 报告中对应case 优先级
-        Method method = trMethod.getConstructorOrMethod().getMethod();
-        if (method.isAnnotationPresent(OTP.class)) {
-            OTP otp = method.getAnnotation(OTP.class);
-            Allure.label(ResultsUtils.SEVERITY_LABEL_NAME, otp.priority().value());
-        }
         super.onTestStart(tr);
     }
 
@@ -114,6 +108,17 @@ public class TestResultListener extends TestListenerAdapter {
         String nodeId = casesArr[3];
         String caseUrl = otpUrl + "?" + "projectId=" + projectId + "&caseId=" + caseId + "&type=" + type + "&nodeId=" + nodeId;
         Allure.link("OTP_CaseID:" + caseID, caseUrl);
+    }
+
+    private void setSeverity(ITestNGMethod trMethod){
+        //            设定Allure 报告中对应case 优先级
+        Method method = trMethod.getConstructorOrMethod().getMethod();
+        if (method.isAnnotationPresent(OTP.class)) {
+            OTP otp = method.getAnnotation(OTP.class);
+            log.info("SEVERITY:{}",otp.priority().value());
+            log.info("GROUPS:{}",otp.caseIDs());
+            Allure.label(ResultsUtils.SEVERITY_LABEL_NAME, otp.priority().value());
+        }
     }
 
 }
