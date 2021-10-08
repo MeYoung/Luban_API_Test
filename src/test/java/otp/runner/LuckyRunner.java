@@ -1,6 +1,8 @@
 package otp.runner;
 
 import com.alibaba.fastjson.JSON;
+import com.lucky.common.annotion.CasePriority;
+import com.lucky.common.annotion.OTP;
 import lombok.extern.slf4j.Slf4j;
 import org.testng.TestNG;
 import org.testng.annotations.Parameters;
@@ -17,6 +19,7 @@ import java.util.*;
  */
 @Slf4j
 public class LuckyRunner {
+    @OTP(priority = CasePriority.P0)
     @Test
     @Parameters({"testPlanName", "env", "caseIds", "threadCount", "parallel", "packages", "otpParameters"})
     public void runner(String testPlanName, String env, String caseIds,
