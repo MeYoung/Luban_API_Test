@@ -79,11 +79,6 @@ public class OTPAnnotationTransformer2 implements IAnnotationTransformer2 {
             String[] caseIDs = otp.caseIDs().split(",");
             String[] newGroups = ArrayUtil.addAll(groups, caseIDs);
             annotation.setGroups(newGroups);
-//            设定Allure 报告中对应case 优先级
-            CasePriority casePriority = otp.priority();
-            log.info("casePriority.value():{}", casePriority.value());
-//            Allure.label(ResultsUtils.SEVERITY_LABEL_NAME, casePriority.value());
-
         }
 
 //        数据驱动

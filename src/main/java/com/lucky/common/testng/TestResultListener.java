@@ -59,6 +59,7 @@ public class TestResultListener extends TestListenerAdapter {
         String classPath = tr.getTestClass().getName() + "." + tr.getName();
         log.info("开始执行：--{}", classPath);
 
+        //            设定Allure 报告中对应case 优先级
         OTP otp = trMethod.getConstructorOrMethod().getMethod().getAnnotation(OTP.class);
         Allure.label(ResultsUtils.SEVERITY_LABEL_NAME, otp.priority().value());
 
