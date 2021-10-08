@@ -1,6 +1,8 @@
 package com.lucky.common.testng;
 
+import com.lucky.common.annotion.OTP;
 import io.qameta.allure.Allure;
+import io.qameta.allure.util.ResultsUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.testng.ITestNGMethod;
 import org.testng.ITestResult;
@@ -8,6 +10,7 @@ import org.testng.TestListenerAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -55,6 +58,10 @@ public class TestResultListener extends TestListenerAdapter {
         setCaseIDsInReport(groups);
         String classPath = tr.getTestClass().getName() + "." + tr.getName();
         log.info("开始执行：--{}", classPath);
+
+        OTP otp = trMethod.getConstructorOrMethod().getMethod().getAnnotation(OTP.class);
+        Allure.label(ResultsUtils.SEVERITY_LABEL_NAME, otp.priority().value());
+
         super.onTestStart(tr);
     }
 
