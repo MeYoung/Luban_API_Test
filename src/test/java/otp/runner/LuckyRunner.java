@@ -81,11 +81,7 @@ public class LuckyRunner {
         List<XmlSuite> suites = new ArrayList<>();
         suites.add(xmlSuite);
         testNG.setXmlSuites(suites);
-//        添加监听器
-        /*List<Class<? extends ITestNGListener>> listenerClasses = new ArrayList<>();
-        listenerClasses.add(RetryListener.class);
-        listenerClasses.add(TestResultListener.class);
-        testNG.setListenerClasses(listenerClasses);*/
+
         testNG.run();
     }
 }
