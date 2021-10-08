@@ -115,8 +115,6 @@ public class TestResultListener extends TestListenerAdapter {
         Method method = trMethod.getConstructorOrMethod().getMethod();
         if (method.isAnnotationPresent(OTP.class)) {
             OTP otp = method.getAnnotation(OTP.class);
-            log.info("SEVERITY:{}",otp.priority().value());
-            log.info("GROUPS:{}",otp.caseIDs());
             Allure.label(ResultsUtils.SEVERITY_LABEL_NAME, otp.priority().value());
         }
     }
