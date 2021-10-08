@@ -28,11 +28,9 @@ public class BaseDataToolsTest {
         };
     }
 
-//    @Severity(SeverityLevel.CRITICAL)
     @OTP(caseIDs = "1_441_5313_c4wkibg6olc0,1_441_5327_c5vbkj43qeo0",priority = CasePriority.P1)
     @Test()
     public void dataTest() {
-//        log.info(String.valueOf(a+b));
         log.info("dataTest =============");
     }
 
