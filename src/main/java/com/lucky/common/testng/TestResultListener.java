@@ -8,9 +8,9 @@ import org.testng.ITestNGMethod;
 import org.testng.ITestResult;
 import org.testng.TestListenerAdapter;
 
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -60,9 +60,11 @@ public class TestResultListener extends TestListenerAdapter {
         log.info("开始执行：--{}", classPath);
 
         //            设定Allure 报告中对应case 优先级
-        OTP otp = trMethod.getConstructorOrMethod().getMethod().getAnnotation(OTP.class);
-        Allure.label(ResultsUtils.SEVERITY_LABEL_NAME, otp.priority().value());
-
+        Method method = trMethod.getConstructorOrMethod().getMethod();
+        if (method.isAnnotationPresent(OTP.class)) {
+            OTP otp = method.getAnnotation(OTP.class);
+            Allure.label(ResultsUtils.SEVERITY_LABEL_NAME, otp.priority().value());
+        }
         super.onTestStart(tr);
     }
 

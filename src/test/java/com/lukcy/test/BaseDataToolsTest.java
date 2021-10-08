@@ -7,8 +7,6 @@ import com.lucky.common.annotion.OTPDataProvider;
 import com.lucky.common.utils.BaseDataTools;
 import com.lucky.common.utils.BaseDataUtils;
 import com.lucky.params.BaseData;
-import io.qameta.allure.Severity;
-import io.qameta.allure.SeverityLevel;
 import lombok.extern.slf4j.Slf4j;
 import org.testng.Assert;
 import org.testng.annotations.BeforeSuite;
@@ -34,11 +32,13 @@ public class BaseDataToolsTest {
         log.info("dataTest =============");
     }
 
+
     @Test
     public void dataTest3() {
         log.info("dataTest3");
     }
 
+    @OTP(caseIDs = "1_441_5313_c4wkyy16t1c0",priority = CasePriority.P3)
     @OTPDataProvider(dataFile = "src/test/resources/json/loginArr.json")
     @Test
     public void dataTest2(JSONObject jsonObject) throws InterruptedException {
@@ -50,7 +50,7 @@ public class BaseDataToolsTest {
         log.info("密码{},{},{}", password, username, isvalid);
     }
 
-
+    @OTP(caseIDs = "1_441_5313_c4wkzx3ij1c0",priority = CasePriority.P2)
     @OTPDataProvider(dataFile = "src/test/resources/json/login.json")
     @Test
     public void dataTest3333(JSONObject jsonObject) throws InterruptedException {
@@ -87,7 +87,7 @@ public class BaseDataToolsTest {
     final String sql = "select * from t_adjust_time limit 10";
     final String sqlConfigName = "db.operation";
 
-
+    @OTP(caseIDs = "1_441_5320_c4vs9w3l7uw0",priority = CasePriority.P1)
     @OTPDataProvider(sqlQuery = sql, sqlConfigID = sqlConfigName)
     @Test
     public void sqlTest(JSONObject jsonObject) {
@@ -109,6 +109,7 @@ public class BaseDataToolsTest {
         log.info("a:{},b：{},c：{},d：{},e：{}」", a, b, c, d, e);
     }
 
+    @OTP(caseIDs = "1_441_5320_c4vs9w3l7uw0",priority = CasePriority.P0)
     @OTPDataProvider(dataFile = "src/test/resources/excel/demo1.xlsx",sheetName = "sheet1")
     @Test
     public void excelData(JSONObject jsonObject) {
