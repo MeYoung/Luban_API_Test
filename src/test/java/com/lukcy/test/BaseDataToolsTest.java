@@ -1,10 +1,14 @@
 package com.lukcy.test;
 
 import com.alibaba.fastjson.JSONObject;
+import com.lucky.common.annotion.CasePriority;
+import com.lucky.common.annotion.OTP;
 import com.lucky.common.annotion.OTPDataProvider;
 import com.lucky.common.utils.BaseDataTools;
 import com.lucky.common.utils.BaseDataUtils;
 import com.lucky.params.BaseData;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import lombok.extern.slf4j.Slf4j;
 import org.testng.Assert;
 import org.testng.annotations.BeforeSuite;
@@ -24,11 +28,17 @@ public class BaseDataToolsTest {
         };
     }
 
+//    @Severity(SeverityLevel.CRITICAL)
+    @OTP(caseIDs = "1_441_5313_c4wkibg6olc0,1_441_5327_c5vbkj43qeo0",priority = CasePriority.P0)
+    @Test()
+    public void dataTest() {
+//        log.info(String.valueOf(a+b));
+        log.info("dataTest =============");
+    }
 
     @Test
-    public void dataTest() {
-        log.info("123123123123123123");
-        Assert.assertTrue(false);
+    public void dataTest3() {
+        log.info("dataTest3");
     }
 
     @OTPDataProvider(dataFile = "src/test/resources/json/loginArr.json")
@@ -78,6 +88,7 @@ public class BaseDataToolsTest {
 
     final String sql = "select * from t_adjust_time limit 10";
     final String sqlConfigName = "db.operation";
+
 
     @OTPDataProvider(sqlQuery = sql, sqlConfigID = sqlConfigName)
     @Test

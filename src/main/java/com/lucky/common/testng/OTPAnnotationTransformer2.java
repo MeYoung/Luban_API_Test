@@ -1,7 +1,11 @@
 package com.lucky.common.testng;
 
+import cn.hutool.core.util.ArrayUtil;
+import com.lucky.common.annotion.CasePriority;
+import com.lucky.common.annotion.OTP;
 import com.lucky.common.annotion.OTPDataProvider;
 import com.lucky.common.testng.dataprovider.*;
+import io.qameta.allure.Allure;
 import lombok.extern.slf4j.Slf4j;
 import org.testng.IAnnotationTransformer2;
 import org.testng.IRetryAnalyzer;
@@ -66,6 +70,21 @@ public class OTPAnnotationTransformer2 implements IAnnotationTransformer2 {
      */
     @Override
     public void transform(ITestAnnotation annotation, Class testClass, Constructor testConstructor, Method testMethod) {
+//       caseIDs转testNG认识的Groups
+        boolean otpB = testMethod.isAnnotationPresent(OTP.class);
+        if (otpB) {
+            String[] groups = annotation.getGroups();
+            OTP otp = testMethod.getAnnotation(OTP.class);
+            String[] caseIDs = otp.caseIDs().split(",");
+            String[] newGroups = ArrayUtil.addAll(groups, caseIDs);
+            annotation.setGroups(newGroups);
+//            设定Allure 报告中对应case 优先级
+            CasePriority casePriority = otp.priority();
+            log.info("casePriority.value():{}", casePriority.value());
+            Allure.label("severity", casePriority.value());
+        }
+
+//        数据驱动
         boolean annotationDataProvider = testMethod.isAnnotationPresent(OTPDataProvider.class);
         if (annotationDataProvider) {
             annotation.setDataProvider(OTPDataProvider.NAME);
@@ -78,7 +97,6 @@ public class OTPAnnotationTransformer2 implements IAnnotationTransformer2 {
             annotation.setRetryAnalyzer(TestNGRetry.class);
         }
     }
-
 
 
 }

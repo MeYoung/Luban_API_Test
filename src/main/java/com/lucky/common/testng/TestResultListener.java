@@ -25,7 +25,7 @@ public class TestResultListener extends TestListenerAdapter {
         ITestNGMethod trMethod = tr.getMethod();
         String[] groups = trMethod.getGroups();
         setCaseIDsInReport(groups);
-        log.error("fail -- {}",tr.getName());
+        log.error("fail -- {}", tr.getName());
 
     }
 
@@ -67,7 +67,7 @@ public class TestResultListener extends TestListenerAdapter {
     @Override
     public void onConfigurationSkip(ITestResult tr) {
         super.onConfigurationSkip(tr);
-        log.error("skip -- {}",tr.getName());
+        log.error("skip -- {}", tr.getName());
     }
 
     private void setCaseIDsInReport(String[] groups) {
@@ -75,7 +75,6 @@ public class TestResultListener extends TestListenerAdapter {
         for (String caseID : groups) {
             String pattern = "[1|2]_[0-9]\\d+_[0-9]\\d+_[a-zA-Z0-9]+";
             Pattern r = Pattern.compile(pattern);
-            log.info("caseID:" + caseID);
             Matcher m = r.matcher(caseID);
             if (m.matches()) {
                 caseIDs.add(caseID);
@@ -83,6 +82,7 @@ public class TestResultListener extends TestListenerAdapter {
             }
         }
         if (caseIDs.size() > 0) {
+            log.info("caseIDs:{}", caseIDs);
             Allure.parameter("OTP_CaseIDs", String.join(",", caseIDs));
         } else {
             log.warn("当前自动化脚本用例未与OTP用例关联，建议做关联！！！");
