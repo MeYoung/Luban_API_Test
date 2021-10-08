@@ -61,7 +61,7 @@ public class TestResultListener extends TestListenerAdapter {
 
         //            设定Allure 报告中对应case 优先级
         OTP otp = trMethod.getConstructorOrMethod().getMethod().getAnnotation(OTP.class);
-        Allure.label(ResultsUtils.SEVERITY_LABEL_NAME, otp.priority().value());
+        Allure.label(ResultsUtils.SEVERITY_LABEL_NAME, "P0");
 
         super.onTestStart(tr);
     }
