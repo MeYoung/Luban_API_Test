@@ -86,7 +86,6 @@ public class LuckyRunner {
         listenerClasses.add(RetryListener.class);
         listenerClasses.add(TestResultListener.class);
         testNG.setListenerClasses(listenerClasses);*/
-//        run
         testNG.run();
     }
 }
