@@ -7,6 +7,7 @@ import com.lucky.common.annotion.OTPDataProvider;
 import com.lucky.common.utils.BaseDataTools;
 import com.lucky.common.utils.BaseDataUtils;
 import com.lucky.params.BaseData;
+import io.qameta.allure.Allure;
 import lombok.extern.slf4j.Slf4j;
 import org.testng.Assert;
 import org.testng.annotations.BeforeSuite;
@@ -27,8 +28,11 @@ public class BaseDataToolsTest {
     }
 
     @OTP(caseIDs = "1_441_5313_c4wkibg6olc0,1_441_5327_c5vbkj43qeo0",priority = CasePriority.P1)
-    @Test()
+    @Test
     public void dataTest() {
+        log.info("----------");
+        Allure.label("adfafd","fafdadf");
+        log.info("----------");
         log.info("dataTest =============");
     }
 
@@ -64,6 +68,10 @@ public class BaseDataToolsTest {
 
     @Test(dataProvider = "data")
     public void ttt(int i, int j) {
+        log.info("----------");
+        Allure.label("adfafd","fafdadf");
+        log.info("----------");
+
         log.info("tttt.........{}+{}........", i, j);
     }
 

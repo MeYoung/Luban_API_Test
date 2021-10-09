@@ -2,8 +2,11 @@ package com.lucky.common.testng;
 
 import com.lucky.common.annotion.OTP;
 import io.qameta.allure.Allure;
+import io.qameta.allure.internal.AllureThreadContext;
+import io.qameta.allure.testng.AllureTestNg;
 import io.qameta.allure.util.ResultsUtils;
 import lombok.extern.slf4j.Slf4j;
+import org.testng.ITestContext;
 import org.testng.ITestNGMethod;
 import org.testng.ITestResult;
 import org.testng.TestListenerAdapter;
@@ -28,6 +31,7 @@ public class TestResultListener extends TestListenerAdapter {
         ITestNGMethod trMethod = tr.getMethod();
         String[] groups = trMethod.getGroups();
         setCaseIDsInReport(groups);
+        setSeverity(trMethod);
         log.error("fail -- {}", tr.getName());
 
     }
@@ -38,6 +42,7 @@ public class TestResultListener extends TestListenerAdapter {
         ITestNGMethod trMethod = tr.getMethod();
         String[] groups = trMethod.getGroups();
         setCaseIDsInReport(groups);
+        setSeverity(trMethod);
         log.info("{} -- skip", tr.getName());
 
     }
@@ -48,6 +53,7 @@ public class TestResultListener extends TestListenerAdapter {
         ITestNGMethod trMethod = tr.getMethod();
         String[] groups = trMethod.getGroups();
         setCaseIDsInReport(groups);
+        setSeverity(trMethod);
         log.info("{} -- success", tr.getName());
     }
 
@@ -57,7 +63,6 @@ public class TestResultListener extends TestListenerAdapter {
         String[] groups = trMethod.getGroups();
         setCaseIDsInReport(groups);
         String classPath = tr.getTestClass().getName() + "." + tr.getName();
-        setSeverity(trMethod);
         log.info("开始执行：--{}", classPath);
         super.onTestStart(tr);
     }
@@ -72,6 +77,11 @@ public class TestResultListener extends TestListenerAdapter {
     public void onConfigurationSkip(ITestResult tr) {
         super.onConfigurationSkip(tr);
         log.error("skip -- {}", tr.getName());
+    }
+
+    @Override
+    public void onFinish(ITestContext testContext) {
+
     }
 
     private void setCaseIDsInReport(String[] groups) {
