@@ -110,12 +110,14 @@ public class TestResultListener extends TestListenerAdapter {
         Allure.link("OTP_CaseID:" + caseID, caseUrl);
     }
 
-    private void setSeverity(ITestNGMethod trMethod){
+    private void setSeverity(ITestNGMethod trMethod) {
         //            设定Allure 报告中对应case 优先级
         Method method = trMethod.getConstructorOrMethod().getMethod();
         if (method.isAnnotationPresent(OTP.class)) {
             OTP otp = method.getAnnotation(OTP.class);
-            Allure.label(ResultsUtils.SEVERITY_LABEL_NAME, otp.priority().value());
+            String severity = otp.priority().value();
+            log.info("severity:{}", severity);
+            Allure.label(ResultsUtils.SEVERITY_LABEL_NAME, severity);
         }
     }
 
