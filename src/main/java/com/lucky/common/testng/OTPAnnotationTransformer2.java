@@ -27,7 +27,7 @@ import java.lang.reflect.Method;
 public class OTPAnnotationTransformer2 implements IAnnotationTransformer2 {
 
     /**
-     * 操作 @Configuration 注解，但是已经不再使用
+     * 操作 @Configuration 注解（@After @Before xx等），但是已经不再使用
      *
      * @param annotation
      * @param testClass

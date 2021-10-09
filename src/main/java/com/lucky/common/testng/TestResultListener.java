@@ -1,21 +1,9 @@
 package com.lucky.common.testng;
 
-import com.lucky.common.annotion.OTP;
-import io.qameta.allure.Allure;
-import io.qameta.allure.internal.AllureThreadContext;
-import io.qameta.allure.testng.AllureTestNg;
-import io.qameta.allure.util.ResultsUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.testng.ITestContext;
-import org.testng.ITestNGMethod;
 import org.testng.ITestResult;
 import org.testng.TestListenerAdapter;
-
-import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * @author shijin.huang
@@ -28,10 +16,6 @@ public class TestResultListener extends TestListenerAdapter {
     @Override
     public void onTestFailure(ITestResult tr) {
         super.onTestFailure(tr);
-        ITestNGMethod trMethod = tr.getMethod();
-        String[] groups = trMethod.getGroups();
-        setCaseIDsInReport(groups);
-        setSeverity(trMethod);
         log.error("fail -- {}", tr.getName());
 
     }
@@ -39,29 +23,18 @@ public class TestResultListener extends TestListenerAdapter {
     @Override
     public void onTestSkipped(ITestResult tr) {
         super.onTestSkipped(tr);
-        ITestNGMethod trMethod = tr.getMethod();
-        String[] groups = trMethod.getGroups();
-        setCaseIDsInReport(groups);
-        setSeverity(trMethod);
-        log.info("{} -- skip", tr.getName());
+        log.error("{} -- skip", tr.getName());
 
     }
 
     @Override
     public void onTestSuccess(ITestResult tr) {
         super.onTestSuccess(tr);
-        ITestNGMethod trMethod = tr.getMethod();
-        String[] groups = trMethod.getGroups();
-        setCaseIDsInReport(groups);
-        setSeverity(trMethod);
         log.info("{} -- success", tr.getName());
     }
 
     @Override
     public void onTestStart(ITestResult tr) {
-        ITestNGMethod trMethod = tr.getMethod();
-        String[] groups = trMethod.getGroups();
-        setCaseIDsInReport(groups);
         String classPath = tr.getTestClass().getName() + "." + tr.getName();
         log.info("开始执行：--{}", classPath);
         super.onTestStart(tr);
@@ -82,53 +55,6 @@ public class TestResultListener extends TestListenerAdapter {
     @Override
     public void onFinish(ITestContext testContext) {
 
-    }
-
-    private void setCaseIDsInReport(String[] groups) {
-        List<String> caseIDs = new ArrayList<>(groups.length);
-        for (String caseID : groups) {
-            String pattern = "[1|2]_[0-9]\\d+_[0-9]\\d+_[a-zA-Z0-9]+";
-            Pattern r = Pattern.compile(pattern);
-            Matcher m = r.matcher(caseID);
-            if (m.matches()) {
-                caseIDs.add(caseID);
-                setCasesLinkInReport(caseID);
-            }
-        }
-        if (caseIDs.size() > 0) {
-            log.info("caseIDs:{}", caseIDs);
-            Allure.parameter("OTP_CaseIDs", String.join(",", caseIDs));
-        } else {
-            log.warn("当前自动化脚本用例未与OTP用例关联，建议做关联！！！");
-        }
-
-    }
-
-    private void setCasesLinkInReport(String caseID) {
-        final String otpUrl = "http://otp.luckincoffee.com/default/CaseAdmin?";
-        String[] casesArr = caseID.split("_");
-//       file 表示脑图， excel表示表格
-        String type = "file";
-        final String t = "2";
-        if (t.equals(casesArr[0])) {
-            type = "excel";
-        }
-        String projectId = casesArr[1];
-        String caseId = casesArr[2];
-        String nodeId = casesArr[3];
-        String caseUrl = otpUrl + "?" + "projectId=" + projectId + "&caseId=" + caseId + "&type=" + type + "&nodeId=" + nodeId;
-        Allure.link("OTP_CaseID:" + caseID, caseUrl);
-    }
-
-    private void setSeverity(ITestNGMethod trMethod) {
-        //            设定Allure 报告中对应case 优先级
-        Method method = trMethod.getConstructorOrMethod().getMethod();
-        if (method.isAnnotationPresent(OTP.class)) {
-            OTP otp = method.getAnnotation(OTP.class);
-            String severity = otp.priority().value();
-            log.info("severity:{}", severity);
-            Allure.label(ResultsUtils.SEVERITY_LABEL_NAME, severity);
-        }
     }
 
 }
