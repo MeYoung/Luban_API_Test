@@ -1,12 +1,9 @@
 package com.lucky.common.testng;
 
 import cn.hutool.core.util.ArrayUtil;
-import com.lucky.common.annotion.CasePriority;
 import com.lucky.common.annotion.OTP;
 import com.lucky.common.annotion.OTPDataProvider;
-import com.lucky.common.testng.dataprovider.*;
-import io.qameta.allure.Allure;
-import io.qameta.allure.util.ResultsUtils;
+import com.lucky.common.testng.dataprovider.DataProviderUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.testng.IAnnotationTransformer2;
 import org.testng.IRetryAnalyzer;
