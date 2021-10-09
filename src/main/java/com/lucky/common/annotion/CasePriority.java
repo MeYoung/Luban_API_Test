@@ -9,7 +9,7 @@ import io.qameta.allure.SeverityLevel;
 public enum CasePriority {
 
 //    P0("blocker"),
-    P0(SeverityLevel.BLOCKER.value()),
+    P0("P0"),
     P1(SeverityLevel.CRITICAL.value()),
     P2(SeverityLevel.NORMAL.value()),
     P3(SeverityLevel.MINOR.value());
