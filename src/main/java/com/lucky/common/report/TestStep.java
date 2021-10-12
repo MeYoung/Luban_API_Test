@@ -2,7 +2,6 @@ package com.lucky.common.report;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.lucky.common.utils.BaseDataUtils;
 import com.lucky.params.BaseData;
 import com.lucky.params.FinalText;
 import io.qameta.allure.Attachment;
@@ -35,7 +34,7 @@ public class TestStep {
 
     @Attachment(value = "单独重跑", type = "text/html")
     public static String reRunUrl(String className, String methodName, String sendEmail) {
-        BaseData baseData = BaseDataUtils.getBaseData();
+        BaseData baseData = BaseData.getBaseData();
         String env = baseData.getEnv();
         String url = "";
         if (FinalText.ENV_TEST.equals(env)) {

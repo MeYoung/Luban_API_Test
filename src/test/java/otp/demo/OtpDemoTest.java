@@ -1,7 +1,6 @@
 package otp.demo;
 
 import com.lucky.common.utils.AssertUtils;
-import com.lucky.common.utils.BaseDataUtils;
 import com.lucky.params.BaseData;
 import lombok.extern.slf4j.Slf4j;
 import org.testng.annotations.*;
@@ -18,9 +17,8 @@ public class OtpDemoTest {
         log.info(capiUserName);
         log.info(capiPWD);
         log.info("=======================");
-        BaseData baseData = new BaseData();
+        BaseData baseData = BaseData.getBaseData();
         baseData.setEnv(env);
-        BaseDataUtils.setBaseData(baseData);
         log.info("before test......");
     }
 

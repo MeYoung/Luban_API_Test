@@ -2,7 +2,9 @@ package com.lucky.params;
 
 import lombok.Data;
 import org.apache.ibatis.session.SqlSession;
+import org.joda.time.base.BaseDateTime;
 
+import java.util.Base64;
 import java.util.Map;
 
 /**
@@ -13,6 +15,22 @@ import java.util.Map;
 @Data
 public class BaseData {
 
+    private BaseData() {
+    }
+
+    public static volatile BaseData baseData;
+
+    public static BaseData getBaseData() {
+        if (baseData == null) {
+            synchronized (BaseData.class) {
+                if (baseData == null) {
+                    baseData = new BaseData();
+                }
+
+            }
+        }
+        return baseData;
+    }
 
     /**
      * 登录账号
@@ -77,7 +95,6 @@ public class BaseData {
      * api版本
      */
     private String apiVersionEmpapi;
-
 
 
     /**

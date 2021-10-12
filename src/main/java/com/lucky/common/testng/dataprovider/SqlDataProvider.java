@@ -3,7 +3,6 @@ package com.lucky.common.testng.dataprovider;
 import com.alibaba.fastjson.JSONObject;
 import com.lucky.common.annotion.OTPDataProvider;
 import com.lucky.common.testng.dataprovider.sql.SqlMap;
-import com.lucky.common.utils.BaseDataUtils;
 import com.lucky.common.utils.EnvReaderUtils;
 import com.lucky.common.utils.SQLExecuteUtils;
 import com.lucky.params.BaseData;
@@ -27,7 +26,7 @@ public class SqlDataProvider {
 
     @DataProvider(name = OTPDataProvider.NAME)
     public Iterator<Object[]> dataSql(Class testClass, Method testMethod, ITestContext c) {
-        OTPDataProvider otpDataProvider =testMethod.getAnnotation(OTPDataProvider.class);
+        OTPDataProvider otpDataProvider = testMethod.getAnnotation(OTPDataProvider.class);
         String sqlQuery = otpDataProvider.sqlQuery();
         String sqlConfigID = otpDataProvider.sqlConfigID();
         return getData(sqlQuery, sqlConfigID);
@@ -35,7 +34,7 @@ public class SqlDataProvider {
 
 
     public static Iterator<Object[]> getData(String sqlQuery, String sqlConfigName) {
-        BaseData baseData = BaseDataUtils.getBaseData();
+        BaseData baseData = BaseData.getBaseData();
         String dbConfigID = "";
         try {
             EnvReaderUtils envReaderUtils = new EnvReaderUtils(baseData.getEnv() + ".properties");
@@ -55,9 +54,9 @@ public class SqlDataProvider {
 
 
     public static void main(String[] args) {
-        BaseData baseData = new BaseData();
+        BaseData baseData = BaseData.getBaseData();
         baseData.setEnv("test");
-        BaseDataUtils.setBaseData(baseData);
+
         Iterator<Object[]> iterator = getData("select * from t_adjust_time limit 10", "db.operation");
         for (Iterator<Object[]> it = iterator; it.hasNext(); ) {
             Object object = iterator.next();

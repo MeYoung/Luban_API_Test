@@ -153,6 +153,12 @@
         </dependency>
 
 
+        <!-- 选址RPC服务 -->
+        <dependency>
+            <groupId>com.luckincoffee.expansion</groupId>
+            <artifactId>luckyexpansionrpc</artifactId>
+            <version>0.0.2-SNAPSHOT</version>
+        </dependency>
 
         <!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-plugin-api -->
 <!--        <dependency>

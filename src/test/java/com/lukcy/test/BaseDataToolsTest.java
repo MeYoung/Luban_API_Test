@@ -5,7 +5,6 @@ import com.lucky.common.annotion.CasePriority;
 import com.lucky.common.annotion.OTP;
 import com.lucky.common.annotion.OTPDataProvider;
 import com.lucky.common.utils.BaseDataTools;
-import com.lucky.common.utils.BaseDataUtils;
 import com.lucky.params.BaseData;
 import io.qameta.allure.Allure;
 import lombok.extern.slf4j.Slf4j;
@@ -78,7 +77,7 @@ public class BaseDataToolsTest {
 
     @Test(threadPoolSize = 2, invocationCount = 5)
     public void test1() throws InterruptedException {
-        BaseData baseData = new BaseData();
+        BaseData baseData = BaseData.getBaseData();
         baseData.setUid("123uid");
         baseData.setBaseURL(String.valueOf(Math.random()));
         BaseDataTools baseDataTools = BaseDataTools.getInstance();
@@ -132,9 +131,8 @@ public class BaseDataToolsTest {
     @BeforeSuite
     public void ttt() {
         log.info("before suite");
-        BaseData baseData = new BaseData();
+        BaseData baseData = BaseData.getBaseData();
         baseData.setEnv("test");
-        BaseDataUtils.setBaseData(baseData);
     }
 
 
