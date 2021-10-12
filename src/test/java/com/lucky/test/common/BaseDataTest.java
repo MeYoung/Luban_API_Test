@@ -1,5 +1,6 @@
 package com.lucky.test.common;
 
+import com.lucky.common.utils.ToolsUtils;
 import com.lucky.params.BaseData;
 import org.junit.Assert;
 import org.testng.annotations.Test;
@@ -10,8 +11,9 @@ import org.testng.annotations.Test;
  */
 public class BaseDataTest {
 
-    @Test
+    @Test(threadPoolSize = 5,invocationCount = 10)
     public void baseDataTest() {
+        ToolsUtils.sleep(2);
         BaseData baseData = BaseData.getBaseData();
         BaseData baseData2 = BaseData.getBaseData();
         Assert.assertSame(baseData, baseData2);
