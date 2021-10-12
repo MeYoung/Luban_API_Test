@@ -47,11 +47,11 @@ public class BaseData {
      * 2. 当我们调用getBaseDataStaticClass() 是， BaseDataUtils才会被装载，被装载时是线程安全的。  线程安全
      */
     private static class BaseDataUtils{
-        private static final  BaseData baseData = new BaseData();
+        private static final  BaseData BASE_DATA = new BaseData();
     }
 
     public static BaseData getBaseDataStaticClass(){
-        return BaseDataUtils.baseData;
+        return BaseDataUtils.BASE_DATA;
     }
 
     /**
