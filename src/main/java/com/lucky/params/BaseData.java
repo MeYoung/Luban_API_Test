@@ -77,12 +77,6 @@ public class BaseData {
 
     private String callerCode;
 
-
-    /**
-     * secKey
-     */
-//    private String secKeyEmpapi;
-
     /**
      * cid
      */
