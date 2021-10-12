@@ -18,4 +18,12 @@ public class BaseDataTest {
         BaseData baseData2 = BaseData.getBaseData();
         Assert.assertSame(baseData, baseData2);
     }
+
+    @Test(threadPoolSize = 5,invocationCount = 10)
+    public void baseDataTest2() {
+        ToolsUtils.sleep(2);
+        BaseData baseData = BaseData.getBaseDataStaticClass();
+        BaseData baseData2 = BaseData.getBaseDataStaticClass();
+        Assert.assertSame(baseData, baseData2);
+    }
 }
