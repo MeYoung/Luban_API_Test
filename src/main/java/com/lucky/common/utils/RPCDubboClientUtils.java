@@ -22,17 +22,17 @@ public class RPCDubboClientUtils {
     public static <T> T getService(Class<T> interfaceClass) {
         BaseData baseData = BaseData.getBaseData();
         ReferenceConfig<T> reference = new ReferenceConfig<T>();
-        reference.setApplication(new ApplicationConfig("luckyexpansion"));
+        reference.setApplication(new ApplicationConfig(baseData.getAppName()));
 //        连接注册中心配置
         RegistryConfig registry = new RegistryConfig();
 //        zookeeper 注册中心类型
-        registry.setAddress("zookeeper://10.218.21.27:5181");
+        registry.setAddress(baseData.getZkAddress());
 //        多个注册中心可以用setRegistries()
         reference.setRegistry(registry);
 //        设置版本
-        reference.setVersion("1.0.0");
+        reference.setVersion(baseData.getVersion());
 //        设置组
-        reference.setGroup("dubbo");
+        reference.setGroup(baseData.getGroup());
 //        设置服务接口
         reference.setInterface(interfaceClass);
 //        设置服务方法调用超时是时间，单位毫秒

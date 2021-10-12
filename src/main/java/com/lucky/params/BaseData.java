@@ -18,7 +18,7 @@ public class BaseData {
     private BaseData() {
     }
 
-    public static volatile BaseData baseData;
+    private static volatile BaseData baseData;
 
     public static BaseData getBaseData() {
         if (baseData == null) {
