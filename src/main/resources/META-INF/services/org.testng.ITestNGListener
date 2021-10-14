@@ -1,3 +1,3 @@
-com.lucky.common.testng.OTPAnnotationTransformer2
-com.lucky.common.testng.TestResultListener
-com.lucky.common.testng.InvokedMethodListener
+otp.lucky.common.testng.OTPAnnotationTransformer2
+otp.lucky.common.testng.TestResultListener
+otp.lucky.common.testng.InvokedMethodListener

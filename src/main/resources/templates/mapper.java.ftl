@@ -1,7 +1,7 @@
 package ${package.Mapper};
 
 import ${package.Entity}.${entity};
-import com.lucky.common.utils.MyMapperUtils;
+import MyMapperUtils;
 
 /**
  * @author ${author}

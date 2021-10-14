@@ -1,7 +1,7 @@
 package otp.demo;
 
-import com.lucky.common.utils.AssertUtils;
-import com.lucky.params.BaseData;
+import otp.lucky.common.utils.AssertUtils;
+import otp.lucky.params.BaseData;
 import lombok.extern.slf4j.Slf4j;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
@@ -17,8 +17,8 @@ public class OtpDemoTest3 {
     public void beforeTest() {
         String env = "test123";
         System.err.println("evn:" + env);
-        BaseData baseData = BaseData.getBaseData();
-        baseData.setEnv(env);
+        BaseData baseData = BaseData.getInstance();
+        baseData.setData("env",env);
 
         System.err.println("before test......");
     }
@@ -27,7 +27,7 @@ public class OtpDemoTest3 {
     @Test(description = "表格的测试用例1", groups = {"tttttt","1_205_809_c5yu2wj23680","1_205_809_c5yu2zjwz9c0","123","456"})
     public void test1() throws InterruptedException {
         System.out.println("test1.....表格的测试用例1");
-        log.info("env,{}",BaseData.getBaseData().getEnv());
+        log.info("env,{}",BaseData.getInstance().getData("evn"));
         Thread.sleep(2000);
     }
 
