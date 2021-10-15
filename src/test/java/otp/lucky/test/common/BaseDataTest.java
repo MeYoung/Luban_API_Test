@@ -32,7 +32,6 @@ public class BaseDataTest {
 
     @Test
     public void testGet(){
-//        BaseData.getInstance().setEnv("123");
         BaseData.getInstance().setEnv("test03");
         BaseData.getInstance().setEnv(Env.TEST03);
     }
