@@ -34,8 +34,7 @@ public class TestStep {
 
     @Attachment(value = "单独重跑", type = "text/html")
     public static String reRunUrl(String className, String methodName, String sendEmail) {
-        BaseData baseData = BaseData.getInstance();
-        String env = String.valueOf(baseData.getData("env"));
+        String env = String.valueOf(BaseData.getInstanceStaticClass().getEnv());
         String url = "";
         if (FinalText.ENV_TEST.equals(env)) {
             url = FinalText.JENKINS_TEST + "className=" + className + "&methodName=" + methodName + "&sendEmail=" + sendEmail;
@@ -125,10 +124,6 @@ public class TestStep {
         return str;
     }
 
-    @Attachment("初始化数据")
-    public static String baseDataStep(BaseData baseData) {
-        return baseData.toString();
-    }
 
     @Step("OTP平台用例ID:")
     public static String setCaseID(String caseId) {

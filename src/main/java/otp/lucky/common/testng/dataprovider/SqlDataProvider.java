@@ -3,13 +3,14 @@ package otp.lucky.common.testng.dataprovider;
 import com.alibaba.fastjson.JSONObject;
 import otp.lucky.common.annotion.OTPDataProvider;
 import otp.lucky.common.testng.dataprovider.sql.SqlMap;
-import otp.lucky.common.utils.EnvReaderUtils;
-import otp.lucky.common.utils.SQLExecuteUtils;
+import otp.lucky.common.utils.EnvReaderUtil;
+import otp.lucky.common.utils.SQLExecuteUtil;
 import otp.lucky.params.BaseData;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.session.SqlSession;
 import org.testng.ITestContext;
 import org.testng.annotations.DataProvider;
+import otp.lucky.params.Env;
 
 import java.lang.reflect.Method;
 import java.util.Iterator;
@@ -37,13 +38,13 @@ public class SqlDataProvider {
         BaseData baseData = BaseData.getInstance();
         String dbConfigID = "";
         try {
-            EnvReaderUtils envReaderUtils = new EnvReaderUtils(baseData.getData("env")+ ".properties");
-            dbConfigID = envReaderUtils.getValue(sqlConfigName);
+            EnvReaderUtil envReaderUtil = new EnvReaderUtil(baseData.getEnv()+ ".properties");
+            dbConfigID = envReaderUtil.getValue(sqlConfigName);
 
         } catch (Exception e) {
             log.error("BaseData 中的 env 是空值！！！", e);
         }
-        SqlSession sqlSession = SQLExecuteUtils.run(dbConfigID);
+        SqlSession sqlSession = SQLExecuteUtil.run(dbConfigID);
         //        注册SqlMap 等同在MyBatisConfig.mxl 设定了 mappers
         sqlSession.getConfiguration().addMapper(SqlMap.class);
         List<Map<String, Object>> list = sqlSession.getMapper(SqlMap.class).getPublicItems(sqlQuery);
@@ -55,7 +56,8 @@ public class SqlDataProvider {
 
     public static void main(String[] args) {
         BaseData baseData = BaseData.getInstance();
-        baseData.getData("env");
+        baseData.setEnv("test");
+        baseData.getEnv();
 
         Iterator<Object[]> iterator = getData("select * from t_adjust_time limit 10", "db.operation");
         for (Iterator<Object[]> it = iterator; it.hasNext(); ) {

@@ -1,16 +1,14 @@
 package otp.lucky.common.utils;
 
-import io.restassured.path.json.JsonPath;
 import org.apache.commons.beanutils.PropertyUtils;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
 /**
  * Created by shijin.huang on 2019/5/9
  */
-public class ToolsUtils {
+public class ToolsUtil {
 
     /**
      * 对象间 copy

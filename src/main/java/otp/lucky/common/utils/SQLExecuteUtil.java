@@ -12,7 +12,7 @@ import java.io.InputStream;
 /**
  * Created by shijin.huang on 2019/5/8
  */
-public class SQLExecuteUtils {
+public class SQLExecuteUtil {
     public static SqlSession run(String sqlEnv){
         //mybatis的配置文件
 //        String resource = "mybatis-config.xml";

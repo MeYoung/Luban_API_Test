@@ -11,12 +11,12 @@ import java.util.Properties;
  * 读取配置文件
  */
 @Slf4j
-public class EnvReaderUtils {
+public class EnvReaderUtil {
 
     String filePath = "";
     static String path = System.getProperty("user.dir");
 
-    public EnvReaderUtils(String fileName) {
+    public EnvReaderUtil(String fileName) {
         String filePath = path + "/src/main/resources/env/" + fileName;
         this.filePath = filePath;
     }

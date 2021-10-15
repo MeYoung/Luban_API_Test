@@ -1,6 +1,9 @@
 package otp.lucky.params;
 
 import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
+import org.testng.Assert;
+import otp.lucky.common.utils.EnumUtil;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -10,6 +13,7 @@ import java.util.Map;
  * <p>
  * 存放登录用户相关信息和公共全局变量
  */
+@Slf4j
 @Data
 public class BaseData {
 
@@ -52,14 +56,32 @@ public class BaseData {
         return BaseDataUtils.BASE_DATA;
     }
 
+    /**
+     * 服务环境 仅能使用 test03 test04 pre prod 字段
+     */
+    private Env env;
 
-    Map<String,Object> data = new HashMap<>();
-
-    public void setData(String key,Object value){
-        data.put(key,value);
+    public void setEnv(String env) {
+        if (EnumUtil.isInclude(Env.class, env)) {
+            Env envEnum = EnumUtil.fromString(Env.class, env);
+            this.env = envEnum;
+        } else {
+            log.error("环境名称有误，请使用 test03 、test04 、 pre 、 prod 中字符串!!!!");
+            Assert.fail();
+        }
     }
 
-    public Object getData(String key){
+    public String getEnv() {
+        return this.env.value();
+    }
+
+    Map<String, Object> data = new HashMap<>();
+
+    public void setData(String key, Object value) {
+        data.put(key, value);
+    }
+
+    public Object getData(String key) {
         return data.get(key);
     }
 

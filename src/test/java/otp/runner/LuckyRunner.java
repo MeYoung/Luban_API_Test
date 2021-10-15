@@ -17,7 +17,7 @@ import java.util.*;
  */
 @Slf4j
 public class LuckyRunner {
-    @Test
+//    @Test
     @Parameters({"testPlanName", "env", "caseIds", "threadCount", "parallel", "packages", "otpParameters"})
     public void runner(String testPlanName, String env, String caseIds,
                        String threadCount, String parallel, String packages,

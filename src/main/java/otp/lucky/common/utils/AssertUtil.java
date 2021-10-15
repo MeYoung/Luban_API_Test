@@ -7,16 +7,14 @@ import net.javacrumbs.jsonunit.JsonAssert;
 import org.apache.commons.lang3.StringUtils;
 import org.testng.Assert;
 
-import java.beans.PropertyDescriptor;
 import java.lang.reflect.Field;
-import java.lang.reflect.Method;
 import java.util.regex.Pattern;
 
 /**
  * Created by shijin.huang on 2018/5/9
  */
 @Slf4j
-public class AssertUtils extends Assert {
+public class AssertUtil extends Assert {
     //    额外添加的校验方法 =======================================================================
 
     /**
@@ -35,7 +33,7 @@ public class AssertUtils extends Assert {
             log.info("前缀匹配校验成功");
         } else {
             log.error("前缀匹配校验失败！\n待校验的字符窜为:" + content + "\n校验的前缀表达式为:" + prefix);
-            AssertUtils.fail();
+            AssertUtil.fail();
         }
     }
 
@@ -46,7 +44,7 @@ public class AssertUtils extends Assert {
      * @param prefix  前缀表达式
      */
     public static void assertStartWith(String content, String prefix) {
-        AssertUtils.assertStartWith(content, prefix, null);
+        AssertUtil.assertStartWith(content, prefix, null);
     }
 
 
@@ -66,7 +64,7 @@ public class AssertUtils extends Assert {
             log.info("后缀匹配校验成功！");
         } else {
             log.error("后缀匹配校验失败！\n待校验的字符窜为:" + content + "\n校验的后缀表达式为:" + endfix);
-            AssertUtils.fail();
+            AssertUtil.fail();
         }
     }
 
@@ -77,7 +75,7 @@ public class AssertUtils extends Assert {
      * @param endfix  前缀表达式
      */
     public static void assertEndWith(String content, String endfix) {
-        AssertUtils.assertEndWith(content, endfix, null);
+        AssertUtil.assertEndWith(content, endfix, null);
     }
 
 
@@ -97,7 +95,7 @@ public class AssertUtils extends Assert {
             log.info("匹配校验成功！");
         } else {
             log.error("匹配校验失败！\n待校验的字符串为:" + matcher + "\n校验的正则表达式为:" + regex);
-            AssertUtils.fail();
+            AssertUtil.fail();
         }
     }
 
@@ -108,7 +106,7 @@ public class AssertUtils extends Assert {
      * @param regex   校验的正则表达式
      */
     public static void assertMatch(String matcher, String regex) {
-        AssertUtils.assertMatch(matcher, regex, null);
+        AssertUtil.assertMatch(matcher, regex, null);
     }
 
     /**
@@ -127,7 +125,7 @@ public class AssertUtils extends Assert {
             log.info("匹配校验成功！");
         } else {
             log.error("匹配校验失败！\n待校验的字符串为:" + matcher + "\n校验的正则表达式为:" + regex);
-            AssertUtils.fail();
+            AssertUtil.fail();
         }
     }
 
@@ -138,7 +136,7 @@ public class AssertUtils extends Assert {
      * @param regex   校验的正则表达式
      */
     public static void assertNoMatch(String matcher, String regex) {
-        AssertUtils.assertNoMatch(matcher, regex, null);
+        AssertUtil.assertNoMatch(matcher, regex, null);
     }
 
 
@@ -157,7 +155,7 @@ public class AssertUtils extends Assert {
             log.info("匹配校验成功！");
         } else {
             log.error("匹配校验失败！\n待校验的字符串为:" + content + "\n包含字符串为:" + included);
-            AssertUtils.fail(message);
+            AssertUtil.fail(message);
         }
     }
 
@@ -168,7 +166,7 @@ public class AssertUtils extends Assert {
      * @param included 包含的字符串
      */
     public static void assertInclude(String content, String included) {
-        AssertUtils.assertInclude(content, included, null);
+        AssertUtil.assertInclude(content, included, null);
     }
 
 
@@ -190,12 +188,12 @@ public class AssertUtils extends Assert {
                 v1 = f.get(obj1);
                 v2 = f.get(obj2);
             } catch (IllegalAccessException e) {
-                AssertUtils.fail();
+                AssertUtil.fail();
                 e.printStackTrace();
             }
             if (!equals(v1, v2)) {
                 log.error("\n" + f.getName() + "：\n" + "实际值：" + v1 + "\n" + "预期值：" + v2);
-                AssertUtils.fail();
+                AssertUtil.fail();
             } else {
                 log.info(f.getName() + "：" + "实际值：" + v1 + "预期值：" + v2);
             }
@@ -218,7 +216,7 @@ public class AssertUtils extends Assert {
      * @param cls
      * @param <T>
      */
-    public static <T> void compare(T actual, T expected, Class<T> cls) {
+/*    public static <T> void compare(T actual, T expected, Class<T> cls) {
         try {
             Field[] fields = cls.getDeclaredFields();
             for (Field field : fields) {
@@ -242,7 +240,7 @@ public class AssertUtils extends Assert {
             AssertUtils.fail();
             e.printStackTrace();
         }
-    }
+    }*/
 
     public static void assertSuccess(String reponse) {
         JsonPath jsonPath = new JsonPath(reponse);
@@ -267,29 +265,29 @@ public class AssertUtils extends Assert {
      * @param msg
      */
     public static void assertNotEmpty(Object obj, String msg) {
-        Assert.assertTrue(StringUtils.isNotEmpty(obj.toString()),msg);
+        Assert.assertTrue(StringUtils.isNotEmpty(obj.toString()), msg);
     }
 
 
     /**
      * 连个json对比是否相等
+     *
      * @param expected
      * @param actual
      */
     public static void assertJsonEquals(Object expected, Object actual) {
-        JsonAssert.assertJsonEquals(expected,actual);
+        JsonAssert.assertJsonEquals(expected, actual);
     }
 
 
     /**
-     *
      * @param expected
      * @param actual
-     * @param paths 不校验的路径
+     * @param paths    不校验的路径
      */
     @Attachment("结果json校验")
-    public static void assertJsonEquals(Object expected, Object actual,String... paths) {
-        JsonAssert.assertJsonEquals(expected,actual,JsonAssert.whenIgnoringPaths(paths));
+    public static void assertJsonEquals(Object expected, Object actual, String... paths) {
+        JsonAssert.assertJsonEquals(expected, actual, JsonAssert.whenIgnoringPaths(paths));
     }
 }
 

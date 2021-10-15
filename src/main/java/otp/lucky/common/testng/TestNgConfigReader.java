@@ -22,7 +22,6 @@ public class TestNgConfigReader {
     private static final String SOURCEDIR = "sourcecodedir";
     private static final String SOURCEENCODING = "sourcecodeencoding";
 
-
     static String path = System.getProperty("user.dir");
 //    private static final String CONFIGFILE = path + "/config/testng.properties";
 

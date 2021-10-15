@@ -13,7 +13,7 @@ import java.util.TreeMap;
  * <p>
  * 签名
  */
-public class SignUtils {
+public class SignUtil {
     public static final String API_KEY = "aid";
     public static final String SIGN_KEY = "sign";
     private static final int BLOCK_LEN = 4;

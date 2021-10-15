@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.example</groupId>
+    <groupId>otp.lucky</groupId>
     <artifactId>OTP_Antomation</artifactId>
     <version>1.0-SNAPSHOT</version>
 
@@ -158,6 +158,13 @@
             <version>2.11.0</version>
         </dependency>-->
 
+        <!-- 选址RPC服务 -->
+        <dependency>
+            <groupId>com.luckincoffee.expansion</groupId>
+            <artifactId>luckyexpansionrpc</artifactId>
+            <version>0.0.2-SNAPSHOT</version>
+        </dependency>
+
     </dependencies>
 
     <repositories>
@@ -189,9 +196,9 @@
                 <version>2.20</version>
                 <configuration>
 
-                    <suiteXmlFiles>
+     <!--               <suiteXmlFiles>
                         <suiteXmlFile>./src/test/runxml/${CaseFile}/</suiteXmlFile>
-                    </suiteXmlFiles>
+                    </suiteXmlFiles>-->
 
                     <argLine>
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"

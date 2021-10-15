@@ -1,6 +1,6 @@
 package otp.demo;
 
-import otp.lucky.common.utils.AssertUtils;
+import otp.lucky.common.utils.AssertUtil;
 import otp.lucky.params.BaseData;
 import lombok.extern.slf4j.Slf4j;
 import org.testng.annotations.*;
@@ -31,7 +31,7 @@ public class OtpDemoTest {
     @Test(description = "脑图的测试用例2", groups = {"2_83_29_6860729584200384544", "1_205_932_c7z38t4luao0"})
     public void test2() throws InterruptedException {
         Thread.sleep(2000);
-        AssertUtils.assertEquals(1, 2);
+        AssertUtil.assertEquals(1, 2);
         log.info("脑图的测试用例2-2_83_29_6860729584200384544");
     }
 

@@ -11,7 +11,7 @@ import java.util.Date;
 /**
  * Created by shijin.huang on 2018/11/29
  */
-public class DateFormatUtils {
+public class DateFormatUtil {
 
     public static final String COMMON_DATE_FORMAT = "yyyy-MM-dd";
 
@@ -79,8 +79,8 @@ public class DateFormatUtils {
      * @return
      */
     public static Date format(Date date) {
-        String date1 = DateFormatUtils.format(date, DateFormatUtils.COMMON_DATE_FORMAT);
-        return DateFormatUtils.parse(date1, DateFormatUtils.COMMON_DATE_FORMAT);
+        String date1 = DateFormatUtil.format(date, DateFormatUtil.COMMON_DATE_FORMAT);
+        return DateFormatUtil.parse(date1, DateFormatUtil.COMMON_DATE_FORMAT);
     }
 
     /**
@@ -94,7 +94,7 @@ public class DateFormatUtils {
         ZoneId zone = ZoneId.systemDefault();
         Instant instant = localDateTime.atZone(zone).toInstant();
         Date date = Date.from(instant);
-        return DateFormatUtils.format(date, type);
+        return DateFormatUtil.format(date, type);
     }
 
     public static long time() {

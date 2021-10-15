@@ -2,6 +2,7 @@ package otp.lucky.common.utils;
 
 import otp.lucky.params.BaseData;
 
+@Deprecated
 public class BaseDataTools {
 
     private BaseDataTools() {

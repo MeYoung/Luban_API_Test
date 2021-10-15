@@ -1,10 +1,10 @@
 package otp.lucky.test.common;
 
-import org.testng.Assert;
-import otp.lucky.common.utils.ToolsUtils;
-import otp.lucky.params.BaseData;
 import lombok.extern.slf4j.Slf4j;
+import org.testng.Assert;
 import org.testng.annotations.Test;
+import otp.lucky.common.utils.ToolsUtil;
+import otp.lucky.params.BaseData;
 
 /**
  * @Author shijin.huang
@@ -15,7 +15,7 @@ public class BaseDataTest {
 
     @Test(threadPoolSize = 5, invocationCount = 10)
     public void baseDataTest() {
-        ToolsUtils.sleep(2);
+        ToolsUtil.sleep(2);
         BaseData baseData = BaseData.getInstance();
         BaseData baseData2 = BaseData.getInstance();
         Assert.assertSame(baseData, baseData2);
@@ -23,11 +23,18 @@ public class BaseDataTest {
 
     @Test(threadPoolSize = 5, invocationCount = 10)
     public void baseDataTest2() {
-        ToolsUtils.sleep(2);
+        ToolsUtil.sleep(2);
         BaseData baseData = BaseData.getInstanceStaticClass();
         BaseData baseData2 = BaseData.getInstanceStaticClass();
         Assert.assertSame(baseData, baseData2);
     }
+
+    @Test
+    public void testGet(){
+//        BaseData.getInstance().setEnv("123");
+        BaseData.getInstance().setEnv("test03");
+    }
+
 
 
 
