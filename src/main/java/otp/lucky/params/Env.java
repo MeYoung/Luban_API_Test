@@ -8,9 +8,21 @@ package otp.lucky.params;
  */
 public enum Env {
 
+    /**
+     * 测试3
+     */
     TEST03("test03"),
+    /**
+     * 测试4
+     */
     TEST04("test04"),
+    /**
+     * 预生产
+     */
     PRE("pre"),
+    /**
+     * 线上
+     */
     PROD("prod");
 
     private final String value;
