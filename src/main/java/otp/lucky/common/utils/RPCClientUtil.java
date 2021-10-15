@@ -27,7 +27,7 @@ public class RPCClientUtil {
      */
     public static <T> T getService(Class<T> interfaceClass) {
         String env = BaseData.getInstance().getEnv();
-        if (null == env||"".equals(env)) {
+        if (null == env || "".equals(env)) {
             log.error("BaseData的env值为空，请先设定RPC执行的环境!!");
             return null;
         }
@@ -48,7 +48,7 @@ public class RPCClientUtil {
      */
     public static <T> T getService(Class<T> interfaceClass, String version, String group) {
         String env = BaseData.getInstance().getEnv();
-        if ("".equals(env)) {
+        if ("".equals(env) || null == env) {
             log.error("BaseData的env值为空，请先设定RPC执行的环境!!");
             return null;
         }

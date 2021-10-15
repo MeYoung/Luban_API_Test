@@ -12,7 +12,8 @@ import java.util.StringJoiner;
  * @Author shijin.huang
  * @Date 2021/10/14
  * Properties 文件读取
- */@Slf4j
+ */
+@Slf4j
 public class PropertiesUtil {
 
 
@@ -28,7 +29,7 @@ public class PropertiesUtil {
         if (FileUtil.exist(userPropertiesPath())) {
             setting = new Setting(userPropertiesPath());
             String value = setting.getStr(key);
-            if (value != null) {
+            if (value != null && !"".equals(value)) {
                 return value;
             } else {
                 setting = new Setting(FinalText.OTP_PROPERTIES);
@@ -52,7 +53,7 @@ public class PropertiesUtil {
                 .add("resources")
                 .add(FinalText.OTP_PROPERTIES);
         String propertiesPath = stringJoiner.toString();
-        log.info("propertiesPath:{}",propertiesPath);
+        log.info("propertiesPath:{}", propertiesPath);
         return propertiesPath;
     }
 }
