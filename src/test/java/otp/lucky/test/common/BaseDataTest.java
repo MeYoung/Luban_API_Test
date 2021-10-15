@@ -5,6 +5,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import otp.lucky.common.utils.ToolsUtil;
 import otp.lucky.params.BaseData;
+import otp.lucky.params.Env;
 
 /**
  * @Author shijin.huang
@@ -33,6 +34,7 @@ public class BaseDataTest {
     public void testGet(){
 //        BaseData.getInstance().setEnv("123");
         BaseData.getInstance().setEnv("test03");
+        BaseData.getInstance().setEnv(Env.TEST03);
     }
 
 

@@ -75,6 +75,10 @@ public class BaseData {
         return this.env.value();
     }
 
+    public void setEnv(Env env){
+        this.env=env;
+    }
+
     Map<String, Object> data = new HashMap<>();
 
     public void setData(String key, Object value) {
