@@ -63,7 +63,7 @@ public class BaseData {
 
     public void setEnv(String env) {
         if (EnumUtil.isInclude(Env.class, env)) {
-            Env envEnum = EnumUtil.fromString(Env.class, env);
+            Env envEnum = EnumUtil.likeValueOf(Env.class, env);
             this.env = envEnum;
         } else {
             log.error("环境名称有误，请使用 test03 、test04 、 pre 、 prod 中字符串!!!!");
