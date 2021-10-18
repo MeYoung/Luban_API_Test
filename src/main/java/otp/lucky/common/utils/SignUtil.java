@@ -41,9 +41,9 @@ public class SignUtil {
         Iterator iterator = signMap.keySet().iterator();
         while (iterator.hasNext()) {
             String key = (String) iterator.next();
-            if ((StringUtils.isNotEmpty((CharSequence) signMap.get(key))) &&
+            if ((StringUtils.isNotEmpty( signMap.get(key))) &&
                     (!(SIGN_KEY.equals(key))) && (!(API_KEY.equals(key)))) {
-                String value = (String) signMap.get(key);
+                String value = signMap.get(key);
                 sb.append(key).append("=").append(value).append(";");
             }
         }
@@ -57,10 +57,10 @@ public class SignUtil {
             throw new IllegalArgumentException("MD5加密结果字节数组错误");
         }
 
-        Integer first = Integer.valueOf(Math.abs(bytesToInt(md5Result, 0)));
-        Integer second = Integer.valueOf(Math.abs(bytesToInt(md5Result, 4)));
-        Integer third = Integer.valueOf(Math.abs(bytesToInt(md5Result, 8)));
-        Integer fourth = Integer.valueOf(Math.abs(bytesToInt(md5Result, 12)));
+        Integer first = Math.abs(bytesToInt(md5Result, 0));
+        Integer second = Math.abs(bytesToInt(md5Result, 4));
+        Integer third = Math.abs(bytesToInt(md5Result, 8));
+        Integer fourth = Math.abs(bytesToInt(md5Result, 12));
         return new StringBuilder().append(first.toString()).append(second.toString()).append(third.toString()).append(fourth.toString()).toString();
     }
 
