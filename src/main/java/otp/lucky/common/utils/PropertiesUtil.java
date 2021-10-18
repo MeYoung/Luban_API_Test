@@ -54,7 +54,6 @@ public class PropertiesUtil {
                 .add("resources")
                 .add(FinalText.OTP_USER_PROPERTIES);
         String propertiesPath = stringJoiner.toString();
-        log.info("propertiesPath:{}", propertiesPath);
         return propertiesPath;
     }
 }
