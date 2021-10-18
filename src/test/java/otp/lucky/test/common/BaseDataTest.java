@@ -34,6 +34,7 @@ public class BaseDataTest {
     public void testGet(){
         BaseData.getInstance().setEnv("test03");
         BaseData.getInstance().setEnv(Env.TEST03);
+        BaseData.getInstance().setEnv("12312");
     }
 
 

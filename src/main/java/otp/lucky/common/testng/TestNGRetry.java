@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.testng.IRetryAnalyzer;
 import org.testng.ITestResult;
 import org.testng.Reporter;
+import otp.lucky.common.utils.PropertiesUtil;
 
 /**
  * Created by shijin.huang on 2019/5/7
@@ -13,20 +14,21 @@ import org.testng.Reporter;
 @Slf4j
 public class TestNGRetry implements IRetryAnalyzer {
     private int retryCount = 1;
-    private static int maxRetryCount;
+//    private static int maxRetryCount;
 
-    private static final String PATH = "/src/main/resources/otpAutomation.properties";
+//    private static final String PATH = "/src/main/resources/otpAutomation.properties";
 
     /**
      * 读取配置文件的重跑次数
      */
-    static {
+/*    static {
+
         TestNgConfigReader config = TestNgConfigReader.getInstance(PATH);
         maxRetryCount = config.getRetryCount();
         log.info("retrycount:{}" ,maxRetryCount);
         log.info("sourceCodeDir:{}" , config.getSourceCodeDir());
         log.info("sourceCodeEncoding:{}" , config.getSrouceCodeEncoding());
-    }
+    }*/
 
 
     /**
@@ -37,6 +39,7 @@ public class TestNGRetry implements IRetryAnalyzer {
      */
     @Override
     public boolean retry(ITestResult result) {
+       int maxRetryCount = Integer.parseInt(PropertiesUtil.getValue("testng.retrycount"));
         if (retryCount <= maxRetryCount) {
             String message = "Retry for [" + result.getName() + "] on class [" + result.getTestClass().getName() + "] Retry "
                     + retryCount + " times";

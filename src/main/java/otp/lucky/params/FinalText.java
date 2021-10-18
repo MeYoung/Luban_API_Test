@@ -22,6 +22,7 @@ public class FinalText {
     public static final String ENV_TEST03 = "test03";
     public static final String ENV_TEST04 = "test04";
     public static final String OTP_PROPERTIES = "otpAutomation.properties";
+    public static final String OTP_USER_PROPERTIES = "otp.properties";
 
     public static final String DOU_HAO=",";
 }

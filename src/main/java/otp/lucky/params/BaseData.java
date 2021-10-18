@@ -66,8 +66,7 @@ public class BaseData {
             Env envEnum = EnumUtil.likeValueOf(Env.class, env);
             this.env = envEnum;
         } else {
-            log.error("环境名称有误，请使用 test03 、test04 、 pre 、 prod 中字符串!!!!");
-            Assert.fail();
+            Assert.fail("环境名称有误：请使用 test03 、test04 、 pre 、 prod 中字符串!!!!");
         }
     }
 
