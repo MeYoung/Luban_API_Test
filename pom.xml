@@ -49,11 +49,11 @@
             <version>1.2.58</version>
         </dependency>
 
-        <dependency>
+<!--        <dependency>
             <groupId>commons-beanutils</groupId>
             <artifactId>commons-beanutils</artifactId>
             <version>1.9.3</version>
-        </dependency>
+        </dependency>-->
 
         <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
         <dependency>
@@ -130,12 +130,12 @@
             <artifactId>json-unit</artifactId>
             <version>2.10.0</version>
         </dependency>
-        <dependency>
+<!--        <dependency>
             <groupId>net.javacrumbs.json-unit</groupId>
             <artifactId>json-unit</artifactId>
             <version>2.10.0</version>
             <scope>compile</scope>
-        </dependency>
+        </dependency>-->
 
         <!-- https://mvnrepository.com/artifact/cn.hutool/hutool-all -->
         <dependency>
@@ -158,12 +158,7 @@
             <version>2.11.0</version>
         </dependency>-->
 
-        <!-- 选址RPC服务 -->
-        <dependency>
-            <groupId>com.luckincoffee.expansion</groupId>
-            <artifactId>luckyexpansionrpc</artifactId>
-            <version>0.0.2-SNAPSHOT</version>
-        </dependency>
+
 
     </dependencies>
 
