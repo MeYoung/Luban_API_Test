@@ -1,6 +1,9 @@
 package otp.lucky.common.utils;
 
 import lombok.extern.slf4j.Slf4j;
+import otp.lucky.common.utils.bank.BankCardNumberUtil;
+import otp.lucky.common.utils.bank.BankCardTypeEnum;
+import otp.lucky.common.utils.bank.BankNameEnum;
 
 import java.util.Random;
 
@@ -12,6 +15,9 @@ import java.util.Random;
  */
 @Slf4j
 public class RandomUtil extends cn.hutool.core.util.RandomUtil {
+
+    public static String base = "abcdefghijklmnopqrstuvwxyz0123456789";
+
     /**
      * 生成随机数字,
      *
@@ -82,6 +88,7 @@ public class RandomUtil extends cn.hutool.core.util.RandomUtil {
 
     /**
      * 生成18位身份证号
+     *
      * @return
      */
     public static String getIDCard18Random() {
@@ -90,12 +97,93 @@ public class RandomUtil extends cn.hutool.core.util.RandomUtil {
 
     /**
      * 通过区域名称生成对应的 身份证
+     *
      * @param areaName
      * @return
      */
-    public static String getIdCard18ByAreaName(String areaName){
+    public static String getIdCard18ByAreaName(String areaName) {
         return IdCardUtil.getIdCard18ByAreaName(areaName);
     }
 
+    private static final String[] EAMIL_SUFFIX = ("@luckincoffee.com,@gmail.com,@yahoo.com,@msn.com,@hotmail.com," +
+            "@aol.com,@ask.com,@live.com,@qq.com,@0355.net,@163.com,@163.net,@263.net," +
+            "@3721.net,@yeah.net,@googlemail.com,@126.com,@sina.com,@sohu.com,@yahoo.com.cn")
+            .split(",");
+
+
+    /**
+     * 随机生成email
+     *
+     * @param leng        长度
+     * @param emailSuffix 邮箱后缀
+     * @return
+     */
+    public static String getEmailRandom(int leng, String emailSuffix) {
+        StringBuffer sb = new StringBuffer();
+        sb.append(getStringNumRandom(leng));
+        sb.append(emailSuffix);
+        return sb.toString();
+    }
+
+    /**
+     * 随机生成email
+     *
+     * @return
+     */
+    public static String getEmailRandom() {
+        StringBuffer sb = new StringBuffer();
+        sb.append(getStringNumRandom(Math.toIntExact(getNumRandom(3, 7))));
+        sb.append(EAMIL_SUFFIX[(int) (Math.random() * EAMIL_SUFFIX.length)]);
+        return sb.toString();
+    }
+
+    private static final String[] MOBILE_PREFIX = ("133,153,177,180,181,189,134,135,136,137,138,139,150,151,152,157,158," +
+            "159,178,182,183,184,187,188,130,131,132,155,156,176,185,186,145,147,170 ").split(",");
+
+    /**
+     * 随机生成手机号码
+     *
+     * @return 返回手机号码
+     */
+    public static String getPhoneRandom() {
+        int i = Math.toIntExact(getNumRandom(0, MOBILE_PREFIX.length - 1));
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(MOBILE_PREFIX[i]);
+        stringBuilder.append(getNumRandom(10));
+        return stringBuilder.toString();
+    }
+
+    /**
+     * 根据预期前缀返回11未电话随机号码
+     *
+     * @param prefix 手机号码前缀
+     * @return 返回手机号码
+     */
+    public static String getPhoneRandom(String prefix) {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(prefix);
+        stringBuilder.append(getNumRandom(8));
+        return stringBuilder.toString();
+    }
+
+    /**
+     * 随机获取银行卡号
+     *
+     * @return 返回银行卡号
+     */
+    public static String getBankCardIdRandom() {
+        return BankCardNumberUtil.getBankCardId();
+    }
+
+    /**
+     * 随机生成某银行某类型卡号
+     *
+     * @param bankName 银行名字
+     * @param cardType 银行卡类型
+     * @return 返回对应银行卡号
+     */
+    public static String getBankCardIdRandom(BankNameEnum bankName, BankCardTypeEnum cardType) {
+        return BankCardNumberUtil.getBankCardIdRandom(bankName, cardType);
+    }
 
 }
