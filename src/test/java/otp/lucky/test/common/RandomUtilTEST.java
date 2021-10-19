@@ -26,6 +26,7 @@ public class RandomUtilTEST {
     public void getBankCardIdRandom1(){
         log.info(RandomUtil.getBankCardIdRandom());
         log.info(RandomUtil.getBankCardIdRandom(BankNameEnum.CMBC,BankCardTypeEnum.DEBIT));
+        AssertUtil.assertBankIdCard("6222113241395524");
     }
 }
 
