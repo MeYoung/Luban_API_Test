@@ -2,6 +2,7 @@ package otp.lucky.common.utils.bank;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
+import otp.lucky.params.FinalText;
 
 /**
  * @Author shijin.huang
@@ -26,7 +27,7 @@ public class BankCardNumberValidator {
             return false;
         }
 
-        if (cardNo.length() > 19 || cardNo.length() < 16) {
+        if (cardNo.length() > FinalText.NUM_19 || cardNo.length() < FinalText.NUM_16) {
             return false;
         }
 

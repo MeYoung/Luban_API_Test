@@ -16,6 +16,8 @@ public class FinalText {
     public static final Integer NUM_3 = 3;
     public static final Integer NUM_4 = 4;
     public static final Integer NUM_10 = 10;
+    public static final Integer NUM_16 = 16;
+    public static final Integer NUM_19 = 19;
     public static final String ENV_PRE = "pre";
     public static final String ENV_TEST = "test";
     public static final String ENV_TEST02 = "test02";
