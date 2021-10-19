@@ -106,19 +106,19 @@ public class IdCardUtil extends IdcardUtil {
         StringBuilder builder = new StringBuilder();
         builder.append(birthday.get(Calendar.YEAR));
         long month = birthday.get(Calendar.MONTH) + FinalText.NUM_1;
-        if (month < 10) {
+        if (month < FinalText.NUM_10) {
             builder.append("0");
         }
         builder.append(month);
         long date = birthday.get(Calendar.DATE);
-        if (date < 10) {
+        if (date < FinalText.NUM_10) {
             builder.append("0");
         }
         builder.append(date);
         return builder.toString();
     }
 
-    /*
+    /**
      * 身份证算法实现
      *
      * 1、号码的结构 公民身份号码是特征组合码， 由十七位数字本体码和一位校验码组成。 排列顺序从左        至右依次为：六位数字地址码，八位数字出生日期码
@@ -146,7 +146,7 @@ public class IdCardUtil extends IdcardUtil {
      * 5.通过上面得知如果余数是2，就会在身份证的第18位数字上出现罗马数字的Ⅹ。如果余数是10，身份证的最后一位号码就是2。
      */
     private static char calcTrailingNumber(char[] chars) {
-        if (chars.length < 17) {
+        if (chars.length < FinalText.NUM_17) {
             return ' ';
         }
         int[] c = {7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2};
@@ -169,9 +169,9 @@ public class IdCardUtil extends IdcardUtil {
      */
     private static String randomCode() {
         int code = (int) (Math.random() * 1000);
-        if (code < 10) {
+        if (code < FinalText.NUM_10) {
             return "00" + code;
-        } else if (code < 100) {
+        } else if (code < FinalText.NUM_100) {
             return "0" + code;
         } else {
             return "" + code;
