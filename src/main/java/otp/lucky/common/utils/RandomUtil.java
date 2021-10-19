@@ -1,5 +1,7 @@
 package otp.lucky.common.utils;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.util.Random;
 
 /**
@@ -8,6 +10,7 @@ import java.util.Random;
  * <p>
  * 随机数生成
  */
+@Slf4j
 public class RandomUtil extends cn.hutool.core.util.RandomUtil {
     /**
      * 生成随机数字,
@@ -76,5 +79,23 @@ public class RandomUtil extends cn.hutool.core.util.RandomUtil {
         }
         return val.toString();
     }
+
+    /**
+     * 生成18位身份证号
+     * @return
+     */
+    public static String getIDCard18Random() {
+        return IdCardUtil.getIDCard18Random();
+    }
+
+    /**
+     * 通过区域名称生成对应的 身份证
+     * @param areaName
+     * @return
+     */
+    public static String getIdCard18ByAreaName(String areaName){
+        return IdCardUtil.getIdCard18ByAreaName(areaName);
+    }
+
 
 }
