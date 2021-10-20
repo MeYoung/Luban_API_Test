@@ -32,11 +32,8 @@ public class RandomUtilTEST {
 
     @Test
     public void getChineseNameRandomTest(){
-        for (int i = 0; i <100 ; i++) {
             String id = RandomUtil.getChineseNameRandom();
             log.info(id);
-        }
-
     }
 
 }

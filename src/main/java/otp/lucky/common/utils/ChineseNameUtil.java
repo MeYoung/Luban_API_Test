@@ -1,9 +1,9 @@
 package otp.lucky.common.utils;
 
+import lombok.extern.slf4j.Slf4j;
 import otp.lucky.params.FinalText;
 
 import java.io.UnsupportedEncodingException;
-import java.util.Date;
 import java.util.Random;
 
 
@@ -13,6 +13,7 @@ import java.util.Random;
  * <p>
  * 中文名称随机生成
  */
+@Slf4j
 public class ChineseNameUtil {
 
     private static ChineseNameUtil chineseNameUtil = new ChineseNameUtil();
@@ -69,7 +70,7 @@ public class ChineseNameUtil {
         try {
             str = new String(b, "GBK");
         } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
+            log.error("生成汉子失败！！！，{}",e.toString());
         }
         return str;
     }
