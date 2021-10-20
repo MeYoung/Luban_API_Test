@@ -7,6 +7,7 @@ import otp.lucky.common.utils.IdCardUtil;
 import otp.lucky.common.utils.RandomUtil;
 import otp.lucky.common.utils.bank.BankCardTypeEnum;
 import otp.lucky.common.utils.bank.BankNameEnum;
+import otp.lucky.params.FinalText;
 
 /**
  * @Author shijin.huang
@@ -31,7 +32,7 @@ public class RandomUtilTEST {
 
     @Test(invocationCount = 1,threadPoolSize = 1)
     public void getChineseNameRandomTest(){
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < FinalText.NUM_100; i++) {
             String id = RandomUtil.getChineseNameRandom();
             log.info(id);
         }
@@ -40,7 +41,7 @@ public class RandomUtilTEST {
 
     @Test(invocationCount = 1,threadPoolSize = 1)
     public void getChineseRandomTest(){
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < FinalText.NUM_100; i++) {
             String id = RandomUtil.getChineseRandom(10);
             log.info(id);
         }
