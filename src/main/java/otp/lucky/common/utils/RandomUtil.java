@@ -195,4 +195,18 @@ public class RandomUtil extends cn.hutool.core.util.RandomUtil {
         return ChineseNameUtil.getInstance().getChineseNameRandom();
     }
 
+
+    /**
+     * 随机生成若干个汉子
+     * @param count 个数
+     * @return 汉子字符串
+     */
+    public static String getChineseRandom(int count) {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < count; i++) {
+            stringBuilder.append(ChineseNameUtil.getInstance().getRandomChar());
+        }
+        return stringBuilder.toString();
+    }
+
 }

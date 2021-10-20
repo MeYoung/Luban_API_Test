@@ -20,8 +20,6 @@ public class RandomUtilTEST {
        String id = IdCardUtil.getIDCard18Random();
        AssertUtil.assertIdCard(id);
     }
-
-
     @Test
     public void getBankCardIdRandom1(){
         log.info(RandomUtil.getBankCardIdRandom());
@@ -30,12 +28,23 @@ public class RandomUtilTEST {
     }
 
 
-    @Test
+
+    @Test(invocationCount = 1,threadPoolSize = 1)
     public void getChineseNameRandomTest(){
+        for (int i = 0; i < 100; i++) {
             String id = RandomUtil.getChineseNameRandom();
             log.info(id);
+        }
+
     }
 
+    @Test(invocationCount = 1,threadPoolSize = 1)
+    public void getChineseRandomTest(){
+        for (int i = 0; i < 100; i++) {
+            String id = RandomUtil.getChineseRandom(10);
+            log.info(id);
+        }
+    }
 }
 
 
