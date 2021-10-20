@@ -19,7 +19,12 @@ public class FinalText {
     public static final Integer NUM_16 = 16;
     public static final Integer NUM_17 = 17;
     public static final Integer NUM_19 = 19;
+    public static final Integer NUM_39 = 39;
+    public static final Integer NUM_93 = 93;
     public static final Integer NUM_100 = 100;
+    public static final Integer NUM_161 = 161;
+    public static final Integer NUM_176 = 176;
+
     public static final String ENV_PRE = "pre";
     public static final String ENV_TEST = "test";
     public static final String ENV_TEST02 = "test02";

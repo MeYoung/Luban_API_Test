@@ -172,7 +172,7 @@ public class RandomUtil extends cn.hutool.core.util.RandomUtil {
      * @return 返回银行卡号
      */
     public static String getBankCardIdRandom() {
-        return BankCardNumberUtil.getBankCardId();
+        return BankCardNumberUtil.getInstance().getBankCardId();
     }
 
     /**
@@ -184,6 +184,15 @@ public class RandomUtil extends cn.hutool.core.util.RandomUtil {
      */
     public static String getBankCardIdRandom(BankNameEnum bankName, BankCardTypeEnum cardType) {
         return BankCardNumberUtil.getBankCardIdRandom(bankName, cardType);
+    }
+
+    /**
+     * 随机生成中文名
+     *
+     * @return 中文名
+     */
+    public static String getChineseNameRandom() {
+        return ChineseNameUtil.getInstance().getChineseNameRandom();
     }
 
 }

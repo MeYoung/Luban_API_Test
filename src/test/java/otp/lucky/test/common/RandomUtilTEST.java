@@ -28,6 +28,17 @@ public class RandomUtilTEST {
         log.info(RandomUtil.getBankCardIdRandom(BankNameEnum.CMBC,BankCardTypeEnum.DEBIT));
         AssertUtil.assertBankIdCard("6222113241395524");
     }
+
+
+    @Test
+    public void getChineseNameRandomTest(){
+        for (int i = 0; i <100 ; i++) {
+            String id = RandomUtil.getChineseNameRandom();
+            log.info(id);
+        }
+
+    }
+
 }
 
 

@@ -32,7 +32,7 @@ public class BankCardNumberUtil {
         return instance;
     }
 
-    public static String getBankCardId() {
+    public String getBankCardId() {
 //        生成卡号 622126 - 622925的卡号
         int prev = 622126 + RandomUtil.randomInt(0, 800);
         return BankCardNumberUtil.getInstance().generateByPrefix(prev);
