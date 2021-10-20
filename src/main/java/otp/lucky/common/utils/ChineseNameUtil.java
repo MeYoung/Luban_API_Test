@@ -57,10 +57,10 @@ public class ChineseNameUtil {
      *
      * @return
      */
-    private String getRandomChar() {
+    public String getRandomChar() {
         String str = null;
         int highPos, lowPos;
-        long seed = RandomUtil.getNumRandom(13);
+        long seed = RandomUtil.getNumRandom(FinalText.NUM_16);
         Random random = new Random(seed);
         highPos = FinalText.NUM_176 + Math.abs(random.nextInt(FinalText.NUM_39));
         lowPos = FinalText.NUM_161 + Math.abs(random.nextInt(FinalText.NUM_93));
