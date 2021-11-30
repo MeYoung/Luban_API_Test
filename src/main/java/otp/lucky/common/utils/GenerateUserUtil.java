@@ -182,32 +182,6 @@ public class GenerateUserUtil {
 
     }
 
-/*
-    public ApplyUserP getApplyUser() {
-        ApplyUserP applyUserP = new ApplyUserP();
-
-        applyUserP.setApplyName(getChineseName());
-        String[] placeStrings = place[getRandom(place.length)];
-        applyUserP.setProvinceName(placeStrings[0]);
-        applyUserP.setCityName(placeStrings[getRandom(placeStrings.length)]);
-
-        String presentAddress = applyUserP.getProvinceName() + applyUserP.getCityName();
-        applyUserP.setPresentAddress(presentAddress);
-
-
-        applyUserP.setEngageJob(engageJob[getRandom(engageJob.length)]);
-        applyUserP.setIsExistShop(getRandom(2));
-        applyUserP.setIsOperationSelf(getRandom(2));
-
-        applyUserP.setEmail(getEmail(5, 10));
-        applyUserP.setApplyGender(getRandom(2));
-
-        applyUserP.setMobile(getTel());
-
-        return applyUserP;
-    }*/
-
-
     public List<String> getProvince() {
         List<String> provinceList = new ArrayList<>();
         for (String[] pList : place) {

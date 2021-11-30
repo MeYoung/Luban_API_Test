@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
@@ -53,5 +54,19 @@ public class DateUtil {
         SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.US);
         Date d = sdf.parse(date);
         return DateUtil.getDateFormat(d, format);
+    }
+
+    /**
+     * 根据传入的天数和时间类型（如yyyy-MM-dd HH:mm:ss），生成若干天前/后的时间
+     *
+     * @param count
+     * @param type
+     * @return
+     */
+    public static String getABTime(int count, String type) {
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(type);
+        calendar.add(Calendar.DATE, count);
+        return simpleDateFormat.format(calendar.getTime());
     }
 }

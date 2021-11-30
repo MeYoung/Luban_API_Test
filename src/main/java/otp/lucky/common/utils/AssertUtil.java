@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import net.javacrumbs.jsonunit.JsonAssert;
 import org.apache.commons.lang3.StringUtils;
 import org.testng.Assert;
+import otp.lucky.common.utils.bank.BankCardNumberUtil;
 
 import java.lang.reflect.Field;
 import java.util.regex.Pattern;
@@ -15,7 +16,45 @@ import java.util.regex.Pattern;
  */
 @Slf4j
 public class AssertUtil extends Assert {
-    //    额外添加的校验方法 =======================================================================
+
+    /**
+     * 校验是否为身份证ID
+     *
+     * @param idCard
+     * @param message
+     */
+    public static void assertIdCard(String idCard, String message) {
+        if (message != null) {
+            log.info(message);
+        }
+        if (IdCardUtil.isValidCard(idCard)) {
+            log.info("身份证:{}校验通过！",idCard);
+        } else {
+            log.error("身份证:{}校验失败！", idCard);
+            Assert.fail();
+        }
+    }
+
+    public static void assertIdCard(String idCard) {
+        assertIdCard(idCard, null);
+    }
+
+
+    public static void assertBankIdCard(String idCard, String message){
+        if (message != null) {
+            log.info(message);
+        }
+        if (BankCardNumberUtil.isValidate(idCard)) {
+            log.info("银行卡:{}校验通过！",idCard);
+        } else {
+            log.error("银行卡:{}校验失败！", idCard);
+            Assert.fail();
+        }
+    }
+    public static void assertBankIdCard(String idCard) {
+        assertBankIdCard(idCard, null);
+    }
+
 
     /**
      * 断言字符是否已某个字符串开头
@@ -241,7 +280,6 @@ public class AssertUtil extends Assert {
             e.printStackTrace();
         }
     }*/
-
     public static void assertSuccess(String reponse) {
         JsonPath jsonPath = new JsonPath(reponse);
         Assert.assertTrue(jsonPath.getBoolean("success"));
