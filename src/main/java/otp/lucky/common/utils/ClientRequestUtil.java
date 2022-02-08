@@ -1,11 +1,8 @@
-package otp.lucky.common.utils;//package com.lucky.common.utils;
+//package otp.lucky.common.utils;
 //
 //import com.alibaba.fastjson.JSON;
 //import com.alibaba.fastjson.JSONObject;
-//import com.lucky.common.report.TestStep;
-//import com.lucky.params.BaseData;
-//import com.lucky.params.FinalText;
-//import com.lucky.service.admin.operation.LoginService;
+//
 //import io.qameta.allure.Attachment;
 //import io.restassured.path.json.JsonPath;
 //import io.restassured.response.Response;

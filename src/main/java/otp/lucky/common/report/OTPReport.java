@@ -50,7 +50,7 @@ public class OTPReport {
      * @param caseID
      */
     private static void setCasesLinkInReport(String caseID) {
-        final String otpUrl = "http://otp.luckincoffee.com/default/CaseAdmin?";
+        final String otpUrl = "http://otp.lkcoffee.com/default/CaseAdmin?";
         String[] casesArr = caseID.split("_");
 //       file 表示脑图， excel表示表格
         String type = "file";

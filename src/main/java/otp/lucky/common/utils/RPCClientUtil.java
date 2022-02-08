@@ -6,7 +6,6 @@ import org.apache.dubbo.config.ApplicationConfig;
 import org.apache.dubbo.config.ReferenceConfig;
 import org.apache.dubbo.config.RegistryConfig;
 import otp.lucky.params.BaseData;
-import otp.lucky.params.Env;
 
 
 /**

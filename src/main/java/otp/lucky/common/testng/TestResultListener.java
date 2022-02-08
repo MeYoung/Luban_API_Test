@@ -23,20 +23,20 @@ public class TestResultListener extends TestListenerAdapter {
     @Override
     public void onTestSkipped(ITestResult tr) {
         super.onTestSkipped(tr);
-        log.error("{} -- skip", tr.getName());
+        log.error("skip -- {}", tr.getName());
 
     }
 
     @Override
     public void onTestSuccess(ITestResult tr) {
         super.onTestSuccess(tr);
-        log.info("{} -- success", tr.getName());
+        log.info("success -- {}", tr.getName());
     }
 
     @Override
     public void onTestStart(ITestResult tr) {
         String classPath = tr.getTestClass().getName() + "." + tr.getName();
-        log.info("开始执行：--{}", classPath);
+        log.info("开始执行：-- {}", classPath);
         super.onTestStart(tr);
     }
 
