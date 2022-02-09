@@ -59,7 +59,6 @@ public class DateFormatUtil {
         try {
             s = simpleDateFormat.parse(date);
         } catch (ParseException e) {
-            e.printStackTrace();
             log.error(e.toString());
         }
         return s;
