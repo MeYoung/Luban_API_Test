@@ -1,7 +1,6 @@
 package otp.lucky.common.http;
 
 import com.alibaba.fastjson.JSON;
-import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 
 import java.util.Map;
@@ -15,7 +14,6 @@ import static io.restassured.RestAssured.given;
 public class Post {
 
     public static Response postFrom(String url, String contentType, Map<String, String> cookies, Map<String, Object> params) {
-
         Response response = given().filter(new RestAssuredRequestFilter())
                 .contentType(contentType)
                 .cookies(cookies)
