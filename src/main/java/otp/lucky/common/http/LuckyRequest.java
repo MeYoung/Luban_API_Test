@@ -29,7 +29,7 @@ public class LuckyRequest {
         String sign = SignUtil.getSignStr(uid, cid, qAes, secKey);
         log.info("请求URL：{}", apiurl);
         log.info("请求q参数：{}", q);
-        Map<String, Object> params = new HashMap<>();
+        Map<String, Object> params = new HashMap<>(4);
         params.put("cid", cid);
         params.put("uid", cid);
         params.put("sign", sign);

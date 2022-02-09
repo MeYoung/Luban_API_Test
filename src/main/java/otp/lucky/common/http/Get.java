@@ -32,7 +32,7 @@ public class Get {
 
     public static Response get(String url, String contentType) {
         Map<String, String> cookies = GlobalCookieManager.getInstance().getCookies();
-        return get(url, contentType, cookies, new HashMap<>());
+        return get(url, contentType, cookies, new HashMap<>(10));
     }
 
     public static Response get(String url, String contentType, Map<String, Object> params) {
