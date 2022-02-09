@@ -28,15 +28,9 @@ public class RestAssuredRequestFilter implements Filter {
             // todo post打印体
         }
 
-//        Allure.step("请求方法:" + method + "  " + "请求地址：" + requestSpec.getURI() + "\n"
-//                + "请求头部信息:\n" + requestSpec.getHeaders().toString());
-
-
         log.info("返回状态码:{} {}", response.getStatusCode(), response.getStatusLine());
         log.info("返回体:");
-        String strRe = response.prettyPrint();
-
-//        Allure.step("返回体:\n" + strRe);
+        response.prettyPrint();
         return response;
     }
 }
