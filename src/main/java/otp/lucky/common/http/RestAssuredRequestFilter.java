@@ -1,6 +1,5 @@
 package otp.lucky.common.http;
 
-import io.qameta.allure.Allure;
 import io.restassured.filter.Filter;
 import io.restassured.filter.FilterContext;
 import io.restassured.response.Response;

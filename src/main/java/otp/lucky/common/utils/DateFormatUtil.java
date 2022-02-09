@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.TimeZone;
 
 /**
  * Created by shijin.huang on 2018/11/29
@@ -62,12 +63,14 @@ public class DateFormatUtil {
 
     public static String format(Date date, String type) {
         simpleDateFormat = new SimpleDateFormat(type);
+        simpleDateFormat.setTimeZone(TimeZone.getTimeZone("Asia/Shanghai"));
         String s = simpleDateFormat.format(date);
         return s;
     }
 
     public static String format(String date, String type) {
         simpleDateFormat = new SimpleDateFormat(type);
+        simpleDateFormat.setTimeZone(TimeZone.getTimeZone("Asia/Shanghai"));
         String s = simpleDateFormat.format(date);
         return s;
     }
