@@ -24,9 +24,8 @@ public class RestAssuredRequestFilter implements Filter {
         log.info("请求地址：{}", requestSpec.getURI());
 
         log.info("请求头部信息:\n{}", requestSpec.getHeaders().toString());
-        if ("post".equalsIgnoreCase(method)) {
             // todo post打印体
-        }
+
 
         log.info("返回状态码:{} {}", response.getStatusCode(), response.getStatusLine());
         log.info("返回体:");

@@ -1,5 +1,7 @@
 package otp.lucky.common.utils;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
@@ -12,6 +14,7 @@ import java.util.TimeZone;
 /**
  * Created by shijin.huang on 2018/11/29
  */
+@Slf4j
 public class DateFormatUtil {
 
     public static final String COMMON_DATE_FORMAT = "yyyy-MM-dd";
@@ -57,6 +60,7 @@ public class DateFormatUtil {
             s = simpleDateFormat.parse(date);
         } catch (ParseException e) {
             e.printStackTrace();
+            log.error(e.toString());
         }
         return s;
     }
