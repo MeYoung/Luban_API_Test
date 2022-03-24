@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.ApplicationConfig;
 import org.apache.dubbo.config.ReferenceConfig;
 import org.apache.dubbo.config.RegistryConfig;
+import org.apache.dubbo.config.utils.ReferenceConfigCache;
 import otp.lucky.params.BaseData;
 
 
@@ -87,6 +88,9 @@ public class RPCClientUtil {
         reference.setTimeout(30 * 1000);
 //        负载均衡策略，可选值：random,roundrobin,leastactive，分别表示：随机，轮询，最少活跃调用
         reference.setLoadbalance("leastactive");
+
+        BaseData.getInstance().setReferenceConfig(reference);
+
 //        返回目标接口
         return reference.get();
     }

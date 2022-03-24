@@ -2,6 +2,7 @@ package otp.lucky.params;
 
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.dubbo.config.ReferenceConfig;
 import org.testng.Assert;
 import otp.lucky.common.utils.EnumUtil;
 
@@ -61,6 +62,11 @@ public class BaseData {
      */
     private Env env;
 
+    /**
+     * dubbo调用配置项
+     */
+    private ReferenceConfig referenceConfig;
+
     public void setEnv(String env) {
         if (EnumUtil.isInclude(Env.class, env)) {
             Env envEnum = EnumUtil.likeValueOf(Env.class, env);
@@ -74,8 +80,8 @@ public class BaseData {
         return this.env.value();
     }
 
-    public void setEnv(Env env){
-        this.env=env;
+    public void setEnv(Env env) {
+        this.env = env;
     }
 
     Map<String, Object> data = new HashMap<>();
