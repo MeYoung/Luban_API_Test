@@ -1,10 +1,13 @@
 package otp.lucky.common.utils;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.util.List;
 
 /**
  * Created by shijin.huang on 2019/5/9
  */
+@Slf4j
 public class ToolsUtil {
 
     /**
@@ -66,6 +69,7 @@ public class ToolsUtil {
         try {
             Thread.sleep(count * ONE_K);
         } catch (InterruptedException e) {
+            log.error(e.toString());
             e.printStackTrace();
         }
     }
