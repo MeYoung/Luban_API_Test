@@ -1,10 +1,6 @@
 package otp.lucky.common.utils;
 
-//import org.apache.commons.beanutils.PropertyUtils;
-
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 /**
  * Created by shijin.huang on 2019/5/9
@@ -23,8 +19,6 @@ public class ToolsUtil {
         T dest;
         try {
             dest = clazz.newInstance();
-//            BeanUtils.copyProperties(dest,orig);
-//            PropertyUtils.copyProperties(dest, orig);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -62,7 +56,7 @@ public class ToolsUtil {
     }
 
 
-    final static int OneK = 1000;
+    final static int ONE_K = 1000;
     /**
      * 线程等待x秒
      *
@@ -70,7 +64,7 @@ public class ToolsUtil {
      */
     public static void sleep(int count) {
         try {
-            Thread.sleep(count * OneK);
+            Thread.sleep(count * ONE_K);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
