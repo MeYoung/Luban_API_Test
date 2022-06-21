@@ -62,6 +62,7 @@ public class ToolsUtil {
     }
 
 
+    final static int OneK = 1000;
     /**
      * 线程等待x秒
      *
@@ -69,24 +70,12 @@ public class ToolsUtil {
      */
     public static void sleep(int count) {
         try {
-            Thread.sleep(count * 1000);
+            Thread.sleep(count * OneK);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
 
 
-    public static  void ttt() {
-        List<Integer> list = new ArrayList<>();
-        list.add(1);
-        list.add(2);
-        list.add(3);
-        list.add(4);
-        list.add(5);
-        list.add(6);
-        list.forEach(item -> {
-            System.out.println("item=" + item);
-        });
-    }
 
 }
