@@ -70,7 +70,6 @@ public class ToolsUtil {
             Thread.sleep(count * ONE_K);
         } catch (InterruptedException e) {
             log.error(e.toString());
-            e.printStackTrace();
         }
     }
 
