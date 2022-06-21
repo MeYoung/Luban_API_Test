@@ -2,6 +2,7 @@ package otp.lucky.common.utils;
 
 //import org.apache.commons.beanutils.PropertyUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -74,5 +75,18 @@ public class ToolsUtil {
         }
     }
 
+
+    public static  void ttt() {
+        List<Integer> list = new ArrayList<>();
+        list.add(1);
+        list.add(2);
+        list.add(3);
+        list.add(4);
+        list.add(5);
+        list.add(6);
+        list.forEach(item -> {
+            System.out.println("item=" + item);
+        });
+    }
 
 }

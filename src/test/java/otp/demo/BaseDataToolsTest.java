@@ -32,6 +32,8 @@ public class BaseDataToolsTest {
         log.info("----------");
         Allure.label("adfafd","fafdadf");
         log.info("----------");
+        log.info("----------");
+        log.info("----------");
         log.info("dataTest =============");
     }
 
