@@ -161,13 +161,6 @@
 
     </dependencies>
 
-    <repositories>
-        <repository>
-            <id>nexus</id>
-            <name>nexus repository for all Mirror.</name>
-            <url>http://maven.luckincoffee.com/nexus/content/groups/public</url>
-        </repository>
-    </repositories>
 
 
     <build>

@@ -8,7 +8,7 @@ package otp.lucky.params;
 public class FinalText {
 
     public static final String JENKINS_TEST="http://10.104.92.9:8080/jenkins/job/RunPapiOneCase/buildWithParameters?Submit=Build&token=dapitoken&";
-    public static final String JENKINS_PRE="http://bopautojenkinspre.luckincoffee.com/job/RunPapiOneCase/buildWithParameters?Submit=Build&token=papipretoken&";
+    public static final String JENKINS_PRE="http://bopautojenkinspre.xxxxx.com/job/RunPapiOneCase/buildWithParameters?Submit=Build&token=papipretoken&";
 
     public static final Integer NUM_0 = 0;
     public static final Integer NUM_1 = 1;

@@ -24,7 +24,7 @@ public class CodeGenerator {
     /**
      * 数据库 URL
      */
-    private static final String URL = "jdbc:mysql://10.104.249.47:3306/lucky_partner?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+    private static final String URL = "jdbc:mysql://10.xxx.249.47:3306/lucky_partner?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
 
     /**
      * 数据库驱动

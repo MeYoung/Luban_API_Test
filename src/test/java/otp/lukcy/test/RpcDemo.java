@@ -20,17 +20,15 @@ import static io.restassured.config.RedirectConfig.redirectConfig;
 @Slf4j
 public class RpcDemo {
 
-
-
     @Test
     public void tt() {
-        String login = "https://bsportal.luckincoffee.com/webapi/auth/login";
+        String login = "https://bsportal.xxxx.com/webapi/auth/login";
         String body = "{\n" +
                 "    \"username\": \"shijin.huang\",\n" +
                 "    \"password\": \"Hshijin1237.\",\n" +
                 "    \"appKey\": \"\",\n" +
                 "    \"callback\": \"\",\n" +
-                "    \"rtnUrl\": \"https%3A%2F%2Fbsportal.luckincoffee.com\"\n" +
+                "    \"rtnUrl\": \"https%3A%2F%2Fbsportal.xxxx.com\"\n" +
                 "}";
         log.info(JSON.toJSONString(body));
         Response response2 = given().contentType("application/json").body(body).post(login);
@@ -39,7 +37,7 @@ public class RpcDemo {
         Map<String, String> cookies = response2.getCookies();
         log.info("headers,===== {}",response2.getHeaders());
 
-        String ge="http://otp.luckincoffee.com/api/workbench/task?_=1634115130308";
+        String ge="http://otp.xxxx.com/api/workbench/task?_=1634115130308";
         String body2 ="{\n" +
                 "    \"planType\": [],\n" +
                 "    \"belongUser\": [],\n" +
@@ -51,7 +49,7 @@ public class RpcDemo {
 
         RestAssured.config = config().redirect(redirectConfig().followRedirects(false).and().maxRedirects(20));
 
-        String url = "https://bsportal.luckincoffee.com/webapi/project/visit?id=230&envId=8513";
+        String url = "https://bsportal.xxxx.com/webapi/project/visit?id=230&envId=8513";
         Response response = given().cookies(cookies)
                 .get(url);
         log.info("status:{}",response.getStatusCode());

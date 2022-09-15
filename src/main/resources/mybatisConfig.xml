@@ -35,85 +35,85 @@
     </settings>
 
     <!--配置环境和DB链接-->
-    <environments default="test1_lucky_ehr">
+    <environments default="test1_XXXXX_ehr">
         <!--多环境选择-->
 
         <!-- =========================== test1  ==========================================-->
 
         <!--new SqlSessionFactoryBuilder().build(is,"test1");-->
-        <environment id="test1_lucky_operation">
+        <environment id="test1_XXXXX_operation">
             <transactionManager type="JDBC"/>
             <!-- 配置数据库连接信息 -->
             <dataSource type="POOLED">
                 <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://10.218.2.12:3306/lucky_operation?serverTimezone=GMT%2b8"/>
+                <property name="url" value="jdbc:mysql://10.218.2.12:3306/XXXXX_operation?serverTimezone=GMT%2b8"/>
                 <property name="username" value="dev_test1"/>
                 <property name="password" value="dev_test1"/>
             </dataSource>
         </environment>
         <!-- 稽核相关信息 -->
-        <environment id="test1_lucky_audit">
+        <environment id="test1_XXXXX_audit">
             <transactionManager type="JDBC"/>
             <dataSource type="POOLED">
                 <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://10.104.249.47:3306/lucky_audit?serverTimezone=GMT%2b8"/>
+                <property name="url" value="jdbc:mysql://10.104.249.47:3306/XXXXX_audit?serverTimezone=GMT%2b8"/>
                 <property name="username" value="dev_test1"/>
                 <property name="password" value="dev_test1"/>
             </dataSource>
         </environment>
         <!-- 门店值班相关信息 -->
-        <environment id="test1_lucky_shopwork">
+        <environment id="test1_XXXXX_shopwork">
             <transactionManager type="JDBC"/>
             <dataSource type="POOLED">
                 <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://10.104.249.47:3306/lucky_shopwork?serverTimezone=GMT%2b8"/>
+                <property name="url" value="jdbc:mysql://10.104.249.47:3306/XXXXX_shopwork?serverTimezone=GMT%2b8"/>
                 <property name="username" value="dev_test1"/>
                 <property name="password" value="dev_test1"/>
             </dataSource>
         </environment>
 
         <!-- 财务相关信息 -->
-        <environment id="test1_lucky_finance">
+        <environment id="test1_XXXXX_finance">
             <transactionManager type="JDBC"/>
             <dataSource type="POOLED">
                 <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://10.104.249.47:3306/lucky_finance?serverTimezone=GMT%2b8"/>
+                <property name="url" value="jdbc:mysql://10.104.249.47:3306/XXXXX_finance?serverTimezone=GMT%2b8"/>
                 <property name="username" value="dev_test1"/>
                 <property name="password" value="dev_test1"/>
             </dataSource>
         </environment>
 
         <!--   用户相关信息     -->
-        <environment id="test1_lucky_ehr">
+        <environment id="test1_XXXXX_ehr">
             <transactionManager type="JDBC"/>
             <!-- 配置数据库连接信息 -->
             <dataSource type="POOLED">
                 <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://10.104.249.47:3306/lucky_ehr?serverTimezone=GMT%2b8"/>
+                <property name="url" value="jdbc:mysql://10.104.249.47:3306/XXXXX_ehr?serverTimezone=GMT%2b8"/>
                 <property name="username" value="dev_test1"/>
                 <property name="password" value="dev_test1"/>
             </dataSource>
         </environment>
 
         <!-- 联营系统相关表 -->
-        <environment id="test1_lucky_partner">
+        <environment id="test1_XXXXX_partner">
             <transactionManager type="JDBC"/>
             <!-- 配置数据库连接信息 -->
             <dataSource type="POOLED">
                 <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://10.104.249.47:3306/lucky_partner?serverTimezone=GMT%2b8"/>
+                <property name="url" value="jdbc:mysql://10.104.249.47:3306/XXXXX_partner?serverTimezone=GMT%2b8"/>
                 <property name="username" value="dev_test1"/>
                 <property name="password" value="dev_test1"/>
             </dataSource>
         </environment>
 
         <!-- 拓展地图系统相关表 -->
-        <environment id="test1_lucky_expansion">
+        <environment id="test1_XXXXX_expansion">
             <transactionManager type="JDBC"/>
             <!-- 配置数据库连接信息 -->
             <dataSource type="POOLED">
                 <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://10.104.249.47:3306/lucky_expansion?serverTimezone=GMT%2b8"/>
+                <property name="url" value="jdbc:mysql://10.104.249.47:3306/XXXXX_expansion?serverTimezone=GMT%2b8"/>
                 <property name="username" value="dev_test1"/>
                 <property name="password" value="dev_test1"/>
             </dataSource>
@@ -121,12 +121,12 @@
 
 
         <!-- 拓展系统相关表 -->
-        <environment id="test1_lucky_expand">
+        <environment id="test1_XXXXX_expand">
             <transactionManager type="JDBC"/>
             <!-- 配置数据库连接信息 -->
             <dataSource type="POOLED">
                 <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://10.104.249.47:3306/lucky_expand?serverTimezone=GMT%2b8"/>
+                <property name="url" value="jdbc:mysql://10.104.249.47:3306/XXXXX_expand?serverTimezone=GMT%2b8"/>
                 <property name="username" value="dev_test1"/>
                 <property name="password" value="dev_test1"/>
             </dataSource>
@@ -135,12 +135,12 @@
 
 
         <!-- 订单DB -->
-        <environment id="test1_lucky_order_all">
+        <environment id="test1_XXXXX_order_all">
             <transactionManager type="JDBC"/>
             <!-- 配置数据库连接信息 -->
             <dataSource type="POOLED">
                 <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://10.104.249.47:3306/lucky_order_all?serverTimezone=GMT%2b8"/>
+                <property name="url" value="jdbc:mysql://10.104.249.47:3306/XXXXX_order_all?serverTimezone=GMT%2b8"/>
                 <property name="username" value="dev_test1"/>
                 <property name="password" value="dev_test1"/>
             </dataSource>
@@ -148,12 +148,12 @@
 
 
         <!-- 商品系统 -->
-        <environment id="test1_lucky_commodity">
+        <environment id="test1_XXXXX_commodity">
             <transactionManager type="JDBC"/>
             <!-- 配置数据库连接信息 -->
             <dataSource type="POOLED">
                 <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://10.104.249.47:3306/lucky_commodity?serverTimezone=GMT%2b8"/>
+                <property name="url" value="jdbc:mysql://10.104.249.47:3306/XXXXX_commodity?serverTimezone=GMT%2b8"/>
                 <property name="username" value="dev_test1"/>
                 <property name="password" value="dev_test1"/>
             </dataSource>
@@ -161,47 +161,47 @@
 
 
         <!-- 会员系统 -->
-        <environment id="test1_lucky_crm">
+        <environment id="test1_XXXXX_crm">
             <transactionManager type="JDBC"/>
             <!-- 配置数据库连接信息 -->
             <dataSource type="POOLED">
                 <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://10.104.249.47:3306/lucky_crm?serverTimezone=GMT%2b8"/>
+                <property name="url" value="jdbc:mysql://10.104.249.47:3306/XXXXX_crm?serverTimezone=GMT%2b8"/>
                 <property name="username" value="dev_test1"/>
                 <property name="password" value="dev_test1"/>
             </dataSource>
         </environment>
 
 
-        <environment id="test1_lucky_stock">
+        <environment id="test1_XXXXX_stock">
             <transactionManager type="JDBC"/>
             <!-- 配置数据库连接信息 -->
             <dataSource type="POOLED">
                 <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://10.104.249.47:3306/lucky_stock?serverTimezone=GMT%2b8"/>
+                <property name="url" value="jdbc:mysql://10.104.249.47:3306/XXXXX_stock?serverTimezone=GMT%2b8"/>
                 <property name="username" value="dev_test1"/>
                 <property name="password" value="dev_test1"/>
             </dataSource>
         </environment>
 
-        <environment id="test1_lucky_admin">
+        <environment id="test1_XXXXX_admin">
             <transactionManager type="JDBC"/>
             <!-- 配置数据库连接信息 -->
             <dataSource type="POOLED">
                 <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://10.104.249.47:3306/lucky_admin?serverTimezone=GMT%2b8"/>
+                <property name="url" value="jdbc:mysql://10.104.249.47:3306/XXXXX_admin?serverTimezone=GMT%2b8"/>
                 <property name="username" value="dev_test1"/>
                 <property name="password" value="dev_test1"/>
             </dataSource>
         </environment>
 
         <!-- 考勤相关信息 -->
-        <environment id="test1_lucky_attendance">
+        <environment id="test1_XXXXX_attendance">
             <transactionManager type="JDBC"/>
             <!-- 配置数据库连接信息 -->
             <dataSource type="POOLED">
                 <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://10.104.249.47:3306/lucky_attendance?serverTimezone=GMT%2b8"/>
+                <property name="url" value="jdbc:mysql://10.104.249.47:3306/XXXXX_attendance?serverTimezone=GMT%2b8"/>
                 <property name="username" value="dev_test1"/>
                 <property name="password" value="dev_test1"/>
             </dataSource>
@@ -209,81 +209,81 @@
 
 <!-- =========================== test2  ==========================================-->
 
-        <environment id="test2_lucky_operation">
+        <environment id="test2_XXXXX_operation">
             <transactionManager type="JDBC"/>
             <!-- 配置数据库连接信息 -->
             <dataSource type="POOLED">
                 <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://10.104.249.47:3307/lucky_operation?serverTimezone=GMT%2b8"/>
+                <property name="url" value="jdbc:mysql://10.104.249.47:3307/XXXXX_operation?serverTimezone=GMT%2b8"/>
                 <property name="username" value="dev_test2"/>
                 <property name="password" value="dev_test2"/>
             </dataSource>
         </environment>
 
 <!-- =========================== pre  ==========================================-->
-        <environment id="pre_lucky_operation">
+        <environment id="pre_XXXXX_operation">
             <transactionManager type="JDBC"/>
             <!-- 配置数据库连接信息 -->
             <dataSource type="POOLED">
                 <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://10.204.55.202:3306/lucky_operation?serverTimezone=GMT%2b8"/>
+                <property name="url" value="jdbc:mysql://10.204.55.202:3306/XXXXX_operation?serverTimezone=GMT%2b8"/>
                 <property name="username" value="automation_r"/>
                 <property name="password" value="HSQ2iw2knAPJ38Hb"/>
             </dataSource>
         </environment>
         <!-- 稽核相关信息 -->
-        <environment id="pre_lucky_audit">
+        <environment id="pre_XXXXX_audit">
             <transactionManager type="JDBC"/>
             <dataSource type="POOLED">
                 <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://10.204.55.202:3306/lucky_audit?serverTimezone=GMT%2b8"/>
+                <property name="url" value="jdbc:mysql://10.204.55.202:3306/XXXXX_audit?serverTimezone=GMT%2b8"/>
                 <property name="username" value="automation_r"/>
                 <property name="password" value="HSQ2iw2knAPJ38Hb"/>
             </dataSource>
         </environment>
 
         <!-- 财务相关信息 -->
-        <environment id="pre_lucky_finance">
+        <environment id="pre_XXXXX_finance">
             <transactionManager type="JDBC"/>
             <dataSource type="POOLED">
                 <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://10.204.55.202:3306/lucky_finance?serverTimezone=GMT%2b8"/>
+                <property name="url" value="jdbc:mysql://10.204.55.202:3306/XXXXX_finance?serverTimezone=GMT%2b8"/>
                 <property name="username" value="automation_r"/>
                 <property name="password" value="HSQ2iw2knAPJ38Hb"/>
             </dataSource>
         </environment>
 
         <!--   用户相关信息     -->
-        <environment id="pre_lucky_ehr">
+        <environment id="pre_XXXXX_ehr">
             <transactionManager type="JDBC"/>
             <!-- 配置数据库连接信息 -->
             <dataSource type="POOLED">
                 <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://10.204.55.202:3306/lucky_ehr?serverTimezone=GMT%2b8"/>
+                <property name="url" value="jdbc:mysql://10.204.55.202:3306/XXXXX_ehr?serverTimezone=GMT%2b8"/>
                 <property name="username" value="automation_r"/>
                 <property name="password" value="HSQ2iw2knAPJ38Hb"/>
             </dataSource>
         </environment>
 
         <!--   配送员相关信息     -->
-        <environment id="pre_lucky_dispatch">
+        <environment id="pre_XXXXX_dispatch">
             <transactionManager type="JDBC"/>
             <!-- 配置数据库连接信息 -->
             <dataSource type="POOLED">
                 <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://10.204.55.202:3306/lucky_dispatch?serverTimezone=GMT%2b8"/>
+                <property name="url" value="jdbc:mysql://10.204.55.202:3306/XXXXX_dispatch?serverTimezone=GMT%2b8"/>
                 <property name="username" value="automation_r"/>
                 <property name="password" value="HSQ2iw2knAPJ38Hb"/>
             </dataSource>
         </environment>
 
         <!--   配送员路由DB     -->
-        <environment id="pre_lucky_dispatch_router">
+        <environment id="pre_XXXXX_dispatch_router">
             <transactionManager type="JDBC"/>
             <!-- 配置数据库连接信息 -->
             <dataSource type="POOLED">
                 <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://10.204.55.202:3306/lucky_dispatchrouter?serverTimezone=GMT%2b8"/>
+                <property name="url" value="jdbc:mysql://10.204.55.202:3306/XXXXX_dispatchrouter?serverTimezone=GMT%2b8"/>
                 <property name="username" value="automation_r"/>
                 <property name="password" value="HSQ2iw2knAPJ38Hb"/>
             </dataSource>
@@ -291,12 +291,12 @@
 
 
         <!-- 商品系统 -->
-        <environment id="pre_lucky_commodity">
+        <environment id="pre_XXXXX_commodity">
             <transactionManager type="JDBC"/>
             <!-- 配置数据库连接信息 -->
             <dataSource type="POOLED">
                 <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://10.204.55.202:3306/lucky_commodity?serverTimezone=GMT%2b8"/>
+                <property name="url" value="jdbc:mysql://10.204.55.202:3306/XXXXX_commodity?serverTimezone=GMT%2b8"/>
                 <property name="username" value="automation_r"/>
                 <property name="password" value="HSQ2iw2knAPJ38Hb"/>
             </dataSource>
@@ -304,23 +304,23 @@
 
 
         <!-- 会员系统 -->
-        <environment id="pre_lucky_crm">
+        <environment id="pre_XXXXX_crm">
             <transactionManager type="JDBC"/>
             <!-- 配置数据库连接信息 -->
             <dataSource type="POOLED">
                 <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://10.204.55.202:3306/lucky_crm?serverTimezone=GMT%2b8"/>
+                <property name="url" value="jdbc:mysql://10.204.55.202:3306/XXXXX_crm?serverTimezone=GMT%2b8"/>
                 <property name="username" value="automation_r"/>
                 <property name="password" value="HSQ2iw2knAPJ38Hb"/>
             </dataSource>
         </environment>
 
-        <environment id="pre_lucky_stock">
+        <environment id="pre_XXXXX_stock">
             <transactionManager type="JDBC"/>
             <!-- 配置数据库连接信息 -->
             <dataSource type="POOLED">
                 <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://10.204.55.202:3306/lucky_stock?serverTimezone=GMT%2b8"/>
+                <property name="url" value="jdbc:mysql://10.204.55.202:3306/XXXXX_stock?serverTimezone=GMT%2b8"/>
                 <property name="username" value="automation_r"/>
                 <property name="password" value="HSQ2iw2knAPJ38Hb"/>
             </dataSource>
@@ -328,12 +328,12 @@
 
 
         <!-- 联营系统 -->
-        <environment id="pre_lucky_partner">
+        <environment id="pre_XXXXX_partner">
             <transactionManager type="JDBC"/>
             <!-- 配置数据库连接信息 -->
             <dataSource type="POOLED">
                 <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://10.212.17.30:3306/lucky_partner?serverTimezone=GMT%2b8"/>
+                <property name="url" value="jdbc:mysql://10.212.17.30:3306/XXXXX_partner?serverTimezone=GMT%2b8"/>
                 <property name="username" value="automation_r"/>
                 <property name="password" value="HSQ2iw2knAPJ38Hb"/>
             </dataSource>
@@ -341,24 +341,24 @@
 
 
         <!-- 拓展地图系统 -->
-        <environment id="pre_lucky_expansion">
+        <environment id="pre_XXXXX_expansion">
             <transactionManager type="JDBC"/>
             <!-- 配置数据库连接信息 -->
             <dataSource type="POOLED">
                 <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://10.212.17.30:3306/lucky_expansion?serverTimezone=GMT%2b8"/>
+                <property name="url" value="jdbc:mysql://10.212.17.30:3306/XXXXX_expansion?serverTimezone=GMT%2b8"/>
                 <property name="username" value="automation_r"/>
                 <property name="password" value="HSQ2iw2knAPJ38Hb"/>
             </dataSource>
         </environment>
 
 
-        <environment id="pre_lucky_expand">
+        <environment id="pre_XXXXX_expand">
             <transactionManager type="JDBC"/>
             <!-- 配置数据库连接信息 -->
             <dataSource type="POOLED">
                 <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://10.212.17.30:3306/lucky_expand?serverTimezone=GMT%2b8"/>
+                <property name="url" value="jdbc:mysql://10.212.17.30:3306/XXXXX_expand?serverTimezone=GMT%2b8"/>
                 <property name="username" value="automation_r"/>
                 <property name="password" value="HSQ2iw2knAPJ38Hb"/>
             </dataSource>
@@ -366,12 +366,12 @@
 
 
 
-        <environment id="pre_lucky_admin">
+        <environment id="pre_XXXXX_admin">
             <transactionManager type="JDBC"/>
             <!-- 配置数据库连接信息 -->
             <dataSource type="POOLED">
                 <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://10.204.55.202:3306/lucky_admin?serverTimezone=GMT%2b8"/>
+                <property name="url" value="jdbc:mysql://10.204.55.202:3306/XXXXX_admin?serverTimezone=GMT%2b8"/>
                 <property name="username" value="automation_r"/>
                 <property name="password" value="HSQ2iw2knAPJ38Hb"/>
             </dataSource>
@@ -379,22 +379,22 @@
 
 
         <!-- 考勤相关信息 -->
-        <environment id="pre_lucky_attendance">
+        <environment id="pre_XXXXX_attendance">
             <transactionManager type="JDBC"/>
             <dataSource type="POOLED">
                 <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://10.212.17.30:3306/lucky_attendance?serverTimezone=GMT%2b8"/>
+                <property name="url" value="jdbc:mysql://10.212.17.30:3306/XXXXX_attendance?serverTimezone=GMT%2b8"/>
                 <property name="username" value="automation_r"/>
                 <property name="password" value="HSQ2iw2knAPJ38Hb"/>
             </dataSource>
         </environment>
 
         <!-- 财务相关信息 -->
-        <environment id="pre_lucky_finance">
+        <environment id="pre_XXXXX_finance">
             <transactionManager type="JDBC"/>
             <dataSource type="POOLED">
                 <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://10.204.55.202:3306/lucky_finance?serverTimezone=GMT%2b8"/>
+                <property name="url" value="jdbc:mysql://10.204.55.202:3306/XXXXX_finance?serverTimezone=GMT%2b8"/>
                 <property name="username" value="automation_r"/>
                 <property name="password" value="HSQ2iw2knAPJ38Hb"/>
             </dataSource>
@@ -404,8 +404,8 @@
 
     <!--配置要扫描的mapper-->
     <mappers>
-<!--        <mapper class="com.lucky.dao.ehr.EhrEmployeeMapper"/>
-        <mapper class="com.lucky.dao.dispatch.TPostmanMapper"/>-->
+<!--        <mapper class="com.XXXXX.dao.ehr.EhrEmployeeMapper"/>
+        <mapper class="com.XXXXX.dao.dispatch.TPostmanMapper"/>-->
 
         <package name="com.lucky.dao"/>
     </mappers>
